@@ -24,3 +24,5 @@ This version was translated for English, Portuguese and Spanish.
 ------------------------
 iAutomate
 http://www.iautomate.com.br
+
+versionado
