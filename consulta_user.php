@@ -14,7 +14,7 @@
 
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
-	<div class="row">
+	<div class="row1">
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
@@ -27,11 +27,11 @@
 									<div class="col-md-9">
 										<div class="input-group-btn">
 											<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
-												<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
-													<div class="card-footer">
-														<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Pesquisar</button>
-														<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Limpar</button>
-													</div>
+											<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
+											<div class="card-footer">
+												<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Pesquisar</button>
+												<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Limpar</button>
+											</div>
 										</div> 
 									</div>                                          
                                </div>
