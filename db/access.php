@@ -1,7 +1,7 @@
 <?php
 $capabilities = array(
 
-		'block/moodleversion:myaddinstance' => array
+		'local/moodleversion:myaddinstance' => array
 		(
 			'captype' => 'write',
 			'contextlevel' => CONTEXT_SYSTEM,
@@ -12,11 +12,11 @@ $capabilities = array(
 			'clonepermissionsfrom' => 'moodle/my:manageblocks'
 		),
 
-		'block/moodleversion:addinstance' => array
+		'local/moodleversion:addinstance' => array
 		(
 			'riskbitmask' => RISK_SPAM | RISK_XSS,
 			'captype' => 'write',
-			'contextlevel' => CONTEXT_BLOCK,
+			'contextlevel' => CONTEXT_SYSTEM,
 			'archetypes' => array
 			(
 				'manager' => CAP_ALLOW
