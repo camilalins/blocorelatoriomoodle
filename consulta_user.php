@@ -7,8 +7,8 @@
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
 	$PAGE->set_context(context_system::instance());
-	$PAGE->set_url('/blocks/moodleversion/consulta_user.php');
-	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/blocks/moodleversion/consulta_user.php"));
+	$PAGE->set_url('/local/moodleversion/consulta_user.php');
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/consulta_user.php"));
 	echo $OUTPUT->header();
 ?>
 

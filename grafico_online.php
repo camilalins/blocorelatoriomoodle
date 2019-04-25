@@ -58,12 +58,12 @@ google.setOnLoadCallback(drawChart);
 	require_once("../../../config.php");
 	global $DB;
 	$sql = "SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber ";
-	$sql .= "FROM mdl_groups_members m ";
-	$sql .= "LEFT JOIN mdl_groups g ON g.id=m.groupid ";
-	$sql .= "INNER JOIN mdl_course c ON c.id= g.courseid ";
-	$sql .= "LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
-	$sql .= "LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
-	$sql .= "INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
+	$sql .= "FROM m31_groups_members m ";
+	$sql .= "LEFT JOIN m31_groups g ON g.id=m.groupid ";
+	$sql .= "INNER JOIN m31_course c ON c.id= g.courseid ";
+	$sql .= "LEFT JOIN m31_groupings_groups gg on gg.groupid = g.id ";
+	$sql .= "LEFT JOIN m31_groupings gs ON gs.id = gg.groupingid ";
+	$sql .= "INNER JOIN m31_course_categories cate ON cate.id = c.category ";
 	$sql .= "WHERE path like '/4/6%' AND g.idnumber = ' ' or path like '/5/9%' AND g.idnumber = ' ' ";
 	$sql .= "group by c.fullname ";
 ?>

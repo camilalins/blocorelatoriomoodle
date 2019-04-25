@@ -1,87 +1,26 @@
-copyright  2017 Bas Brands, Basbrands.nl
-author     Bas Brands bas@sonsbeekmedia.nl
-license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+Moodle Version Block
+------------------------
 
-<<<<<<< HEAD
-=======
 By Luciano Oliveira Borges <luciano@iautomate.com.br>
->>>>>>> parent of 60ac75a... alteração no readme
-
-CHANGES
-
-CHANGES
-version 2017010400:
-
-Updated to API event handlers version 2 for Moodle 3.1 and newer. Thanks to Nadav Kavalerchik!
-
-version 2015100300:
-
-All profile fields / custom profile fields are now available for usage. To see
-the available fields navigate to /local/welcome/index.php
-
-version 2015042900:
-
-Added an option to select the authentication methods that will trigger a 
-welcome message. This way you can use the welcome plugin for manual authentication
-an disable it for (for example) email based self registration.
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-ABOUT
-=======
-By Luciano Oliveira Borges <luciano@iautomate.com.br>
->>>>>>> parent of 60ac75a... alteração no readme
-
-This plugin for Moodle sends a configurable welcome message to new users.
-
-The plugin uses the event system in Moodle and will be triggerd when a new
-user is created, no matter if this was a manually created account or an
-account created using self registration.
-
-SETTINGS
-
-This local plugin allows you to configure:
-
-The email message / subject to the new user
-The email message / subject for the moderator / admin
-The email address for the moderator / admin
-The firstname / lastname of the admin
 
 
-SAMPLE MESSAGE
+.: About :.
 
-    Welcome [[fullname]]
+This simple block for view a version of Moodle, PHP, MySQL, PHP Extensions and PHP Settings. 
 
-    Your Moodle account has been created and you're ready to go! Your account has
-    been created with the following details:
-
-    Name: [[fullname]],
-    Username: [[username]],
-    Firstname: [[firstname]],
-    Lastname: [[lastname]],
-    Email: [[email]],
-    City: [[city]],
-    Country: [[country]]
-
-    Feel free to reach out to us at any time through our email, on twitter or google+
-
-    Cheers,
+This version was translated for English, Portuguese and Spanish.
 
 
-INSTALLATION
+.: Quick install instructions (to be used by the system administrator) :.
 
-Just place the welcome directory inside your Moodle's local directory.
-Install the plugin and browse to:
+0) Be sure you have (at least) Moodle 2.7.x or upper installed.
+1) Be sure to have the latest language package, such as English (en), Portuguese (pt_br), or Spanish (es).
+2) Be sure to have the latest version of the block "Moodle Version" in Moodle.org.
+3) Unpack 'block_moodleversion_xxxx.zip'.
+4) Copy the 'moodleversion' for block directory into the "block" subdirectory of Moodle installation.
+7) Under role "administrator", go to the 'Site administration' and click on 'Notifications'.
+8) In main page insert the "Moodle Version" block.
 
-Site Administration->Plugins->Local plugins->Moodle welcome
-=======
 ------------------------
 iAutomate
 http://www.iautomate.com.br
-
-<<<<<<< HEAD
-versionado2
->>>>>>> parent of 60ac75a... alteração no readme
-=======
-versionado2
->>>>>>> parent of 60ac75a... alteração no readme
