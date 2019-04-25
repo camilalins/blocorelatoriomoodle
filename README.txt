@@ -1,7 +1,7 @@
 Moodle Version Block
 ------------------------
 
-By Luciano Oliveira Borges <luciano@iautomate.com.br>
+By Camila Lins <gmlins06@gmail.com>
 
 
 .: About :.
@@ -24,5 +24,3 @@ This version was translated for English, Portuguese and Spanish.
 ------------------------
 iAutomate
 http://www.iautomate.com.br
-
-versionado2
