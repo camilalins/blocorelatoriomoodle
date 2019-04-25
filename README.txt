@@ -26,7 +26,11 @@ welcome message. This way you can use the welcome plugin for manual authenticati
 an disable it for (for example) email based self registration.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ABOUT
+=======
+By Luciano Oliveira Borges <luciano@iautomate.com.br>
+>>>>>>> parent of 60ac75a... alteração no readme
 
 This plugin for Moodle sends a configurable welcome message to new users.
 
@@ -75,5 +79,9 @@ Site Administration->Plugins->Local plugins->Moodle welcome
 iAutomate
 http://www.iautomate.com.br
 
+<<<<<<< HEAD
+versionado2
+>>>>>>> parent of 60ac75a... alteração no readme
+=======
 versionado2
 >>>>>>> parent of 60ac75a... alteração no readme
