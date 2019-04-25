@@ -9,7 +9,7 @@ $capabilities = array(
 			(
 				'manager' => CAP_ALLOW
 			),
-			'clonepermissionsfrom' => 'moodle/my:manageblocks'
+			//'clonepermissionsfrom' => 'moodle/my:manageblocks'
 		),
 
 		'local/moodleversion:addinstance' => array
@@ -21,7 +21,7 @@ $capabilities = array(
 			(
 				'manager' => CAP_ALLOW
 			),
-			'clonepermissionsfrom' => 'moodle/site:manageblocks'
+			//'clonepermissionsfrom' => 'moodle/site:manageblocks'
 		),
 );
 ?>
