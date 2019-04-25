@@ -1,7 +1,7 @@
 <?php
 $capabilities = array(
 
-		'local/moodleversion:myaddinstance' => array
+		'local__moodleversion_dashboard:myaddinstance' => array
 		(
 			'captype' => 'write',
 			'contextlevel' => CONTEXT_SYSTEM,
