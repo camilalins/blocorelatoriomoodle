@@ -14,3 +14,28 @@
 .info-box-text{
 	font-size: 16px;
 }
+.coluna-grafico{
+	
+}
+
+.grafico1{
+	border: solid 1px #cecece;
+    border-radius: 4px;
+    background: #ececec;
+    padding: 10px;
+	margin: 10px;
+}
+.grafico2{
+	border: solid 1px #cecece;
+    border-radius: 4px;
+    background: #ececec;
+    padding: 10px;
+	margin: 10px;
+}
+.grafico3{
+	border: solid 1px #cecece;
+    border-radius: 4px;
+    background: #ececec;
+    padding: 10px;
+	margin: 10px;
+}

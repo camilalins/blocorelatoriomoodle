@@ -7,7 +7,7 @@
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
 	$PAGE->set_context(context_system::instance());
-	$PAGE->set_url('/local/moodleversion/painel_academico.php');
+	$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
 	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/painel_academico.php"));
 	echo $OUTPUT->header();
 ?>
@@ -264,8 +264,8 @@
 				<div class="box-body">
 					<div class="rows1">
 						<div class="box-footer">
-							<div class="rows1">
-								<div class="col-sm-3 col-xs-6">
+							<div class="coluna-grafico">
+								<div class="grafico1">
 									<div class="description-block border-right">
 										  <?php
 											if (!empty($rs))
@@ -283,7 +283,7 @@
 										<h5 class="description-header">Online</h5>
 									</div>
 								</div>
-								<div class="col-sm-3 col-xs-6">
+								<div class="grafico2">
 									<div class="description-block border-right">
 										  <?php
 											if (!empty($rs2))
@@ -301,7 +301,7 @@
 										<h5 class="description-header">Semipresencial</h5>
 									</div>
 								</div>
-								<div class="col-sm-3 col-xs-6">
+								<div class="grafico3">
 									<div class="description-block border-right border-none">
 										  <?php
 											if (!empty($rs3))
