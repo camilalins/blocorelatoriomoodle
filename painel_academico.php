@@ -55,7 +55,7 @@
   ?>        
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
-	<div class="row">
+	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
