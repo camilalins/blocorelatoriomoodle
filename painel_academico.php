@@ -96,13 +96,13 @@
       require_once("../../config.php");
       global $DB;
       $sql = "SELECT count(u.id) AS quantidade ";
-      $sql .= "FROM gm35_role_assignments rs ";
-      $sql .= "INNER JOIN gm35_user u ON u.id=rs.userid ";
-      $sql .= "INNER JOIN gm35_context e ON rs.contextid=e.id ";
-      $sql .= "INNER JOIN gm35_course c ON c.id=e.instanceid ";
-      $sql .= "INNER JOIN gm35_course_categories cate  ON cate.id=c.category ";
-      $sql .= "INNER JOIN gm35_groups g ON g.courseid = c.id ";
-      $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/3%' AND g.idnumber = ' ' ";
+      $sql .= "FROM mdl_role_assignments rs ";
+      $sql .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+      $sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+      $sql .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+      $sql .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
+      $sql .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
+      $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
 	  $sql .= "group by c.fullname ";
     ?>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
