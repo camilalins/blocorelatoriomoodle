@@ -1,15 +1,17 @@
 <?php
-  require_once('../../../config.php');
-  global $CFG, $DB;
-  $titulo = 'Painel Acadêmico';
 
-  $PAGE->set_url($_SERVER['PHP_SELF']);
-  $PAGE->set_pagelayout('admin');
-  $PAGE->set_context(context_system::instance());
-  $PAGE->set_url('/blocks/moodleversion/pages/painel_academico.php');
-  $PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/blocks/moodleversion/pages/painel_academico.php"));
-  echo $OUTPUT->header();
+	require_once('../../config.php');
+	global $CFG, $DB;
+	$titulo = 'Cursos do Usuário';
+
+	$PAGE->set_url($_SERVER['PHP_SELF']);
+	$PAGE->set_pagelayout('admin');
+	$PAGE->set_context(context_system::instance());
+	$PAGE->set_url('/local/moodleversion/consulta_user.php');
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/consulta_user.php"));
+	echo $OUTPUT->header();
 ?>
+
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
 	<div class="row1">
@@ -98,13 +100,11 @@
 								}
 								echo "</table></div></section>";
 							?>
-
-<?php
-$PAGE->set_context($context);
-$PAGE->set_pagelayout('incourse');
-$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
-$PAGE->requires->jquery();
-// Never reached if download = true.
-echo $OUTPUT->footer();
-?>
-
+							<?php
+								$PAGE->set_context($context);
+								$PAGE->set_pagelayout('incourse');
+								$PAGE->set_url('/blocks/moodleversion/consulta_user.php');
+								$PAGE->requires->jquery();
+								// Never reached if download = true.
+								echo $OUTPUT->footer();
+							?>
