@@ -15,27 +15,30 @@
 	font-size: 16px;
 }
 .coluna-grafico{
-	
+	display: flex;
 }
 
 .grafico1{
 	border: solid 1px #cecece;
     border-radius: 4px;
-    background: #ececec;
+    background: #fff;
     padding: 10px;
 	margin: 10px;
+	width: 340px;
 }
 .grafico2{
 	border: solid 1px #cecece;
     border-radius: 4px;
-    background: #ececec;
+    background: #fff;
     padding: 10px;
 	margin: 10px;
+	width: 340px;
 }
 .grafico3{
 	border: solid 1px #cecece;
     border-radius: 4px;
-    background: #ececec;
+    background: #fff;
     padding: 10px;
 	margin: 10px;
+	width: 340px;
 }

@@ -148,15 +148,15 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql2 = "SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber";
-      $sql2 .= " FROM mdl_groups_members m  ";
-      $sql2 .= " LEFT JOIN mdl_groups g ON g.id=m.groupid ";
-      $sql2 .= " INNER JOIN mdl_course c ON c.id= g.courseid   ";
-      $sql2 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
-      $sql2 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid";
-      $sql2 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category";
-      $sql2 .= " WHERE path like '/2/8%' AND g.idnumber = ' ' or path like '/3/18%' AND g.idnumber = ' '";
-      $sql2 .= " group by c.fullname ";
+      $sql2 = "SELECT count(u.id) AS quantidade ";
+      $sql2 .= "FROM mdl_role_assignments rs ";
+      $sql2 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+      $sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+      $sql2 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+      $sql2 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
+      $sql2 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
+      $sql2 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
+	  $sql2 .= "group by c.fullname ";
 
       $rs2 = (array) $DB->get_records_sql($sql2);
       //print_r($rs);
@@ -203,15 +203,15 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql3 = " SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber";
-      $sql3 .= " FROM mdl_groups_members m ";
-      $sql3 .= " LEFT JOIN mdl_groups g ON g.id=m.groupid ";
-      $sql3 .= " INNER JOIN mdl_course c ON c.id= g.courseid ";
-      $sql3 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
-      $sql3 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
-      $sql3 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
-      $sql3 .= " WHERE path like '/2/9%' AND g.idnumber = ' ' or path like '/3/27%' AND g.idnumber = ' ' ";
-      $sql3 .= " group by c.fullname ";
+      $sql3 = "SELECT count(u.id) AS quantidade ";
+      $sql3 .= "FROM mdl_role_assignments rs ";
+      $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+      $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+      $sql3 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+      $sql3 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
+      $sql3 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
+      $sql3 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
+	  $sql3 .= "group by c.fullname ";
 
       $rs3 = (array) $DB->get_records_sql($sql3);
       //print_r($rs);
