@@ -11,6 +11,48 @@
 	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/painel_academico.php"));
 	echo $OUTPUT->header();
 ?>
+<!-- Total de usuários -->    
+ <?php
+   require_once("../../../config.php");
+   global $DB;
+   $sql = "SELECT COUNT(institution) AS quantidade";
+   $sql .= " FROM mdl_user";
+   $sql .= " WHERE deleted <> 1 and suspended <> 1 and username <> 'guest' and format(username, 0)";
+   $rs = (array) $DB->get_records_sql($sql);
+   //print_r ($rs);
+   $total_user = array_shift($rs);
+ ?>
+  <!-- Alunos habilitados -->         
+ <?php
+   require_once("../../../config.php");
+   global $DB;
+   $sql = "SELECT count(*) as quantidade";
+   $sql .= " FROM mdl_role_assignments ass";
+   $sql .= " INNER JOIN mdl_user u ON  u.id = ass.userid";
+   $sql .= " WHERE roleid=5 AND deleted <> 1 AND suspended <> 1 AND username <> 'guest'";
+   $aluno = (array) $DB->get_records_sql($sql);
+   //print_r ($rs);
+   $total_aluno = array_shift($aluno);
+ ?>
+  <!-- Total de curso -->         
+  <?php
+    require_once("../../../config.php");
+    global $DB;
+    $sql = "SELECT count(*) as quantidade";
+    $sql .= " FROM mdl_course";
+    $curso = (array) $DB->get_records_sql($sql);
+    $total_course = array_shift($curso);
+  ?>
+  <!-- Curso Ativo -->          
+  <?php
+    require_once("../../../config.php");
+    global $DB;
+    $sql = "SELECT count(*) as quantidade";
+    $sql .= " FROM mdl_course";
+    $curso_ativo = (array) $DB->get_records_sql($sql);
+    //print_r ($rs);
+    $total_curso_ativo = array_shift($curso_ativo);
+  ?>        
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
 	<div class="row">
