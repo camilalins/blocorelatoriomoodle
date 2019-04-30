@@ -65,7 +65,7 @@
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-number"><a href="cadastro_geral.php"><small>Cadastro Geral</small><?php echo $total_user->quantidade; ?> </a></span><br>
+					<span class="info-box-number"><a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> <small>Cadastro Geral</small><?php echo $total_user->quantidade; ?> </a></span><br>
 					<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> <small>Alunos</small></span>
 				</div>
 			</div>
