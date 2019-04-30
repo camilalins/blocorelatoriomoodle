@@ -91,7 +91,7 @@
 
 
 <section class="hold-transition skin-blue sidebar-mini">
-    <!--Gráfico 1-->
+	<!--Gráfico 1-->
     <?php
       require_once("../../config.php");
       global $DB;
@@ -102,12 +102,11 @@
       $sql .= "LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
       $sql .= "LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
       $sql .= "INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
-      $sql .= "WHERE path like '/2/3%' AND g.idnumber = ' ' or path like '/7/8%' AND g.idnumber = ' ' ";
+      $sql .= "WHERE path like '/2/4%' AND g.idnumber = ' ' or path like '/3/10%' AND g.idnumber = ' ' ";
       $sql .= "group by c.fullname ";
     ?>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
     //carregando modulo visualization
       google.load("visualization", "1", {packages:["corechart"]});
     //função de monta e desenha o gráfico
@@ -122,7 +121,7 @@
           echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
           foreach ($rs as $l) 
           {
-          echo "['" . $l->curso .  "'," . $l->quantidade .  "],\n\r";
+			echo "['" . $l->curso .  "'," . $l->quantidade .  "],\n\r";
           } 
           echo "]);";
         };
