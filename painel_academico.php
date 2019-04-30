@@ -91,19 +91,19 @@
 
 
 <section class="hold-transition skin-blue sidebar-mini">
-	<!--Gráfico 1-->
+	<!--Gráfico 1 ONLINE-->
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql = "SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber ";
-      $sql .= "FROM mdl_groups_members m ";
-      $sql .= "LEFT JOIN mdl_groups g ON g.id=m.groupid ";
-      $sql .= "INNER JOIN mdl_course c ON c.id= g.courseid ";
-      $sql .= "LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
-      $sql .= "LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
-      $sql .= "INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
-      $sql .= "WHERE path like '/2/4%' AND g.idnumber = ' ' or path like '/3/10%' AND g.idnumber = ' ' ";
-      $sql .= "group by c.fullname ";
+      $sql = "SELECT count(u.id) AS quantidade ";
+      $sql .= "FROM gm35_role_assignments rs ";
+      $sql .= "INNER JOIN gm35_user u ON u.id=rs.userid ";
+      $sql .= "INNER JOIN gm35_context e ON rs.contextid=e.id ";
+      $sql .= "INNER JOIN gm35_course c ON c.id=e.instanceid ";
+      $sql .= "INNER JOIN gm35_course_categories cate  ON cate.id=c.category ";
+      $sql .= "INNER JOIN gm35_groups g ON g.courseid = c.id ";
+      $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/3%' AND g.idnumber = ' ' ";
+	  $sql .= "group by c.fullname ";
     ?>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
@@ -259,10 +259,11 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Cursos Disponíveis</h3>
+					<h3 class="box-title">Quantidade de Inscritos</h3>
 				</div>
 				<div class="box-body">
 					<div class="rows1">
+						<h3 class="box-title">Cursos Livres</h3>
 						<div class="box-footer">
 							<div class="coluna-grafico">
 								<div class="grafico1">
