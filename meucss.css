@@ -1,0 +1,9 @@
+.rows{
+	display: flex;
+}
+.info-box{
+	border: solid 1px;
+    border-radius: 4px;
+    background: #ececec;
+    padding: 10px;
+}

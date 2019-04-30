@@ -11,7 +11,7 @@
 	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/painel_academico.php"));
 	echo $OUTPUT->header();
 ?>
-<link rel="stylesheet" href="../css/meucss.css">
+<link rel="stylesheet" href="meucss.css">
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
 <!-- Font Awesome --> 
