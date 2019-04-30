@@ -15,16 +15,16 @@
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
 	<div class="row1">
-		<div class="col-md-12">
-			<div class="box">
-				<div class="box-header with-border">
+		<div class="coluna1">
+			<div class="box1">
+				<div class="box-header1 with-border1">
 					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999</small></h3>
 				</div>
 					<div class="box-body">
-						<div class="row">
+						<div class="row1">
 							<form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" class="form-horizontal">
 								<div class="form-group row">
-									<div class="col-md-9">
+									<div class="col-md1">
 										<div class="input-group-btn">
 											<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
 											<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
