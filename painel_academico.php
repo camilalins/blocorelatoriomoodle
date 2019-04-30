@@ -13,7 +13,7 @@
 ?>
 <!-- Total de usuários -->    
  <?php
-   require_once("../../../config.php");
+   require_once("../../config.php");
    global $DB;
    $sql = "SELECT COUNT(institution) AS quantidade";
    $sql .= " FROM mdl_user";
@@ -24,7 +24,7 @@
  ?>
   <!-- Alunos habilitados -->         
  <?php
-   require_once("../../../config.php");
+   require_once("../../config.php");
    global $DB;
    $sql = "SELECT count(*) as quantidade";
    $sql .= " FROM mdl_role_assignments ass";
@@ -36,7 +36,7 @@
  ?>
   <!-- Total de curso -->         
   <?php
-    require_once("../../../config.php");
+    require_once("../../config.php");
     global $DB;
     $sql = "SELECT count(*) as quantidade";
     $sql .= " FROM mdl_course";
@@ -45,7 +45,7 @@
   ?>
   <!-- Curso Ativo -->          
   <?php
-    require_once("../../../config.php");
+    require_once("../../config.php");
     global $DB;
     $sql = "SELECT count(*) as quantidade";
     $sql .= " FROM mdl_course";
