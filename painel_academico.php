@@ -74,7 +74,7 @@
 			<div class="info-box">
 				<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-number"><a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> <small>Total de Cursos</small></a></span>
+					<span class="info-box-number"><a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> <small>Cursos Cadastrados</small></a></span>
 				</div>
 			</div>
 		</div>
@@ -88,6 +88,253 @@
         </div>
     </div>   
 </section>
+
+
+<section class="hold-transition skin-blue sidebar-mini">
+    <!--Gráfico 1-->
+    <?php
+      require_once("../../config.php");
+      global $DB;
+      $sql = "SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber ";
+      $sql .= "FROM mdl_groups_members m ";
+      $sql .= "LEFT JOIN mdl_groups g ON g.id=m.groupid ";
+      $sql .= "INNER JOIN mdl_course c ON c.id= g.courseid ";
+      $sql .= "LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
+      $sql .= "LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
+      $sql .= "INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
+      $sql .= "WHERE path like '/2/3%' AND g.idnumber = ' ' or path like '/7/8%' AND g.idnumber = ' ' ";
+      $sql .= "group by c.fullname ";
+    ?>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //carregando modulo visualization
+      google.load("visualization", "1", {packages:["corechart"]});
+    //função de monta e desenha o gráfico
+    function drawChart() 
+    {
+      //variavel com armazenamos os dados, um array de array's 
+      //no qual a primeira posição são os nomes das colunas
+      <?php
+      $rs = (array) $DB->get_records_sql($sql);
+        if (count($rs)) 
+        {
+          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+          foreach ($rs as $l) 
+          {
+          echo "['" . $l->curso .  "'," . $l->quantidade .  "],\n\r";
+          } 
+          echo "]);";
+        };
+      ?>
+      //opções para exibição do gráfico
+      var options = 
+      {
+        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
+        legend:'none',
+        title: 'ONLINE',//titulo do gráfico
+        is3D: true // false para 2d e true para 3d o padrão é false
+      };
+      //cria novo objeto PeiChart que recebe 
+      //como parâmetro uma div onde o gráfico será desenhado
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+      //desenha passando os dados e as opções
+          chart.draw(data, options);
+    }
+    //metodo chamado após o carregamento
+    google.setOnLoadCallback(drawChart);
+    </script>
+    <!--fim grafico1.1-->
+    <!--Gráfico 2-->
+    <?php
+      require_once("../../config.php");
+      global $DB;
+      $sql2 = "SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber";
+      $sql2 .= " FROM mdl_groups_members m  ";
+      $sql2 .= " LEFT JOIN mdl_groups g ON g.id=m.groupid ";
+      $sql2 .= " INNER JOIN mdl_course c ON c.id= g.courseid   ";
+      $sql2 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
+      $sql2 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid";
+      $sql2 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category";
+      $sql2 .= " WHERE path like '/2/5%' AND g.idnumber = ' ' or path like '/7/9%' AND g.idnumber = ' '";
+      $sql2 .= " group by c.fullname ";
+
+      $rs2 = (array) $DB->get_records_sql($sql2);
+      //print_r($rs);
+    ?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //carregando modulo visualization
+      google.load("visualization", "1", {packages:["corechart"]});
+    //função de monta e desenha o gráfico
+    function drawChart() 
+    {
+      //variavel com armazenamos os dados, um array de array's 
+      //no qual a primeira posição são os nomes das colunas
+      <?php
+        if (count($rs2)) 
+        {
+          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+          foreach ($rs2 as $l2) 
+          {
+          echo "['" . $l2->curso .  "'," . $l2->quantidade .  "],\n\r";
+          } 
+          echo "]);";
+        };
+      ?>
+      //opções para exibição do gráfico
+      var options = 
+      {
+        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
+        legend:'none',
+        title: 'ONLINE',//titulo do gráfico
+        is3D: true // false para 2d e true para 3d o padrão é false
+      };
+      //cria novo objeto PeiChart que recebe 
+      //como parâmetro uma div onde o gráfico será desenhado
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+      //desenha passando os dados e as opções
+          chart.draw(data, options);
+    }
+    //metodo chamado após o carregamento
+    google.setOnLoadCallback(drawChart);
+    </script>
+    <!--fim grafico 2-->
+    <!--Gráfico 3-->
+    <?php
+      require_once("../../config.php");
+      global $DB;
+      $sql3 = " SELECT g.id, c.fullname curso, g.name turma , gs.name ciclo, count(m.userid) AS quantidade, cate.path,g.idnumber";
+      $sql3 .= " FROM mdl_groups_members m ";
+      $sql3 .= " LEFT JOIN mdl_groups g ON g.id=m.groupid ";
+      $sql3 .= " INNER JOIN mdl_course c ON c.id= g.courseid ";
+      $sql3 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
+      $sql3 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
+      $sql3 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
+      $sql3 .= " WHERE path like '/2/6%' AND g.idnumber = ' ' or path like '/7/10%' AND g.idnumber = ' ' ";
+      $sql3 .= " group by c.fullname ";
+
+      $rs3 = (array) $DB->get_records_sql($sql3);
+      //print_r($rs);
+    ?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //carregando modulo visualization
+      google.load("visualization", "1", {packages:["corechart"]});
+    //função de monta e desenha o gráfico
+    function drawChart() 
+    {
+      //variavel com armazenamos os dados, um array de array's 
+      //no qual a primeira posição são os nomes das colunas
+      <?php
+        if (count($rs2)) 
+        {
+          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+          foreach ($rs3 as $l3) 
+          {
+          echo "['" . $l3->curso .  "'," . $l3->quantidade .  "],\n\r";
+          } 
+          echo "]);";
+        };
+      ?>
+      //opções para exibição do gráfico
+      var options = 
+      {
+        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
+        legend:'none',
+        title: 'ONLINE',//titulo do gráfico
+        is3D: true // false para 2d e true para 3d o padrão é false
+      };
+      //cria novo objeto PeiChart que recebe 
+      //como parâmetro uma div onde o gráfico será desenhado
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
+      //desenha passando os dados e as opções
+          chart.draw(data, options);
+    }
+    //metodo chamado após o carregamento
+    google.setOnLoadCallback(drawChart);
+    </script>
+    <!--fim grafico 3-->  
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Cursos Disponíveis</h3>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="description-block border-right">
+                      <?php
+                        if (!empty($rs))
+                        {
+                          echo "<ul style=\"list-style:none;\">";
+                          echo "<li id=\"chart_div1\"></li>";
+                          echo "</ul>";
+                          echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+                        }
+                        else
+                        {
+                          echo "<p>Nenhum curso encontrado</p>";
+                        }
+                      ?>
+                      <h5 class="description-header">Online</h5>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="description-block border-right">
+                      <?php
+                        if (!empty($rs2))
+                        {
+                          echo "<ul style=\"list-style:none;\">";
+                          echo "<li id=\"chart_div2\"></li>";
+                          echo "</ul>";
+                          echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+                        }
+                        else
+                        {
+                          echo "<p>Nenhum curso encontrado</p>";
+                        }
+                      ?>
+                      <h5 class="description-header">Semipresencial</h5>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="description-block border-right border-none">
+                      <?php
+                        if (!empty($rs3))
+                        {
+                          echo "<ul style=\"list-style:none;\">";
+                          echo "<li id=\"chart_div3\"></li>";
+                          echo "</ul>";
+                          echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+                        }
+                        else
+                        {
+                          echo "<p>Nenhum curso encontrado</p>";
+                        }
+                      ?>
+                      <h5 class="description-header">Presencial</h5>
+                    </div>                
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>  
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
 
 
 <?php
