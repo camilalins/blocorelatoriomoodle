@@ -43,10 +43,6 @@
 </section>
 
 
-
-
-
-
 <?php
 	$PAGE->set_context($context);
 	$PAGE->set_pagelayout('incourse');
