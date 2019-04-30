@@ -107,41 +107,41 @@
     ?>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
-    //carregando modulo visualization
-      google.load("visualization", "1", {packages:["corechart"]});
-    //função de monta e desenha o gráfico
-    function drawChart() 
-    {
-      //variavel com armazenamos os dados, um array de array's 
-      //no qual a primeira posição são os nomes das colunas
-      <?php
-      $rs = (array) $DB->get_records_sql($sql);
-        if (count($rs)) 
-        {
-          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
-          foreach ($rs as $l) 
-          {
-			echo "['" . $l->curso .  "'," . $l->quantidade .  "],\n\r";
-          } 
-          echo "]);";
-        };
-      ?>
-      //opções para exibição do gráfico
-      var options = 
-      {
-        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'none',
-        title: 'ONLINE',//titulo do gráfico
-        is3D: true // false para 2d e true para 3d o padrão é false
-      };
-      //cria novo objeto PeiChart que recebe 
-      //como parâmetro uma div onde o gráfico será desenhado
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
-      //desenha passando os dados e as opções
-          chart.draw(data, options);
-    }
-    //metodo chamado após o carregamento
-    google.setOnLoadCallback(drawChart);
+		//carregando modulo visualization
+		  google.load("visualization", "1", {packages:["corechart"]});
+		//função de monta e desenha o gráfico
+		function drawChart() 
+		{
+		  //variavel com armazenamos os dados, um array de array's 
+		  //no qual a primeira posição são os nomes das colunas
+		  <?php
+		  $rs = (array) $DB->get_records_sql($sql);
+			if (count($rs)) 
+			{
+			  echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+			  foreach ($rs as $l) 
+			  {
+				echo "['" . $l->curso .  "'," . $l->quantidade .  "],\n\r";
+			  } 
+			  echo "]);";
+			};
+		  ?>
+		  //opções para exibição do gráfico
+		  var options = 
+		  {
+			chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
+			legend:'none',
+			title: 'ONLINE',//titulo do gráfico
+			is3D: true // false para 2d e true para 3d o padrão é false
+		  };
+		  //cria novo objeto PeiChart que recebe 
+		  //como parâmetro uma div onde o gráfico será desenhado
+		  var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+		  //desenha passando os dados e as opções
+			  chart.draw(data, options);
+		}
+		//metodo chamado após o carregamento
+		google.setOnLoadCallback(drawChart);
     </script>
     <!--fim grafico1.1-->
     <!--Gráfico 2-->
@@ -155,7 +155,7 @@
       $sql2 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
       $sql2 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid";
       $sql2 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category";
-      $sql2 .= " WHERE path like '/2/5%' AND g.idnumber = ' ' or path like '/7/9%' AND g.idnumber = ' '";
+      $sql2 .= " WHERE path like '/2/8%' AND g.idnumber = ' ' or path like '/3/18%' AND g.idnumber = ' '";
       $sql2 .= " group by c.fullname ";
 
       $rs2 = (array) $DB->get_records_sql($sql2);
@@ -186,7 +186,7 @@
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
         legend:'none',
-        title: 'ONLINE',//titulo do gráfico
+        title: 'SEMIPRESENCIAL',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
       //cria novo objeto PeiChart que recebe 
@@ -210,7 +210,7 @@
       $sql3 .= " LEFT JOIN mdl_groupings_groups gg on gg.groupid = g.id ";
       $sql3 .= " LEFT JOIN mdl_groupings gs ON gs.id = gg.groupingid ";
       $sql3 .= " INNER JOIN mdl_course_categories cate ON cate.id = c.category ";
-      $sql3 .= " WHERE path like '/2/6%' AND g.idnumber = ' ' or path like '/7/10%' AND g.idnumber = ' ' ";
+      $sql3 .= " WHERE path like '/2/9%' AND g.idnumber = ' ' or path like '/3/27%' AND g.idnumber = ' ' ";
       $sql3 .= " group by c.fullname ";
 
       $rs3 = (array) $DB->get_records_sql($sql3);
@@ -255,78 +255,78 @@
     </script>
     <!--fim grafico 3-->  
 
-    <div class="row2">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title">Cursos Disponíveis</h3>
-          </div>
-          <div class="box-body">
-            <div class="row">
-              <div class="box-footer">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="description-block border-right">
-                      <?php
-                        if (!empty($rs))
-                        {
-                          echo "<ul style=\"list-style:none;\">";
-                          echo "<li id=\"chart_div1\"></li>";
-                          echo "</ul>";
-                          echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
-                        }
-                        else
-                        {
-                          echo "<p>Nenhum curso encontrado</p>";
-                        }
-                      ?>
-                      <h5 class="description-header">Online</h5>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="description-block border-right">
-                      <?php
-                        if (!empty($rs2))
-                        {
-                          echo "<ul style=\"list-style:none;\">";
-                          echo "<li id=\"chart_div2\"></li>";
-                          echo "</ul>";
-                          echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
-                        }
-                        else
-                        {
-                          echo "<p>Nenhum curso encontrado</p>";
-                        }
-                      ?>
-                      <h5 class="description-header">Semipresencial</h5>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="description-block border-right border-none">
-                      <?php
-                        if (!empty($rs3))
-                        {
-                          echo "<ul style=\"list-style:none;\">";
-                          echo "<li id=\"chart_div3\"></li>";
-                          echo "</ul>";
-                          echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
-                        }
-                        else
-                        {
-                          echo "<p>Nenhum curso encontrado</p>";
-                        }
-                      ?>
-                      <h5 class="description-header">Presencial</h5>
-                    </div>                
-                  </div>
-                </div>
-              </div>
-            </div>  
-          </div>  
-        </div>
-      </div>
+    <div class="rows">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Cursos Disponíveis</h3>
+				</div>
+				<div class="box-body">
+					<div class="rows1">
+						<div class="box-footer">
+							<div class="rows1">
+								<div class="col-sm-3 col-xs-6">
+									<div class="description-block border-right">
+										  <?php
+											if (!empty($rs))
+											{
+											  echo "<ul style=\"list-style:none;\">";
+											  echo "<li id=\"chart_div1\"></li>";
+											  echo "</ul>";
+											  echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+										  ?>
+										<h5 class="description-header">Online</h5>
+									</div>
+								</div>
+								<div class="col-sm-3 col-xs-6">
+									<div class="description-block border-right">
+										  <?php
+											if (!empty($rs2))
+											{
+											  echo "<ul style=\"list-style:none;\">";
+											  echo "<li id=\"chart_div2\"></li>";
+											  echo "</ul>";
+											  echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+										  ?>
+										<h5 class="description-header">Semipresencial</h5>
+									</div>
+								</div>
+								<div class="col-sm-3 col-xs-6">
+									<div class="description-block border-right border-none">
+										  <?php
+											if (!empty($rs3))
+											{
+											  echo "<ul style=\"list-style:none;\">";
+											  echo "<li id=\"chart_div3\"></li>";
+											  echo "</ul>";
+											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+										  ?>
+										<h5 class="description-header">Presencial</h5>
+									</div>                
+								</div>
+							</div>
+						</div>
+					</div>  
+				</div>  
+			</div>
+		</div>
     </div>
-  </section>
+</section>
 
 
 
