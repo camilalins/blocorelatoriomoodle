@@ -62,7 +62,7 @@
 	<section>
 		<div class="rows">
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
-				<div class="info-box">
+				<div class="info-box-topo">
 					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
 					<div class="info-box-content">
 						<span class="info-box-number">
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box">
+				<div class="info-box-topo">
 					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
 					<div class="info-box-content">
 						<span class="info-box-number">
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box">
+				<div class="info-box-topo">
 					<span class="info-box-icon bg-aqua">
 						<i class="fas fa-bullhorn" aria-hidden="true"></i>
 					</span>
