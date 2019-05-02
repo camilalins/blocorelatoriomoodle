@@ -65,8 +65,15 @@
 				<div class="info-box">
 					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
 					<div class="info-box-content">
-						<span class="info-box-number"><a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> <small>Cadastro Geral</small> </a></span><br>
-						<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> <small>Alunos</small></span>
+						<span class="info-box-number">
+							<a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> 
+								<small>Cadastro Geral</small> 
+							</a>
+						</span>
+						<br>
+						<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> 
+							<small>Alunos</small>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -74,20 +81,29 @@
 				<div class="info-box">
 					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
 					<div class="info-box-content">
-						<span class="info-box-number"><a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> <small>Cursos Cadastrados</small></a></span>
+						<span class="info-box-number">
+							<a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> 
+								<small>Cursos Cadastrados</small>
+							</a>
+						</span>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
 				<div class="info-box">
-					<span class="info-box-icon bg-aqua"><i class="fas fa-bullhorn" aria-hidden="true"></i></span>
-						<div class="info-box-content">
-							<span class="info-box-number"><a href="pesquisa_satisfacao.php"><small>Pesquisa de Satisfação</small></a></span>
-						</div>
+					<span class="info-box-icon bg-aqua">
+						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-number">
+							<a href="pesquisa_satisfacao.php">
+								<small>Pesquisa de Satisfação</small>
+							</a>
+						</span>
 					</div>
 				</div>
-			</div>  
-		</div>
+			</div>
+		</div>  
 	</section>
 
 	<section>
