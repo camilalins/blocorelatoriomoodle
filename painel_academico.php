@@ -358,6 +358,7 @@
 			  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id ";
 			  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid ";
 			  $sql5 .= "WHERE u.deleted=0 AND u.confirmed=1 ";
+			  $sql5 .= "group by c.name ";
 			  
 			  $rs5 = (array) $DB->get_records_sql($sql5);
 			  //print_r($rs5);
