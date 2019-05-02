@@ -131,15 +131,6 @@
 			</div>
 		</div>
 	</section>
-	</section>
-
-
-
-
-
-
-
-
 
 
 
