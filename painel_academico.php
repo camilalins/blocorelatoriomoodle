@@ -355,56 +355,52 @@
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i> Usuários Separados por Cohort</span>
-					<div class="info-box-content">
-						<span class="info-box-number"><a href="cadastro_geral.php">
-							<table class="table no-margin">
-								<tbody>
-									<?php
-									  require_once("../../config.php");
-									  global $DB;
-									  $sql5 = "SELECT c.name,count(u.username) AS quantidade ";
-									  $sql5 .= "FROM mdl_user u ";
-									  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id ";
-									  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid ";
-									  $sql5 .= "WHERE u.deleted=0 AND u.confirmed=1 ";
-									  $sql5 .= "group by c.name ";
+				<div class="info-box-content">
+					<table class="table no-margin">
+						<tbody>
+							<?php
+								require_once("../../config.php");
+								global $DB;
+								$sql5 = "SELECT c.name,count(u.username) AS quantidade ";
+								$sql5 .= "FROM mdl_user u ";
+								$sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id ";
+								$sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid ";
+								$sql5 .= "WHERE u.deleted=0 AND u.confirmed=1 ";
+								$sql5 .= "group by c.name ";
 									  
-									  $rs5 = (array) $DB->get_records_sql($sql5);
-									  //print_r($rs5);
-									   if (count($rs5)) 
+								$rs5 = (array) $DB->get_records_sql($sql5);
+								//print_r($rs5);
+								if (count($rs5)) 
+									{
+										echo "<thead><tr role=\"row\"><th>Cohort</th><th>Quantidade</th></tr></thead>"; 
+										foreach ($rs5 as $l5) 
 										{
-											echo "<thead><tr role=\"row\"><th>Cohort</th><th>Quantidade</th></tr></thead>"; 
-											foreach ($rs5 as $l5) 
-											{
-												echo "<tr class=\"odd\">";
-												echo "<td>" . $l5->name .  "</td><td>" . $l5->quantidade .  "</td>";
-												;
-												echo "</td></tr>";
-											} 
-										};
-									?>
-								</tbody>
-							</table>
-						</span><br>
-						<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> <small>Alunos</small></span>
-					</div>
+											echo "<tr class=\"odd\">";
+											echo "<td>" . $l5->name .  "</td><td>" . $l5->quantidade .  "</td>";
+											;
+											echo "</td></tr>";
+										} 
+									};
+							?>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box">
-					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
-					<div class="info-box-content">
-						<span class="info-box-number"><a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> <small>Cursos Cadastrados</small></a></span>
-					</div>
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+			<div class="info-box">
+				<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-number"><a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> <small>Cursos Cadastrados</small></a></span>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-			  <div class="info-box">
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+			<div class="info-box">
 				<span class="info-box-icon bg-aqua"><i class="fas fa-bullhorn" aria-hidden="true"></i></span>
 				<div class="info-box-content">
 				  <span class="info-box-number"><a href="pesquisa_satisfacao.php"><small>Pesquisa de Satisfação</small></a>
 				</div>
-			  </div>
 			</div>
 		</div>
 	</div>
