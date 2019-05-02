@@ -142,7 +142,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 64%;">
+			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
 	<div class="info-box">
 		<span class="info-box-icon bg-dodgerblue">
 			<i class="fas fa-chart-bar"></i> Usuários Separados por Cohort
