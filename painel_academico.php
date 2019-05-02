@@ -320,7 +320,7 @@
 										<h5 class="description-header">Capacitação | Semipresencial</h5>
 									</div>                
 								</div>
-								<div class="grafico3">
+								<div class="grafico4">
 									<div class="description-block border-right border-none">
 										  <?php
 											if (!empty($rs3))
@@ -348,16 +348,56 @@
 </section>
 
 <section class="hold-transition skin-blue sidebar-mini">
-	<div class="box-header with-border">
+	<table class="table no-margin">
+		<tbody>
+			<?php
+			  require_once("../../config.php");
+			  global $DB;
+			  $sql5 = "SELECT u.id AS ID,u.username AS CPF,u.firstname AS Nome,u.lastname AS Sobrenome, u.email AS email,c.id AS cohortid,c.name AS cohort  ";
+			  $sql5 .= "FROM mdl_user u ";
+			  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id ";
+			  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid ";
+			  $sql5 .= "WHERE u.deleted=0 AND u.confirmed=1";
+			  $sql5 .= "ORDER BY u.firstname,u.lastname ";
+			  $rs5 = (array) $DB->get_records_sql($sql5);
+			   if (count($rs5)) 
+												{
+													echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
+													foreach ($rs5 as $l5) 
+													{
+														echo "<tr class=\"odd\">";
+														echo "<td>" . $l5->ID .  "</td><td>" . $l5->CPF .  "</td><td>" . $l5->Nome .  "</td>";
+														;
+														echo "</td></tr>";
+													} 
+												};
+			?>
+		</tbody>
+    </table>
+	
+    <div class="box-header with-border">
 		<h3 class="box-title">Usuários Separados por Cohort</h3>
 	</div>
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i> Usuários Separados por Cohort</span>
 				<div class="info-box-content">
 					<span class="info-box-number"><a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> <small>Cadastro Geral</small> </a></span><br>
 					<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> <small>Alunos</small></span>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				</div>
 			</div>
         </div>
