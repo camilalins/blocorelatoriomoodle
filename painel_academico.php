@@ -70,10 +70,6 @@
 								<small>Cadastro Geral</small> 
 							</a>
 						</span>
-						<br>
-						<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> 
-							<small>Alunos</small>
-						</span>
 					</div>
 				</div>
 			</div>
@@ -208,12 +204,6 @@
 
 
     <!--fim grafico 6-->  
-			
-			
-			
-			
-			
-			
 			
 			
 		</div>
@@ -442,14 +432,13 @@
     <!--fim grafico 4-->  
 
     <div class="rows">
-		<div class="col-md-12">
+		<div class="col-md-12" style="width: 100%;">
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">Quantidade de Inscritos</h3>
 				</div>
 				<div class="box-body">
 					<div class="rows1">
-						<h3 class="box-title">Cursos Livres</h3>
 							<div class="coluna-grafico">
 								<div class="grafico1">
 									<div class="description-block border-right">
