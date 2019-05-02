@@ -353,7 +353,7 @@
 			<?php
 			  require_once("../../config.php");
 			  global $DB;
-			  $sql5 = "SELECT u.id,u.username,u.firstname,u.lastname, u.email,c.id AS cohortid,c.name AS cohort  ";
+			  $sql5 = "SELECT u.id,u.username,u.firstname,u.lastname, u.email,c.name ";
 			  $sql5 .= "FROM mdl_user u ";
 			  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id";
 			  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid";
