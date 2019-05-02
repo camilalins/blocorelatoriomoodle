@@ -2,11 +2,11 @@
 	display: flex;
 }
 .info-box{
-	border: solid 1px #cecece;
+	border: solid 1px #ccdae8;
     border-radius: 4px;
-    background: #ececec;
+    background: #e4edf5;
     padding: 10px;
-	margin: 10px;
+    margin: 10px;
 }
 .info-box-number{
 	font-size: 20px;

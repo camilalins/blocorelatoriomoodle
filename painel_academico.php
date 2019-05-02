@@ -107,9 +107,6 @@
 	</section>
 
 	<section>
-		<div class="box-header with-border">
-			<h3 class="box-title">Usuários Separados por Cohort</h3>
-		</div>
 		<div class="rows">
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 				<div class="info-box">
@@ -324,7 +321,6 @@
 				<div class="box-body">
 					<div class="rows1">
 						<h3 class="box-title">Cursos Livres</h3>
-						<div class="box-footer">
 							<div class="coluna-grafico">
 								<div class="grafico1">
 									<div class="description-block border-right">
@@ -399,7 +395,6 @@
 									</div>                
 								</div>
 							</div>
-						</div>
 					</div>  
 				</div>  
 			</div>
