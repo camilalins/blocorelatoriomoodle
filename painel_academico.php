@@ -477,13 +477,14 @@
 
 				function drawBasic() {
 					<?php
-						if (count($rs2)) 
+						$rs5 = (array) $DB->get_records_sql($sql5);
+						if (count($rs5)) 
 						{
 
 							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
-							foreach ($rs4 as $l4) 
+							foreach ($rs5 as $l5) 
 							{
-								echo "['" . $l4->curso .  "'," . $l4->quantidade .  "],\n\r";
+								echo "['" . $l5->name .  "'," . $l5->quantidade .  "],\n\r";
 							} 
 							echo "]);";
 						};
