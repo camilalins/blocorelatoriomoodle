@@ -170,7 +170,7 @@
 
 				  var options = {
 					title: 'USUÁRIOS X COHORT',
-					chartArea: {width: '30%'},
+					chartArea: {left:20,top:0,width:'50%',height:'75%'},
 					hAxis: {
 					  title: 'Número de Usuários',
 					  minValue: 0
