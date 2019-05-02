@@ -361,16 +361,16 @@
 			  $sql5 .= "ORDER BY u.firstname,u.lastname ";
 			  $rs5 = (array) $DB->get_records_sql($sql5);
 			   if (count($rs5)) 
-												{
-													echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
-													foreach ($rs5 as $l5) 
-													{
-														echo "<tr class=\"odd\">";
-														echo "<td>" . $l5->ID .  "</td><td>" . $l5->CPF .  "</td><td>" . $l5->Nome .  "</td>";
-														;
-														echo "</td></tr>";
-													} 
-												};
+				{
+					echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
+					foreach ($rs5 as $l5) 
+					{
+						echo "<tr class=\"odd\">";
+						echo "<td>" . $l5->id .  "</td><td>" . $l5->username .  "</td><td>" . $l5->firstname .  "</td>";
+						;
+						echo "</td></tr>";
+					} 
+				};
 			?>
 		</tbody>
     </table>
