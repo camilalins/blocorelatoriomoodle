@@ -142,7 +142,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
+			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
 				<div class="info-box">
 					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Cohort</span>
 					<div class="info-box-content">
@@ -153,7 +153,7 @@
 							google.charts.setOnLoadCallback(drawBasic);
 							function drawBasic() {
 								<?php
-									if (count($rs2)) 
+									if (count($rs5)) 
 									{
 										echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
 										foreach ($rs5 as $l5) 
