@@ -281,7 +281,7 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Online</h5>
+										<h5 class="description-header">Livre | Online</h5>
 									</div>
 								</div>
 								<div class="grafico2">
@@ -299,7 +299,7 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Semipresencial</h5>
+										<h5 class="description-header">Capacitação | Online</h5>
 									</div>
 								</div>
 								<div class="grafico3">
@@ -317,7 +317,25 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Presencial</h5>
+										<h5 class="description-header">Capacitação | Semipresencial</h5>
+									</div>                
+								</div>
+								<div class="grafico3">
+									<div class="description-block border-right border-none">
+										  <?php
+											if (!empty($rs3))
+											{
+											  echo "<ul style=\"list-style:none;\">";
+											  echo "<li id=\"chart_div3\"></li>";
+											  echo "</ul>";
+											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+										  ?>
+										<h5 class="description-header">Capacitação | Presencial</h5>
 									</div>                
 								</div>
 							</div>
@@ -331,7 +349,7 @@
 
 <section class="hold-transition skin-blue sidebar-mini">
 	<div class="box-header with-border">
-		<h3 class="box-title">Quantidade de Inscritos</h3>
+		<h3 class="box-title">Usuários Separados por Cohort</h3>
 	</div>
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
