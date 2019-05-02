@@ -185,12 +185,12 @@
 				  chart.draw(data, options);
 				}
 			</script>
-			<div class="grafico4">
+			<div class="grafico6">
 				<div class="description-block border-right border-none">
 					<?php
 											if (!empty($rs5))
 											{
-											  echo "<ul style=\"list-style:none;\">";
+											  echo "<ul style=\"list-style:none;margin:0!important;\">";
 											  echo "<li id=\"chart_div6\"></li>";
 											  echo "</ul>";
 											}
