@@ -148,7 +148,7 @@
 
 
 <section class="hold-transition skin-blue sidebar-mini">
-	<!--Gráfico 1 ONLINE-->
+	<!--Gráfico 1 LIVRE | ONLINE-->
     <?php
       require_once("../../config.php");
       global $DB;
@@ -159,7 +159,7 @@
       $sql .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
       $sql .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
       $sql .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
-      $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
+      $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/3/5%' AND g.idnumber = ' ' ";
 	  $sql .= "group by c.fullname ";
     ?>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -200,8 +200,8 @@
 		//metodo chamado após o carregamento
 		google.setOnLoadCallback(drawChart);
     </script>
-    <!--fim grafico1.1-->
-    <!--Gráfico 2-->
+    <!--fim grafico 1-->
+    <!--Gráfico 2 CAPACITAÇÃO | ONLINE-->
     <?php
       require_once("../../config.php");
       global $DB;
@@ -212,7 +212,7 @@
       $sql2 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
       $sql2 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
       $sql2 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
-      $sql2 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
+      $sql2 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/4/11%' AND g.idnumber = ' ' ";
 	  $sql2 .= "group by c.fullname ";
 
       $rs2 = (array) $DB->get_records_sql($sql2);
@@ -256,7 +256,7 @@
     google.setOnLoadCallback(drawChart);
     </script>
     <!--fim grafico 2-->
-    <!--Gráfico 3-->
+    <!--Gráfico 3 CAPACITAÇÃO | SEMIPRESENCIAL-->
     <?php
       require_once("../../config.php");
       global $DB;
@@ -267,7 +267,7 @@
       $sql3 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
       $sql3 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
       $sql3 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
-      $sql3 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/2/4%' AND g.idnumber = ' ' ";
+      $sql3 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/4/12%' AND g.idnumber = ' ' ";
 	  $sql3 .= "group by c.fullname ";
 
       $rs3 = (array) $DB->get_records_sql($sql3);
@@ -311,6 +311,61 @@
     google.setOnLoadCallback(drawChart);
     </script>
     <!--fim grafico 3-->  
+	<!--Gráfico 4-->
+    <?php
+      require_once("../../config.php");
+      global $DB;
+      $sql4 = "SELECT count(u.id) AS quantidade ";
+      $sql4 .= "FROM mdl_role_assignments rs ";
+      $sql4 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+      $sql4 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+      $sql4 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+      $sql4 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
+      $sql4 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
+      $sql4 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/4/13%' AND g.idnumber = ' ' ";
+	  $sql4 .= "group by c.fullname ";
+
+      $rs4 = (array) $DB->get_records_sql($sql4);
+      //print_r($rs);
+    ?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //carregando modulo visualization
+      google.load("visualization", "1", {packages:["corechart"]});
+    //função de monta e desenha o gráfico
+    function drawChart() 
+    {
+      //variavel com armazenamos os dados, um array de array's 
+      //no qual a primeira posição são os nomes das colunas
+      <?php
+        if (count($rs2)) 
+        {
+          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+          foreach ($rs4 as $l4) 
+          {
+          echo "['" . $l4->curso .  "'," . $l4->quantidade .  "],\n\r";
+          } 
+          echo "]);";
+        };
+      ?>
+      //opções para exibição do gráfico
+      var options = 
+      {
+        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
+        legend:'none',
+        title: 'ONLINE',//titulo do gráfico
+        is3D: true // false para 2d e true para 3d o padrão é false
+      };
+      //cria novo objeto PeiChart que recebe 
+      //como parâmetro uma div onde o gráfico será desenhado
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div4'));
+      //desenha passando os dados e as opções
+          chart.draw(data, options);
+    }
+    //metodo chamado após o carregamento
+    google.setOnLoadCallback(drawChart);
+    </script>
+    <!--fim grafico 4-->  
 
     <div class="rows">
 		<div class="col-md-12">
@@ -382,7 +437,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"chart_div3\"></li>";
+											  echo "<li id=\"chart_div4\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
