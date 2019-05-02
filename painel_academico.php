@@ -353,13 +353,14 @@
 			<?php
 			  require_once("../../config.php");
 			  global $DB;
-			  $sql5 = "SELECT u.id AS ID,u.username AS CPF,u.firstname AS Nome,u.lastname AS Sobrenome, u.email AS email,c.id AS cohortid,c.name AS cohort  ";
+			  $sql5 = "SELECT u.id,u.username,u.firstname,u.lastname, u.email,c.id AS cohortid,c.name AS cohort  ";
 			  $sql5 .= "FROM mdl_user u ";
-			  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id ";
-			  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid ";
+			  $sql5 .= "INNER JOIN mdl_cohort_members cm ON cm.userid=u.id";
+			  $sql5 .= "INNER JOIN mdl_cohort c ON c.id=cm.cohortid";
 			  $sql5 .= "WHERE u.deleted=0 AND u.confirmed=1";
-			  $sql5 .= "ORDER BY u.firstname,u.lastname ";
+			  $sql5 .= "ORDER BY u.firstname,u.lastname";
 			  $rs5 = (array) $DB->get_records_sql($sql5);
+			  print_r($rs5);
 			   if (count($rs5)) 
 				{
 					echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
@@ -385,17 +386,7 @@
 				<div class="info-box-content">
 					<span class="info-box-number"><a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> <small>Cadastro Geral</small> </a></span><br>
 					<span class="info-box-text"><?php echo $total_aluno->quantidade; ?> <small>Alunos</small></span>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+
 					
 					
 				</div>
