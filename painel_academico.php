@@ -525,45 +525,56 @@
 <section>
 <!--Gráfico 6-->
  
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-	google.charts.setOnLoadCallback(drawBasic);
+    
 
-	function drawBasic() {
-		 <?php
-        if (count($rs2)) 
-        {
 
-      echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
-        foreach ($rs4 as $l4) 
-          {
-          echo "['" . $l4->curso .  "'," . $l4->quantidade .  "],\n\r";
-          } 
-          echo "]);";
-        };
-      ?>
 
-      var options = {
-        title: 'Population of Largest U.S. Cities',
-        chartArea: {width: '50%'},
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'City'
-        }
-      };
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
+	<div class="info-box">
+		<span class="info-box-icon bg-dodgerblue">
+			<i class="fas fa-ellipsis-v"></i> Usuários Separados por Cohort
+		</span>
+		<div class="info-box-content">
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+				google.charts.load('current', {packages: ['corechart', 'bar']});
+				google.charts.setOnLoadCallback(drawBasic);
 
-      chart.draw(data, options);
-    }
-    </script>
-	<div class="grafico4">
-									<div class="description-block border-right border-none">
-										  <?php
+				function drawBasic() {
+					<?php
+						if (count($rs2)) 
+						{
+
+							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
+							foreach ($rs4 as $l4) 
+							{
+								echo "['" . $l4->curso .  "'," . $l4->quantidade .  "],\n\r";
+							} 
+							echo "]);";
+						};
+					?>
+
+				  var options = {
+					title: 'Population of Largest U.S. Cities',
+					chartArea: {width: '50%'},
+					hAxis: {
+					  title: 'Total Population',
+					  minValue: 0
+					},
+					vAxis: {
+					  title: 'City'
+					}
+				  };
+
+				  var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+
+				  chart.draw(data, options);
+				}
+			</script>
+			<div class="grafico4">
+				<div class="description-block border-right border-none">
+					<?php
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
@@ -575,21 +586,19 @@
 											{
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
-										  ?>
-										<h5 class="description-header">Capacitação | Presencial</h5>
-									</div>                
-								</div>
+					?>				 
+					<h5 class="description-header">Capacitação | Presencial</h5>
+				</div>                
+			</div>						
+	</div>
+	</div>
+</div>
+
+
+
     <!--fim grafico 6-->  
 
 </section>
-
-
-
-
-
-
-
-
 
 
 
