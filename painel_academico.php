@@ -169,14 +169,14 @@
 					?>
 
 				  var options = {
-					title: 'Population of Largest U.S. Cities',
-					chartArea: {width: '50%'},
+					title: 'USUÁRIOS X COHORT',
+					chartArea: {width: '40%'},
 					hAxis: {
-					  title: 'Total Population',
+					  title: 'Número de Usuários',
 					  minValue: 0
 					},
 					vAxis: {
-					  title: 'City'
+					  title: ' '
 					}
 				  };
 
@@ -193,14 +193,12 @@
 											  echo "<ul style=\"list-style:none;\">";
 											  echo "<li id=\"chart_div6\"></li>";
 											  echo "</ul>";
-											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
 											else
 											{
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 					?>				 
-					<h5 class="description-header">Capacitação | Presencial</h5>
 				</div>                
 			</div>						
 	</div>
