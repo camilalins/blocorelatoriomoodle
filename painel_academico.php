@@ -578,7 +578,7 @@
 					}
 				  };
 
-				  var chart = new google.visualization.BarChart(document.getElementById('chart_div7'));
+				  var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
 
 				  chart.draw(data, options);
 				}
