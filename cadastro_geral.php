@@ -16,10 +16,10 @@
 <!-- Font Awesome --> 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <?php
-	require_once("../../../config.php");
+	require_once("../../config.php");
     global $DB;
     $sql2 = "SELECT COUNT(institution) AS quantidade";
-    $sql2 .= " FROM m31_user";
+    $sql2 .= " FROM mdl_user";
     $sql2 .= " WHERE deleted <> 1 and username <> 'guest'";
     $rss = (array) $DB->get_records_sql($sql2);
 	$total_user = array_shift($rss);
@@ -46,7 +46,7 @@
 										global $DB;
 										$sql = "select id, institution, department, quantidade ";
 										$sql .= " from (SELECT id, institution, department, COUNT(institution) AS quantidade";
-										$sql .= " FROM m31_user rs";
+										$sql .= " FROM mdl_user rs";
 										$sql .= " WHERE deleted <> 1 and username <> 'guest'";
 										$sql .= " GROUP BY department, institution)x";
 										$sql .= " ORDER BY quantidade DESC";
