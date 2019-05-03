@@ -327,7 +327,7 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql3 = "SELECT c.fullname as curso, count(u.id) AS quantidade ";
+      $sql3 = "SELECT c.fullname,count(u.id) AS quantidade ";
       $sql3 .= "FROM mdl_role_assignments rs ";
       $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
       $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
@@ -364,7 +364,7 @@
       //opções para exibição do gráfico
       var options = 
       {
-        title: ' ',
+        title: 'My Daily Activities',
         pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
@@ -485,7 +485,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart\" style=\"width: 50%; height: 500px;\"></li>";
+											  echo "<li id=\"donutchart\" style=\"width: 900px; height: 500px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
