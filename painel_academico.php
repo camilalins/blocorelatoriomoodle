@@ -152,7 +152,7 @@
 				function drawBasic() {
 					<?php
 						$rs5 = (array) $DB->get_records_sql($sql5);
-						$color = ['#0b79a1','#0b79a2','#11a1d7','#325594','#153268','#038bfe','#324a5f','#61829d','#8ebbe2','#83c6ff'];
+						$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
 						$positioncolor = 0;
 						if (count($rs5)) 
 						{
