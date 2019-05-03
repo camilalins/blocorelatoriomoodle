@@ -327,7 +327,7 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql3 = "SELECT count(u.id) AS quantidade ";
+      $sql3 = "SELECT c.fullname as curso, count(u.id) AS quantidade ";
       $sql3 .= "FROM mdl_role_assignments rs ";
       $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
       $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
