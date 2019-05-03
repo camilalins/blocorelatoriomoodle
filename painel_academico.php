@@ -229,10 +229,11 @@
       $sql .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/3/5%' AND g.idnumber = ' ' ";
 	  $sql .= "group by c.fullname ";
     ?>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 		//carregando modulo visualization
-		  google.load("visualization", "1", {packages:["corechart"]});
+			google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(drawChart);
 		//função de monta e desenha o gráfico
 		function drawChart() 
 		{
@@ -253,14 +254,12 @@
 		  //opções para exibição do gráfico
 		  var options = 
 		  {
-			chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-			legend:'null',
-			title: 'LIVRE | ONLINE',//titulo do gráfico
-			is3D: true // false para 2d e true para 3d o padrão é false
+			title: 'My Daily Activities',
+			pieHole: 0.4,
 		  };
 		  //cria novo objeto PeiChart que recebe 
 		  //como parâmetro uma div onde o gráfico será desenhado
-		  var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+		  var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
 		  //desenha passando os dados e as opções
 			  chart.draw(data, options);
 		}
@@ -449,7 +448,7 @@
 											if (!empty($rs))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"chart_div1\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 900px; height: 500px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
