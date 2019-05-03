@@ -327,7 +327,7 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql3 = "SELECT c.fullname,count(u.id) AS quantidade ";
+      $sql3 = "SELECT c.fullname AS curso,count(u.id) AS quantidade ";
       $sql3 .= "FROM mdl_role_assignments rs ";
       $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
       $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
@@ -478,7 +478,7 @@
 										  ?>
 										<h5 class="description-header">Capacitação | Online</h5>
 									</div>
-								</div>
+								</div><br>
 								<div class="grafico3">
 									<div class="description-block border-right border-none">
 										  <?php
