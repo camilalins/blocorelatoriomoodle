@@ -152,13 +152,14 @@
 				function drawBasic() {
 					<?php
 						$rs5 = (array) $DB->get_records_sql($sql5);
+						$color = ['red','blue','green','black'];
 						if (count($rs5)) 
 						{
 
 							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
 							foreach ($rs5 as $l5) 
 							{
-								echo "['" . $l5->name .  "'," . $l5->quantidade .  "],\n\r";
+								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . "red" . "'],\n\r";
 							} 
 							echo "]);";
 						};
