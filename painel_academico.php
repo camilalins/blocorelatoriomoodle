@@ -219,7 +219,7 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql = "SELECT count(u.id) AS quantidade ";
+      $sql = "SELECT c.fullname AS curso,count(u.id) AS quantidade ";
       $sql .= "FROM mdl_role_assignments rs ";
       $sql .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
       $sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
@@ -271,7 +271,7 @@
     <?php
       require_once("../../config.php");
       global $DB;
-      $sql2 = "SELECT count(u.id) AS quantidade ";
+      $sql2 = "SELECT c.fullname AS curso,count(u.id) AS quantidade ";
       $sql2 .= "FROM mdl_role_assignments rs ";
       $sql2 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
       $sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
@@ -287,7 +287,8 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
     //carregando modulo visualization
-      google.load("visualization", "1", {packages:["corechart"]});
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
     //função de monta e desenha o gráfico
     function drawChart() 
     {
@@ -307,14 +308,12 @@
       //opções para exibição do gráfico
       var options = 
       {
-        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'null',
-        title: 'CAPACITAÇÃO | ONLINE',//titulo do gráfico
-        is3D: true // false para 2d e true para 3d o padrão é false
+        title: 'My Daily Activities',
+        pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
       //como parâmetro uma div onde o gráfico será desenhado
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
       //desenha passando os dados e as opções
           chart.draw(data, options);
     }
@@ -466,7 +465,7 @@
 											if (!empty($rs2))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"chart_div2\"></li>";
+											  echo "<li id=\"donutchart2\" style=\"width: 900px; height: 500px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
