@@ -478,7 +478,9 @@
 										  ?>
 										<h5 class="description-header">Capacitação | Online</h5>
 									</div>
-								</div><br>
+								</div>
+							</div>
+							<div class="coluna-grafico">							
 								<div class="grafico3">
 									<div class="description-block border-right border-none">
 										  <?php
