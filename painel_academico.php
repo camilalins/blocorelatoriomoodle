@@ -152,14 +152,16 @@
 				function drawBasic() {
 					<?php
 						$rs5 = (array) $DB->get_records_sql($sql5);
-						$color = ['red','blue','green','black'];
+						$color = ['#0b79a1','#0b79a2','#11a1d7','#325594','#153268','#038bfe','#324a5f','#61829d','#8ebbe2','#83c6ff'];
+						$positioncolor = 0;
 						if (count($rs5)) 
 						{
 
 							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
 							foreach ($rs5 as $l5) 
 							{
-								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . "#b87333" . "'],\n\r";
+								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
+								$positioncolor = $positioncolor + 1;
 							} 
 							echo "]);";
 						};
