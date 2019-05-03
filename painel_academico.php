@@ -364,7 +364,7 @@
       var options = 
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'null',
+        legend:'null'{position: 'top', textStyle: {color: 'blue', fontSize: 16}},
         title: 'CAPACITAÇÃO | SEMIPRESENCIAL',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
