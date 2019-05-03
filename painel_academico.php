@@ -364,8 +364,8 @@
       //opções para exibição do gráfico
       var options = 
       {
-        title: 'My Daily Activities',
-        sliceVisibilityThreshold: .2
+        title: ' ',
+        pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
       //como parâmetro uma div onde o gráfico será desenhado
@@ -485,7 +485,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart\" style=\"width: 900px; height: 500px;\"></li>";
+											  echo "<li id=\"donutchart\" style=\"width: 50%; height: 500px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
