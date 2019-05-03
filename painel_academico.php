@@ -254,8 +254,8 @@
 		  var options = 
 		  {
 			chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-			legend:'none',
-			title: 'ONLINE',//titulo do gráfico
+			legend:'null',
+			title: 'LIVRE | ONLINE',//titulo do gráfico
 			is3D: true // false para 2d e true para 3d o padrão é false
 		  };
 		  //cria novo objeto PeiChart que recebe 
@@ -309,8 +309,8 @@
       var options = 
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'none',
-        title: 'SEMIPRESENCIAL',//titulo do gráfico
+        legend:'null',
+        title: 'CAPACITAÇÃO | ONLINE',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
       //cria novo objeto PeiChart que recebe 
@@ -364,8 +364,8 @@
       var options = 
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'none',
-        title: 'ONLINE',//titulo do gráfico
+        legend:'null',
+        title: 'CAPACITAÇÃO | SEMIPRESENCIAL',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
       //cria novo objeto PeiChart que recebe 
@@ -378,7 +378,7 @@
     google.setOnLoadCallback(drawChart);
     </script>
     <!--fim grafico 3-->  
-	<!--Gráfico 4-->
+	<!--Gráfico 4 CAPACITAÇÃO | PRESENCIAL-->
     <?php
       require_once("../../config.php");
       global $DB;
@@ -420,7 +420,7 @@
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
         legend:'none',
-        title: 'ONLINE',//titulo do gráfico
+        title: 'CAPACITAÇÃO | PRESENCIAL',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
       //cria novo objeto PeiChart que recebe 
@@ -438,7 +438,7 @@
 		<div class="col-md-12" style="width: 100%;">
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Quantidade de Inscritos</h3>
+					<h3 class="box-title">Cursos em Andamento</h3>
 				</div>
 				<div class="box-body">
 					<div class="rows1">
