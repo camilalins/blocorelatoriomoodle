@@ -67,7 +67,7 @@
 					<div class="info-box-content">
 						<span class="info-box-number">
 							<a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> 
-								<small>Cadastro Geral</small> 
+								<small>Usuários Cadastrados</small> 
 							</a>
 						</span>
 					</div>
@@ -106,7 +106,7 @@
 		<div class="rows">
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 				<div class="info-box">
-					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Cohort</span>
+					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
 					<div class="info-box-content">
 						<table class="table no-margin">
 							<tbody>
@@ -124,7 +124,7 @@
 									//print_r($rs5);
 									if (count($rs5)) 
 									{
-										echo "<thead><tr role=\"row\"><th>Cohort</th><th>Quantidade</th></tr></thead>"; 
+										echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
 										foreach ($rs5 as $l5) {
 											echo "<tr class=\"odd\">";
 											echo "<td>" . $l5->name .  "</td><td>" . $l5->quantidade .  "</td>";
@@ -141,7 +141,7 @@
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
 	<div class="info-box">
 		<span class="info-box-icon bg-dodgerblue">
-			<i class="fas fa-chart-bar"></i> Usuários Separados por Cohort
+			<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
 		</span>
 		<div class="info-box-content">
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -168,7 +168,7 @@
 					?>
 
 				  var options = {
-					title: 'USUÁRIOS X COHORT',
+					title: ' ',
 					chartArea: {width: '40%'},
 					hAxis: {
 					  title: 'Número de Usuários',
