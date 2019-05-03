@@ -364,7 +364,13 @@
       var options = 
       {
         chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'{position: 'left', textStyle: {color: 'blue', fontSize: 10}}',
+        legend:'null',
+		pieSliceText: 'label',
+          slices: {  4: {offset: 0.2},
+                    12: {offset: 0.3},
+                    14: {offset: 0.4},
+                    15: {offset: 0.5},
+          },
         title: 'CAPACITAÇÃO | SEMIPRESENCIAL',//titulo do gráfico
         is3D: true // false para 2d e true para 3d o padrão é false
       };
