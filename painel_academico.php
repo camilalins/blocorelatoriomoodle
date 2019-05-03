@@ -365,7 +365,7 @@
       var options = 
       {
         title: 'My Daily Activities',
-        pieHole: 0.4,
+        sliceVisibilityThreshold: .2
       };
       //cria novo objeto PeiChart que recebe 
       //como parâmetro uma div onde o gráfico será desenhado
