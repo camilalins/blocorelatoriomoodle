@@ -340,10 +340,11 @@
       $rs3 = (array) $DB->get_records_sql($sql3);
       //print_r($rs);
     ?>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     //carregando modulo visualization
-      google.load("visualization", "1", {packages:["corechart"]});
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
     //função de monta e desenha o gráfico
     function drawChart() 
     {
@@ -363,16 +364,12 @@
       //opções para exibição do gráfico
       var options = 
       {
-        chartArea:{left:5,right:5,bottom:5,top:5,width:'30%',height:'30%'},
-        legend:'null',
-		pieSliceText: 'label',
-        pieStartAngle: 100,
-        title: 'CAPACITAÇÃO | SEMIPRESENCIAL',//titulo do gráfico
-        is3D: true // false para 2d e true para 3d o padrão é false
+        title: 'My Daily Activities',
+        pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
       //como parâmetro uma div onde o gráfico será desenhado
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
       //desenha passando os dados e as opções
           chart.draw(data, options);
     }
@@ -488,7 +485,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"chart_div3\"></li>";
+											  echo "<li id=\"donutchart\" style=\"width: 900px; height: 500px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
