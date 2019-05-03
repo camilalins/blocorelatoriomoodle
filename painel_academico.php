@@ -156,10 +156,10 @@
 						if (count($rs5)) 
 						{
 
-							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],";
+							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
 							foreach ($rs5 as $l5) 
 							{
-								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . "red" . "'],\n\r";
+								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . "#b87333" . "'],\n\r";
 							} 
 							echo "]);";
 						};
