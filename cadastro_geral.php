@@ -25,51 +25,49 @@
 	$total_user = array_shift($rss);
 ?> 
   <h3 class="box-title"><?php echo $titulo; ?></h3>
-	<section class="hold-transition skin-blue sidebar-mini">
+	<section>
   		<div class="rows">
-      		<div class="col-md-12">
-        		<div class="box">
-          			<div class="box-header with-border">
-            			<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
-            			<small><a class="btn btn-comum" href="exportar_cadastro_geral.php"><i class="fas fa-download"></i> Exportar</a></small>
-            			<br>
-            			<br>
-            			<h3 class="box-title"><small>Usuários Cadastrados</small> <?php echo $total_user->quantidade; ?></h3>
-          			</div>
-          			<div class="box-body">
-            			<div class="rows">
-              				<div class="table-responsive">
-            					<table class="table no-margin">
-              						<tbody>
-										<?php
-											require_once("../../config.php");
-											global $DB;
-											$sql = "select id, institution, department, quantidade ";
-											$sql .= " from (SELECT id, institution, department, COUNT(institution) AS quantidade";
-											$sql .= " FROM mdl_user rs";
-											$sql .= " WHERE deleted <> 1 and username <> 'guest'";
-											$sql .= " GROUP BY department, institution)x";
-											$sql .= " ORDER BY quantidade DESC";
-											$rs = (array) $DB->get_records_sql($sql);
-											if (count($rs)) 
+			<div class="box">
+          		<div class="box-header with-border">
+            		<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
+            		<small><a class="btn btn-comum" href="exportar_cadastro_geral.php"><i class="fas fa-download"></i> Exportar</a></small>
+            		<br>
+            		<br>
+            		<h3 class="box-title"><small>Usuários Cadastrados</small> <?php echo $total_user->quantidade; ?></h3>
+          		</div>
+          		<div class="box-body">
+            		<div class="rows">
+              			<div class="table-responsive">
+            				<table class="table no-margin">
+              					<tbody>
+									<?php
+										require_once("../../config.php");
+										global $DB;
+										$sql = "select id, institution, department, quantidade ";
+										$sql .= " from (SELECT id, institution, department, COUNT(institution) AS quantidade";
+										$sql .= " FROM mdl_user rs";
+										$sql .= " WHERE deleted <> 1 and username <> 'guest'";
+										$sql .= " GROUP BY department, institution)x";
+										$sql .= " ORDER BY quantidade DESC";
+										$rs = (array) $DB->get_records_sql($sql);
+										if (count($rs)) 
+										{
+											echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
+											foreach ($rs as $l) 
 											{
-												echo "<thead><tr role=\"row\"><th>Instituição</th><th>Área de Atuação</th><th>Quantidade</th></tr></thead>"; 
-												foreach ($rs as $l) 
-												{
-													echo "<tr class=\"odd\">";
-													echo "<td>" . $l->institution .  "</td><td>" . $l->department .  "</td><td>" . $l->quantidade .  "</td>";
-													;
-													echo "</td></tr>";
-												} 
-											};
-										?>
-									</tbody>
-            					</table>
-            				</div>
-        				</div>
-    				</div>
-     			</div>
-         	</div>    
+												echo "<tr class=\"odd\">";
+												echo "<td>" . $l->institution .  "</td><td>" . $l->department .  "</td><td>" . $l->quantidade .  "</td>";
+												;
+												echo "</td></tr>";
+											} 
+										};
+									?>
+								</tbody>
+            				</table>
+            			</div>
+        			</div>
+    			</div>
+     		</div>    
         </div>    
 	</section>
 
