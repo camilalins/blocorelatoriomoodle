@@ -254,7 +254,7 @@
 		  //opções para exibição do gráfico
 		  var options = 
 		  {
-			title: 'My Daily Activities',
+			title: ' ',
 			pieHole: 0.4,
 		  };
 		  //cria novo objeto PeiChart que recebe 
@@ -308,7 +308,7 @@
       //opções para exibição do gráfico
       var options = 
       {
-        title: 'My Daily Activities',
+        title: ' ',
         pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
@@ -362,7 +362,7 @@
       //opções para exibição do gráfico
       var options = 
       {
-        title: 'My Daily Activities',
+        title: ' ',
         pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 
@@ -416,7 +416,7 @@
       //opções para exibição do gráfico
       var options = 
       {
-        title: 'My Daily Activities',
+        title: ' ',
         pieHole: 0.4,
       };
       //cria novo objeto PeiChart que recebe 

@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../config.php");
+require_once('../../config.php');
 global $CFG, $DB;
 
 header('Content-Type: text/csv; charset=UTF-8');
