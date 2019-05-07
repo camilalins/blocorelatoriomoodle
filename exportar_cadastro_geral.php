@@ -1,9 +1,7 @@
 <?php
 
 require_once("../../config.php");
-require_once("../../inc/global.php");
-
-global $DB;
+global $CFG, $DB;
 
 header('Content-Type: text/csv; charset=UTF-8');
 header('Content-Disposition: attachment; filename=Cadastro_Geral(' . date("d-m-y-H-i") . ').csv');
