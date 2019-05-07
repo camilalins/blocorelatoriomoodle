@@ -20,13 +20,13 @@
     global $DB;
     $sql2 = "SELECT COUNT(institution) AS quantidade";
     $sql2 .= " FROM mdl_user";
-    $sql2 .= " WHERE deleted <> 1 and username <> 'guest'";
+    $sql2 .= " WHERE deleted <> 1 and suspended <> 1 and username <> 'guest' and format(username, 0)";
     $rss = (array) $DB->get_records_sql($sql2);
 	$total_user = array_shift($rss);
 ?> 
   <h3 class="box-title"><?php echo $titulo; ?></h3>
 	<section class="hold-transition skin-blue sidebar-mini">
-  		<div class="row">
+  		<div class="rows">
       		<div class="col-md-12">
         		<div class="box">
           			<div class="box-header with-border">
@@ -76,7 +76,7 @@
 <?php
 	$PAGE->set_context($context);
 	$PAGE->set_pagelayout('incourse');
-	$PAGE->set_url('/blocks/moodleversion/pages/painel_academico.php');
+	$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
 	$PAGE->requires->jquery();
 	// Never reached if download = true.
 	echo $OUTPUT->footer();
