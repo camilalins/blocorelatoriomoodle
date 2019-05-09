@@ -46,11 +46,11 @@
 						<?php
 							require_once('../../config.php');
 							global $DB;
-							$sql = "SELECT distinct aluno.firstname as nome, aluno.lastname as sobrenome, aluno.email as email, aluno.institution as instituicao";
-							$sql .= "FROM mdl_role_assignments rs";
-							$sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id";
-							$sql .= "INNER JOIN mdl_course c ON c.id = e.instanceid";
-							$sql .= "INNER JOIN mdl_user aluno on aluno.id = rs.userid";
+							$sql = "SELECT distinct aluno.firstname as nome, aluno.lastname as sobrenome, aluno.email as email, aluno.institution as instituicao ";
+							$sql .= "FROM mdl_role_assignments rs ";
+							$sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+							$sql .= "INNER JOIN mdl_course c ON c.id = e.instanceid ";
+							$sql .= "INNER JOIN mdl_user aluno on aluno.id = rs.userid ";
 							$sql .= "WHERE aluno.username= '" . $_REQUEST["user_name"] . "' ";
 							$rs = (array) $DB->get_records_sql($sql);
 
@@ -68,7 +68,7 @@
 								} 
 							} 
 							else {
-								echo "<div align=center>";
+								echo "<div>";
 								if ($_REQUEST["user_name"] <> "") {
 									echo "Não foi encontrado nenhum curso para o usuário <b>" . $_REQUEST["user_name"] . "</b>.";
 								} 
@@ -77,7 +77,7 @@
 								};
 								echo "</div>";
 							}
-								echo "</table></div>";
+							echo "</table></div>";
 						?>
 						
 						
