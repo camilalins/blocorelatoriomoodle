@@ -43,6 +43,55 @@
 								</div>                                          
                             </div>
 						</form>
+						<?php
+							require_once('../../config.php');
+							global $DB;
+							$sql = "SELECT distinct aluno.firstname as nome, aluno.lastname as sobrenome, aluno.email as email, aluno.institution as instituicao";
+							$sql .= "FROM mdl_role_assignments rs";
+							$sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id";
+							$sql .= "INNER JOIN mdl_course c ON c.id = e.instanceid";
+							$sql .= "INNER JOIN mdl_user aluno on aluno.id = rs.userid";
+							$sql .= "WHERE aluno.username= '" . $_REQUEST["user_name"] . "' ";
+							$rs = (array) $DB->get_records_sql($sql);
+
+							//print_r($rs);
+
+							echo "<div id=\"DataTables_Table_0_wrapper\" class=\"table-responsive\">";
+							echo "<table class=\"table no-margin\">";
+							if (count($rs)) {
+								echo "<thead><tr role=\"row\"><th class=\"sorting\" width=180px >Instituição</th><th class=\"sorting\" width= 356px>Nome</th><th class=\"sorting\" width= 256px>Email</th></tr></thead>"; 
+								foreach ($rs as $l) {
+									echo "<tr class=\"odd\">";
+									echo "<td>" . $l->instituicao . "</td><td>" . $l->nome . ' ' . $l->sobrenome . "</td><td>" . $l->email . "</td>";
+									;
+									echo "</tr>";
+								} 
+							} 
+							else {
+								echo "<div align=center>";
+								if ($_REQUEST["user_name"] <> "") {
+									echo "Não foi encontrado nenhum curso para o usuário <b>" . $_REQUEST["user_name"] . "</b>.";
+								} 
+								else {
+									echo "Insira o CPF do usuário desejado";
+								};
+								echo "</div>";
+							}
+								echo "</table></div>";
+						?>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
 				</div>	
 			</div>		
