@@ -28,9 +28,9 @@
 					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999</small></h3>
 				</div>
 				<div class="box-body">
-					<div class="row1">
+					<div class="rows">
 						<form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" class="form-horizontal">
-							<div class="form-group row">
+							<div class="form-group rows">
 								<div class="col-md1">
 									<div class="input-group-btn">
 										<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
