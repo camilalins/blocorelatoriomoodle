@@ -2,15 +2,21 @@
 
 	require_once('../../config.php');
 	global $CFG, $DB;
-	$titulo = 'Cursos do Usuário';
+	$titulo = 'Painel Academico';
 
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
 	$PAGE->set_context(context_system::instance());
-	$PAGE->set_url('/local/moodleversion/consulta_user.php');
+	$PAGE->set_url('/blocks/moodleversion/consulta_user.php');
 	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/consulta_user.php"));
 	echo $OUTPUT->header();
 ?>
+<link rel="stylesheet" href="meucss.css">
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
+<!-- Font Awesome --> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<!-- Total de usuários -->  
 
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section>
@@ -85,10 +91,12 @@
 							$sql2 .= " LEFT JOIN mdl_groupings gr ON gr.id = gg.groupingid ";
 							$sql2 .= " INNER JOIN mdl_course_categories cc ON cc.id = c.category ";
 							$sql2 .= " WHERE u.username= '" . $_REQUEST["user_name"] . "' ";
+							
 							$rs2 = (array) $DB->get_records_sql($sql2);
+							
 							echo "<div id=\"DataTables_Table_0_wrapper\" class=\"table-responsive\">";
 							echo "<table class=\"table no-margin\">";
-							if (count($rs)) {
+							if (count($rs2)) {
 								echo "<thead><tr role=\"row\"><th class=\"sorting\" width=469px >Nome do Curso</th><th class=\"sorting\" width= 66px>Turma</th><th class=\"sorting\" width= 50px>Ciclo</th></tr></thead>"; 
 								foreach ($rs2 as $l2) {
 									echo "<tr class=\"odd\">";
@@ -96,9 +104,9 @@
 									;
 									echo "</tr>";
 								} 
-								echo "</div>";
+								//echo "</div>";
 							}
-							echo "</table>";
+							echo "</div></table>";
 						?>
 					</div>
 				</div>
