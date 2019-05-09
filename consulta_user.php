@@ -68,7 +68,7 @@
 								} 
 							} 
 							else {
-								echo "<div>";
+								echo "<div align=center>";
 								if ($_REQUEST["user_name"] <> "") {
 									echo "Não foi encontrado nenhum curso para o usuário <b>" . $_REQUEST["user_name"] . "</b>.";
 								} 
@@ -77,7 +77,37 @@
 								};
 								echo "</div>";
 							}
-							echo "</table></div>";
+								echo "</table></div>";
+						?>
+						<?php
+							require_once('../../config.php');
+							global $DB;
+
+							$sql2 = "SELECT gm.id,c.fullname as curso, cc.name as categoria, u.firstname, u.lastname, u.email, g.name as turma, gr.name as ciclo ";
+							$sql2 .= "FROM mdl_groups_members gm ";
+							$sql2 .= "INNER JOIN mdl_user u ON u.id = gm.userid ";
+							$sql2 .= "INNER JOIN mdl_groups g ON g.id = gm.groupid ";
+							$sql2 .= "INNER JOIN mdl_course c ON c.id = g.courseid ";
+							$sql2 .= "LEFT JOIN mdl_groupings_groups gg ON gg.groupid = g.id ";
+							$sql2 .= "LEFT JOIN mdl_groupings gr ON gr.id = gg.groupingid ";
+							$sql2 .= "INNER JOIN mdl_course_categories cc ON cc.id = c.category ";
+							$sql2 .= "WHERE u.username= '" . $_REQUEST["user_name"] . "' ";
+							
+							$rs2 = (array) $DB->get_records_sql($sql2);
+							
+							echo "<div id=\"DataTables_Table_0_wrapper\" class=\"table-responsive\">";
+							echo "<table class=\"table no-margin\">";
+							if (count($rs2)) {
+								echo "<thead><tr role=\"row\"><th class=\"sorting\" width=469px >Nome do Curso</th><th class=\"sorting\" width= 66px>Turma</th><th class=\"sorting\" width= 50px>Ciclo</th></tr></thead>"; 
+								foreach ($rs2 as $l2) {
+									echo "<tr class=\"odd\">";
+									echo "<td>" . $l2->curso .  "</td><td>" . $l2->turma .  "</td><td>" . $l2->ciclo .  "</td>";
+									;
+									echo "</tr>";
+								} 
+								//echo "</div>";
+							}
+							echo "</div></table>";
 						?>
 						
 						
