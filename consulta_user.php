@@ -13,7 +13,7 @@
 ?>
 <link rel="stylesheet" href="meucss.css">
 <!-- Google Font -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <!-- Font Awesome --> 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <!-- Total de usuários -->  
@@ -25,7 +25,7 @@
 		<div class="coluna">
 			<div class="box">
 				<div class="box-header1 with-border1">
-					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999</small></h3>
+					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999 1</small></h3>
 				</div>
 				<div class="box-body">
 					<div class="rows">
@@ -36,8 +36,8 @@
 										<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
 										<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
 										<div class="card-footer">
-											<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Pesquisar</button>
-											<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Limpar</button>
+											<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
+											<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
 										</div>
 									</div> 
 								</div>                                          
