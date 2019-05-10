@@ -36,7 +36,7 @@
 									<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
 									<button type="submit" class="btn btn-sm btn-primary" style="margin: 0px 0px 0px 20px !important;"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
 									<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
-									<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
+									<small><a class="btn btn-comum" style="    margin: -1px 0px 0px 5px;" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
 								</div> 
 							</div>                                          
 						</form>
