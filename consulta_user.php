@@ -42,7 +42,8 @@
 									</div> 
 								</div>                                          
                             </div>
-						</form><br>
+						</form>
+					</div>
 						<?php
 							require_once('../../config.php');
 							global $DB;
@@ -107,7 +108,7 @@
 								} 
 								//echo "</div>";
 							}
-							echo "</div></table>";
+							echo "</table>";
 						?>
 						
 						
@@ -122,7 +123,7 @@
 						
 						
 						
-					</div>
+					
 				</div>	
 			</div>		
 		</div>			
