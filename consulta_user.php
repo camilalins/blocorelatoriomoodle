@@ -8,7 +8,7 @@
 	$PAGE->set_pagelayout('admin');
 	$PAGE->set_context(context_system::instance());
 	$PAGE->set_url('/blocks/moodleversion/consulta_user.php');
-	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/consulta_user.php"));
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/blocks/moodleversion/consulta_user.php"));
 	echo $OUTPUT->header();
 ?>
 <link rel="stylesheet" href="meucss.css">
@@ -34,12 +34,15 @@
 								<div class="input-group-btn">
 									<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
 									<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
-									<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
+									<button type="submit" class="btn btn-sm btn-primary" style="margin: 0px 0px 0px 20px !important;"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
 									<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
 								</div> 
 							</div>                                          
 						</form>
 					</div>
+					<br>
+					<br>
+					
 						<?php
 							require_once('../../config.php');
 							global $DB;
@@ -95,14 +98,13 @@
 							echo "<div id=\"DataTables_Table_0_wrapper\" class=\"table-responsive\">";
 							echo "<table class=\"table no-margin\">";
 							if (count($rs2)) {
-								echo "<thead><tr role=\"row\"><th class=\"sorting\" width=469px >Nome do Curso</th><th class=\"sorting\" width= 66px>Turma</th><th class=\"sorting\" width= 50px>Ciclo</th></tr></thead>"; 
+								echo "<thead><tr role=\"row\"><th class=\"sorting\" width=469px >Nome do Curso</th><th class=\"sorting\" width= 66px>Turma</th></tr></thead>"; 
 								foreach ($rs2 as $l2) {
 									echo "<tr class=\"odd\">";
-									echo "<td>" . $l2->curso .  "</td><td>" . $l2->turma .  "</td><td>" . $l2->ciclo .  "</td>";
+									echo "<td>" . $l2->curso .  "</td><td>" . $l2->turma .  "</td>";
 									;
 									echo "</tr>";
 								} 
-								//echo "</div>";
 							}
 							echo "</table>";
 						?>
