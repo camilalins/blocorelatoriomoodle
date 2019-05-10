@@ -42,7 +42,7 @@
 									</div> 
 								</div>                                          
                             </div>
-						</form>
+						</form><br>
 						<?php
 							require_once('../../config.php');
 							global $DB;
