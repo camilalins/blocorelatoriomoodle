@@ -220,17 +220,34 @@
 			<div class="info-box-content">
 				<span class="info-box-number">
 					<a href="consulta_user.php">
-						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-align-right"></i></span> <small>Cursos do Usuário</small>
+						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-address-book"></i></span> <small>Cursos do Usuário</small>
 					</a>
 				</span>
 			</div>
 		</div>
 		<div class="info-box-topo">
-			<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-align-right"></i></span>
 			<div class="info-box-content">
 				<span class="info-box-number">
 					<a href="consulta_user.php">
-						<small>Cursos do Usuário</small>
+						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-address-book"></i></span> <small>Cursos do Usuário</small>
+					</a>
+				</span>
+			</div>
+		</div>
+		<div class="info-box-topo">
+			<div class="info-box-content">
+				<span class="info-box-number">
+					<a href="consulta_user.php">
+						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-address-book"></i></span> <small>Cursos do Usuário</small>
+					</a>
+				</span>
+			</div>
+		</div>
+		<div class="info-box-topo">
+			<div class="info-box-content">
+				<span class="info-box-number">
+					<a href="consulta_user.php">
+						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-address-book"></i></span> <small>Cursos do Usuário</small>
 					</a>
 				</span>
 			</div>
