@@ -211,6 +211,40 @@
 			
 		</div>
 	</section>
+	
+	
+	
+<section>
+	<div class="rows">
+		<div class="info-box-topo">
+			<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-align-right"></i></span>
+			<div class="info-box-content">
+				<span class="info-box-number">
+					<a href="consulta_user.php">
+						<small>Cursos do Usuário</small>
+					</a>
+				</span>
+			</div>
+		</div>
+		<div class="info-box-topo">
+			<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-align-right"></i></span>
+			<div class="info-box-content">
+				<span class="info-box-number">
+					<a href="consulta_user.php">
+						<small>Cursos do Usuário</small>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</section>	
+	
+	
+	
+	
+	
+	
+	
 
 
 
