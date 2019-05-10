@@ -1,37 +1,24 @@
 <?php
-require_once("../../../config.php");
-require_once("../../../inc/global.php");
 
-global $CFG;
+	require_once('../../config.php');
+	global $CFG, $DB;
+	$titulo = 'Cursos';
 
-require_login();
-
-$titulo = 'Controle de Cursos,Turmas e Inscritos';
-
-$context = get_context_instance(CONTEXT_SYSTEM, 1);
-$PAGE->set_context($context);
-$PAGE->set_url('/plugins/relatorios/dashboard/cursos.php');
-$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/plugins/relatorios/dashboard/cursos.php"));
-$PAGE->set_pagelayout('standard');
-$PAGE->set_heading($titulo);
-
-echo $OUTPUT->header();
-echo GF::carregarLib(array("jquery", "jalert", "gFunctions", "gDisplay", "gAjax", "php.js", "json", "gValidate", "mask"));
-
-//if (verificaAdminSite($USER->id)) {
-if (verificaTutorOuAdmin($USER->id)) {
-    ?>
-    <h3 class="box-title"><?php echo $titulo; ?></h3>
-    <link rel="stylesheet" href="meucss.css">
+	$PAGE->set_url($_SERVER['PHP_SELF']);
+	$PAGE->set_pagelayout('admin');
+	$PAGE->set_context(context_system::instance());
+	$PAGE->set_url('/blocks/moodleversion/cursos.php');
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/cursos.php"));
+	echo $OUTPUT->header();
+?>
+<link rel="stylesheet" href="meucss.css">
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
+<!-- Font Awesome --> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	
+<h3 class="box-title"><?php echo $titulo; ?></h3>
     
-  
-
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-
-    
-<!--- nova section-->
 <section class="hold-transition skin-blue sidebar-mini">
     <div class="row">
       <div class="col-md-12">
@@ -48,7 +35,7 @@ if (verificaTutorOuAdmin($USER->id)) {
 
 <?php
 
-require_once("../../../config.php");
+require_once("../../config.php");
 
 global $DB;
 
@@ -91,13 +78,15 @@ $c = (array) $DB->get_records_sql($sql);
 </section>
 <!--- fim nova section-->
 
-    <?php
-} else {
-    echo msgNaoAutorizada();
-}
-
-echo $OUTPUT->footer();
+<?php
+	$PAGE->set_context($context);
+	$PAGE->set_pagelayout('incourse');
+	$PAGE->set_url('/blocks/moodleversion/cursos.php');
+	$PAGE->requires->jquery();
+	// Never reached if download = true.
+	echo $OUTPUT->footer();
 ?>
+
 <link type="text/css" rel="stylesheet" href="../../../inc/css/global.css"></link>
 <script type="text/javascript" src="../../js/functions.js"></script>
 <script type="text/javascript" src="../../js/html2canvas.js"></script>
