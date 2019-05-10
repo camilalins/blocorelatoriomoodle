@@ -30,16 +30,14 @@
 				<div class="box-body">
 					<div class="rows">
 						<form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" class="form-horizontal">
-							<div class="form-group rows">
-								<div class="col-md1">
-									<div class="input-group-btn">
-										<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
-										<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
-										<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
-										<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
-									</div> 
-								</div>                                          
-                            </div>
+							<div class="col-md1">
+								<div class="input-group-btn">
+									<label class="col-md-3 form-control-label" for="hf-email">CPF</label>
+									<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
+									<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
+									<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
+								</div> 
+							</div>                                          
 						</form>
 					</div>
 						<?php
@@ -108,20 +106,6 @@
 							}
 							echo "</table>";
 						?>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-					
 				</div>	
 			</div>		
 		</div>			
