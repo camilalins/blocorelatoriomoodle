@@ -22,7 +22,7 @@
 
 <section>
 	<div class="rows">
-		<div class="coluna" style="width: 100%;">
+		<div class="coluna" style="width: 100%; ">
 			<div class="box">
 				<div class="box-header1 with-border1">
 					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999</small></h3>
@@ -36,6 +36,7 @@
 									<input type="text" id="hf-email" name="user_name" class="form-control" placeholder="Digite o CPF">
 									<button type="submit" class="btn btn-sm btn-primary" style="margin: 0px 0px 0px 20px !important;"><i class="fa fa-dot-circle-o"></i>  Pesquisar</button>
 									<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>  Limpar</button>
+									<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
 								</div> 
 							</div>                                          
 						</form>
