@@ -22,7 +22,7 @@
 
 <section>
 	<div class="rows">
-		<div class="coluna">
+		<div class="coluna" style="width: 100%;">
 			<div class="box">
 				<div class="box-header1 with-border1">
 					<h3 class="box-title"><small>Digite o CPF sem traço ou ponto. Ex.: 99999999999</small></h3>
