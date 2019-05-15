@@ -20,8 +20,9 @@
 
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 
-<section>			
-	<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
+<section>		
+<div class="rows">
+	<div class="col-md-12">	
 		<div class="info-box">
 			<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
 			<div class="info-box-content">
@@ -34,13 +35,13 @@
 									$sql5 .= "FROM mdl_role_assignments rs ";
 									$sql5 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
 									$sql5 .= "INNER JOIN mdl_user u ON rs.userid=u.id ";
-									$sql5 .= "INNER JOIN mdl_context e ON rs.contextid=e.id  ";
-									$sql5 .= "INNER JOIN mdl_enrol en ON e.instanceid=en.courseid  ";
-									$sql5 .= "INNER JOIN mdl_course c ON c.id=en.courseid  ";
+									$sql5 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+									$sql5 .= "INNER JOIN mdl_enrol en ON e.instanceid=en.courseid ";
+									$sql5 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
 									$sql5 .= "INNER JOIN mdl_course_categories ct ON ct.id=c.category ";
 									$sql5 .= "INNER JOIN mdl_user_enrolments ue ON ( en.id=ue.enrolid AND rs.userid=ue.userid ) ";
 									$sql5 .= "LEFT JOIN mdl_grade_items i ON c.id=i.courseid ";
-									$sql5 .= "LEFT JOIN mdl_grade_grades g ON (g.itemid=i.id AND rs.userid=g.userid )  ";
+									$sql5 .= "LEFT JOIN mdl_grade_grades g ON (g.itemid=i.id AND rs.userid=g.userid ) ";
 									$sql5 .= "LEFT JOIN mdl_certificate cf ON cf.course=c.id ";
 									$sql5 .= "LEFT JOIN mdl_certificate_issues cfi ON (cfi.certificateid=cf.id AND cfi.userid=rs.userid) ";					
 									$sql5 .= "WHERE e.contextlevel=50 AND (i.itemtype = 'course' OR i.itemtype IS NULL ) AND c.visible= 1 AND ue.status = 0 AND en.status = 0 AND u.deleted=0 AND u.confirmed=1 ";
@@ -63,7 +64,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </section>
 
 
