@@ -21,12 +21,12 @@
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 
 <section>			
-					<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
-				<div class="info-box">
-					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
-					<div class="info-box-content">
-						<table class="table no-margin">
-							<tbody>
+	<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
+		<div class="info-box">
+			<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+			<div class="info-box-content">
+				<table class="table no-margin">
+					<tbody>
 								<?php
 									require_once("../../config.php");
 									global $DB;
@@ -44,8 +44,7 @@
 									$sql5 .= "LEFT JOIN mdl_certificate cf ON cf.course=c.id ";
 									$sql5 .= "LEFT JOIN mdl_certificate_issues cfi ON (cfi.certificateid=cf.id AND cfi.userid=rs.userid) ";					
 									$sql5 .= "WHERE e.contextlevel=50 AND (i.itemtype = 'course' OR i.itemtype IS NULL ) AND c.visible= 1 AND ue.status = 0 AND en.status = 0 AND u.deleted=0 AND u.confirmed=1 ";
-									
-										  
+																			  
 									$rs5 = (array) $DB->get_records_sql($sql5);
 									//print_r($rs5);
 									if (count($rs5)) 
@@ -53,17 +52,17 @@
 										echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
 										foreach ($rs5 as $l5) {
 											echo "<tr class=\"odd\">";
-											echo "<td>" . $l5->name .  "</td><td>" . $l5->quantidade .  "</td>";
+											echo "<td>" . $l5->id .  "</td><td>" . $l5->lastname .  "</td>";
 											;
 											echo "</td></tr>";
 										} 
 									};
 								?>
-							</tbody>
-						</table>
-					</div>
-				</div>
+					</tbody>
+				</table>
 			</div>
+		</div>
+	</div>
 
 </section>
 
