@@ -20,17 +20,28 @@
 <h3 class="box-title"><?php echo $titulo; ?></h3>
     
 <section class="hold-transition skin-blue sidebar-mini">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title"><small><a class="btn btn-success btn-sm ad-click-event" href="javascript:history.go(-1)"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a></small><small> <a class="btn btn-success btn-sm ad-click-event" href="exportar_qtdade_cursos.php"><i class="fa fa-download" aria-hidden="true"></i> Exportar</a></small></h3>
-          </div>
-          <div class="box-body">
-            <div class="row">
-              <div class="table-responsive">
-            <table class="table no-margin">
-              <tbody>
+	<div class="rows">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">
+						<small>
+							<a class="btn btn-success btn-sm ad-click-event" href="javascript:history.go(-1)">
+								<i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+							</a>
+						</small>
+						<small> 
+							<a class="btn btn-success btn-sm ad-click-event" href="exportar_qtdade_cursos.php">
+								<i class="fa fa-download" aria-hidden="true"></i> Exportar
+							</a>
+						</small>
+					</h3>
+				</div>
+<div class="box-body">
+<div class="row">
+<div class="table-responsive">
+<table class="table no-margin">
+<tbody>
                 
 
 <?php
@@ -86,7 +97,3 @@ $c = (array) $DB->get_records_sql($sql);
 	// Never reached if download = true.
 	echo $OUTPUT->footer();
 ?>
-
-<link type="text/css" rel="stylesheet" href="../../../inc/css/global.css"></link>
-<script type="text/javascript" src="../../js/functions.js"></script>
-<script type="text/javascript" src="../../js/html2canvas.js"></script>
