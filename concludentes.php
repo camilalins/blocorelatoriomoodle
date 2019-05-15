@@ -47,12 +47,20 @@
 						<?php
 							require_once('../../config.php');
 							global $DB;
-							$sql = "SELECT distinct aluno.firstname as nome, aluno.lastname as sobrenome, aluno.email as email, aluno.institution as instituicao ";
+							$sql = "SELECT DISTINCT rs.id,u.firstname,u.lastname,u.username,u.institution,u.department,u.email,u.city,c.id AS courseid,c.fullname AS course,ct.name AS category,r.shortname AS roleshortname,g.finalgrade,from_unixtime(g.timemodified, '%d/%m/%Y %H:%i:%s') AS gradetimeupdate,from_unixtime(ue.timestart, '%d/%m/%Y %H:%i:%s') AS enroltimestart,from_unixtime(ue.timeend, '%d/%m/%Y %H:%i:%s') AS enroltimeend,cf.name AS certificatename,cfi.code AS certificatecode,from_unixtime(cfi.timecreated, '%d/%m/%Y %H:%i:%s') AS datecertificate ";
 							$sql .= "FROM mdl_role_assignments rs ";
+							$sql .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+							$sql .= "INNER JOIN mdl_user u ON rs.userid=u.id ";
 							$sql .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-							$sql .= "INNER JOIN mdl_course c ON c.id = e.instanceid ";
-							$sql .= "INNER JOIN mdl_user aluno on aluno.id = rs.userid ";
-							$sql .= "WHERE aluno.username= '" . $_REQUEST["user_name"] . "' ";
+							$sql .= "INNER JOIN mdl_enrol en ON e.instanceid=en.courseid ";
+							$sql .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
+							$sql .= "INNER JOIN mdl_course_categories ct ON ct.id=c.category ";
+							$sql .= "INNER JOIN mdl_user_enrolments ue ON ( en.id=ue.enrolid AND rs.userid=ue.userid ) ";
+							$sql .= "LEFT JOIN mdl_grade_items i ON c.id=i.courseid  ";
+							$sql .= "LEFT JOIN mdl_grade_grades g ON (g.itemid=i.id AND rs.userid=g.userid ) ";
+							$sql .= "LEFT JOIN mdl_certificate cf ON cf.course=c.id ";
+							$sql .= "LEFT JOIN mdl_certificate_issues cfi ON (cfi.certificateid=cf.id AND cfi.userid=rs.userid) ";
+							$sql .= "WHERE e.contextlevel=50 AND (i.itemtype = 'course' OR i.itemtype IS NULL ) AND c.visible= 1 AND ue.status = 0 AND en.status = 0 AND u.deleted=0 AND u.confirmed=1 ";
 							$rs = (array) $DB->get_records_sql($sql);
 
 							//print_r($rs);
