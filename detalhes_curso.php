@@ -31,7 +31,7 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql5 = "SELECT curso.fullname as nomeCurso, grupos.name as nomeGrupo, count(usuarios_membros.userid) as quantidade ";
+								$sql5 = "SELECT grupos.id, curso.fullname as nomeCurso, grupos.name as nomeGrupo, count(usuarios_membros.userid) as quantidade ";
 								$sql5 .= "FROM mdl_groups as grupos ";
 								$sql5 .= "LEFT JOIN mdl_groups_members as usuarios_membros ON usuarios_membros.groupid = grupos.id ";
 								$sql5 .= "INNER JOIN mdl_course as curso ON curso.id = grupos.courseid ";
