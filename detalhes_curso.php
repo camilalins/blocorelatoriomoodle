@@ -137,6 +137,126 @@
 
 
 
+<section>
+		<div class="rows">
+			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
+				<div class="info-box">
+					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+					<div class="info-box-content">
+						<table class="table no-margin">
+							<tbody>
+								<?php
+									require_once("../../config.php");
+									global $DB;
+									$sql5 = "SELECT DISTINCT aluno.username, aluno.firstname, aluno.lastname, polo.name, disciplina.fullname, count(polo.name) as quantidade ";
+									$sql5 .= "FROM mdl_course disciplina ";
+									$sql5 .= "INNER JOIN mdl_groups polo on polo.courseid = disciplina.id ";
+									$sql5 .= "INNER JOIN mdl_groups_members alunos_polo on alunos_polo.groupid = polo.id ";
+									$sql5 .= "INNER JOIN mdl_user_enrolments pre_inscr on pre_inscr.userid = alunos_polo.userid ";
+									$sql5 .= "INNER JOIN mdl_role_assignments inscri on inscri.id = pre_inscr.enrolid ";
+									$sql5 .= "INNER JOIN mdl_user aluno on aluno.id = alunos_polo.userid ";
+									$sql5 .= "WHERE disciplina.id = 12 AND inscri.roleid = 5 ";
+									$sql5 .= "group by polo.name ";
+									$sql5 .= "ORDER BY polo.name desc ";
+									
+										  
+									$rs5 = (array) $DB->get_records_sql($sql5);
+									//print_r($rs5);
+									if (count($rs5)) 
+									{
+										echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
+										foreach ($rs5 as $l5) {
+											echo "<tr class=\"odd\">";
+											echo "<td>" . $l5->polo.name .  "</td><td>" . $l5->quantidade .  "</td>";
+											;
+											echo "</td></tr>";
+										} 
+									};
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
+	<div class="info-box">
+		<span class="info-box-icon bg-dodgerblue">
+			<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
+		</span>
+		<div class="info-box-content">
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+				google.charts.load('current', {packages: ['corechart', 'bar']});
+				google.charts.setOnLoadCallback(drawBasic);
+
+				function drawBasic() {
+					<?php
+						$rs5 = (array) $DB->get_records_sql($sql5);
+						$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
+						$positioncolor = 0;
+						if (count($rs5)) 
+						{
+
+							echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
+							foreach ($rs5 as $l5) 
+							{
+								echo "['" . $l5->name .  "'," . $l5->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
+								$positioncolor = $positioncolor + 1;
+							} 
+							echo "]);";
+						};
+					?>
+
+				  var options = {
+					title: ' ',
+					chartArea: {width: '40%'},
+					hAxis: {
+					  title: 'Número de Usuários',
+					  minValue: 0
+					},
+					vAxis: {
+					  title: ' '
+					}
+				  };
+
+				  var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+
+				  chart.draw(data, options);
+				}
+			</script>
+			<div class="grafico6">
+				<div class="description-block border-right border-none">
+					<?php
+											if (!empty($rs5))
+											{
+											  echo "<ul style=\"list-style:none;margin:0!important;\">";
+											  echo "<li id=\"chart_div6\"></li>";
+											  echo "</ul>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+					?>				 
+				</div>                
+			</div>						
+	</div>
+	</div>
+</div>
+
+
+
+    <!--fim grafico 6-->  
+			
+			
+		</div>
+	</section>
+	
+
+
+
+
+
 
 
 
