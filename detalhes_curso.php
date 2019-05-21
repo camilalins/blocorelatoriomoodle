@@ -31,11 +31,12 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql5 = "SELECT curso.fullname as nomeCurso, grupos.name as turma, count(usuarios_membros.userid) as quantidade ";
+								$sql5 = "SELECT curso.fullname as nomeCurso, grupos.name as nomeGrupo, count(usuarios_membros.userid) as quantidade ";
 								$sql5 .= "FROM mdl_groups as grupos ";
-								$sql5 .= "INNER JOIN mdl_groups_members as usuarios_membros ON usuarios_membros.groupid = grupos.id ";
+								$sql5 .= "LEFT JOIN mdl_groups_members as usuarios_membros ON usuarios_membros.groupid = grupos.id ";
 								$sql5 .= "INNER JOIN mdl_course as curso ON curso.id = grupos.courseid ";
-								$sql5 .= "WHERE curso.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
+								$sql5 .= "LEFT JOIN mdl_role_assignments as papel ON papel.userid = usuarios_membros.userid ";
+								$sql5 .= "WHERE curso.fullname = '" . $_REQUEST["escolha_curso"] . "' AND (papel.roleid = 5 OR papel.roleid IS NULL) ";
 								$sql5 .= "GROUP BY grupos.id; ";
 																	
 								$rs5 = (array) $DB->get_records_sql($sql5);
@@ -45,7 +46,7 @@
 									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
 									foreach ($rs5 as $l5) {
 										echo "<tr class=\"odd\">";
-										echo "<td>" . $l5->turma .  "</td><td>" . $l5->quantidade .  "</td>";
+										echo "<td>" . $l5->nomeGrupo .  "</td><td>" . $l5->quantidade .  "</td>";
 										;
 										echo "</td></tr>";
 									} 
