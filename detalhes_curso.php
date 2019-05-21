@@ -30,13 +30,14 @@
 						<tbody>
 							<?php
 								require_once("../../config.php");
-								global $DB;								
-								$sql5 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-								$sql5 .= "FROM mdl_groups_members m ";
-								$sql5 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-								$sql5 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
-								$sql5 .= "group by g.name ";
+								global $DB;
+								$sql5 = "SELECT curso.fullname as nomeCurso, grupos.name as turma, count(usuarios_membros.userid) as quantidade ";
+								$sql5 .= "FROM mdl_groups as grupos ";
+								$sql5 .= "LEFT JOIN mdl_groups_members as usuarios_membros ON usuarios_membros.groupid = grupos.id ";
+								$sql5 .= "INNER JOIN mdl_course as curso ON curso.id = grupos.courseid ";
+								$sql5 .= "WHERE curso.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
+								$sql5 .= "GROUP BY grupos.id; ";
+																	
 								$rs5 = (array) $DB->get_records_sql($sql5);
 								//print_r($rs5);
 								if (count($rs5)) 
