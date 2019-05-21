@@ -42,19 +42,13 @@
 								//$sql5 .= "group by polo.name ";
 								//$sql5 .= "ORDER BY polo.id ";
 								
-								$sql5 = "SELECT g.name as turma, COUNT(m.id) AS countmembers ";
+								$sql5 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
 								$sql5 .= "FROM mdl_course disciplina ";
 								$sql5 .= "FROM mdl_course disciplina ";
 								$sql5 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
 								$sql5 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
 								$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
 								$sql5 .= "group by g.name ";
-								
-								
-								
-								
-								
-									
 								$rs5 = (array) $DB->get_records_sql($sql5);
 								//print_r($rs5);
 								if (count($rs5)) 
