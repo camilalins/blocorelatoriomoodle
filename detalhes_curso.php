@@ -2,23 +2,20 @@
 
 	require_once('../../config.php');
 	global $CFG, $DB;
-	$titulo = 'Painel Academico';
+	$titulo = 'Detalhes Curso';
 
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
 	$PAGE->set_context(context_system::instance());
-	$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
-	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/painel_academico.php"));
+	$PAGE->set_url('/blocks/moodleversion/detalhes_curso.php');
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/blocks/moodleversion/detalhes_curso.php"));
 	echo $OUTPUT->header();
 ?>
+<h3 class="box-title"><?php echo $titulo; ?></h3>
+<link rel="stylesheet" href="meucss.css">
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
 
-    <h3 class="box-title"><?php echo $titulo; ?></h3>
-
-    <link rel="stylesheet" href="meucss.css">
-    
-
-  <!-- Google Font -->
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> 
 <section class="hold-transition skin-blue sidebar-mini">
   <div class="row">
       <div class="col-md-12">
@@ -141,6 +138,75 @@ echo "</table></div>";
 
 
 </div></div></div></div></div></section>
+
+
+
+
+
+<section>
+	<div class="rows">
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+				<div class="info-box-topo">
+					<span class="info-box-icon bg-aqua">
+						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-number">
+							<small>Total de alunos</small>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+				<div class="info-box-topo">
+					<span class="info-box-icon bg-aqua">
+						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-number">
+							<small>Total de Tutores</small>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+				<div class="info-box-topo">
+					<span class="info-box-icon bg-aqua">
+						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+					</span>
+					<div class="info-box-content">
+						<span class="info-box-number">
+							<small>Separados por turma</small>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	</div>
+	
+	
+	
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
