@@ -1,25 +1,15 @@
 <?php
-require_once("../../../config.php");
-require_once("../../../inc/global.php");
 
-global $CFG;
+	require_once('../../config.php');
+	global $CFG, $DB;
+	$titulo = 'Painel Academico';
 
-require_login();
-
-$titulo = 'Atividades do Curso';
-
-$context = get_context_instance(CONTEXT_SYSTEM, 1);
-$PAGE->set_context($context);
-$PAGE->set_url('/plugins/relatorios/dashboard/modalidade_online.php/modalidade_resposta.php');
-$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/plugins/relatorios/dashboard/modalidade_online.php/modalidade_resposta.php"));
-$PAGE->set_pagelayout('standard');
-$PAGE->set_heading($titulo);
-
-echo $OUTPUT->header();
-echo GF::carregarLib(array("jquery", "jalert", "gFunctions", "gDisplay", "gAjax", "php.js", "json", "gValidate", "mask"));
-
-//if (verificaAdminSite($USER->id)) {
-if (verificaTutorOuAdmin($USER->id)) {
+	$PAGE->set_url($_SERVER['PHP_SELF']);
+	$PAGE->set_pagelayout('admin');
+	$PAGE->set_context(context_system::instance());
+	$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
+	$PAGE->navbar->add($titulo, new moodle_url("$CFG->httpswwwroot/local/moodleversion/painel_academico.php"));
+	echo $OUTPUT->header();
 ?>
 
     <h3 class="box-title"><?php echo $titulo; ?></h3>
@@ -40,7 +30,7 @@ if (verificaTutorOuAdmin($USER->id)) {
 				
 <?php 
 
-require_once("../../../config.php");
+require_once("../../config.php");
 
 global $DB;
 
@@ -58,7 +48,7 @@ foreach($disciplina as $site);
 
 <?php 
 
-require_once("../../../config.php");
+require_once("../../config.php");
 
 global $DB;
 
@@ -75,7 +65,7 @@ foreach($disciplina2 as $site2);
 
 <?php 
 
-require_once("../../../config.php");
+require_once("../../config.php");
 
 global $DB;
 
@@ -103,7 +93,7 @@ foreach($disciplina3 as $site3);
 
 <?php 
 
-require_once("../../../config.php");
+require_once("../../config.php");
 
 global $DB;
 

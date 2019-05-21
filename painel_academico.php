@@ -225,12 +225,12 @@
 				</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 62%;">
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 85%;">
 				<div class="info-box-topo">
-					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
+					
 					<div class="info-box-content">
 						<span class="info-box-number">
-							<h3 class="box-title"><small>Escolha o curso que deseja e o departamento</small></h3>
+							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small>Escolha o curso que deseja e o departamento</small></h3>
 						</span>
 						<form action="atividades_curso_resposta.php" method="post" class="form-horizontal">
 							<div class="input-group input-group-sm">
