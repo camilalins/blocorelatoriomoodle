@@ -20,6 +20,7 @@
 
 
 <section>
+	<h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
@@ -39,7 +40,7 @@
 								$sql5 .= "INNER JOIN mdl_user aluno on aluno.id = alunos_polo.userid ";
 								$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' AND inscri.roleid = 5 ";
 								$sql5 .= "group by polo.name ";
-								//$sql5 .= "ORDER BY polo.name desc ";
+								$sql5 .= "ORDER BY polo.id ";
 									
 								$rs5 = (array) $DB->get_records_sql($sql5);
 								//print_r($rs5);
