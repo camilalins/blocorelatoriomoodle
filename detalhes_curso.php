@@ -31,16 +31,29 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql5 = "SELECT DISTINCT aluno.username, aluno.firstname, aluno.lastname, polo.name as turma, disciplina.fullname, count(polo.name) as quantidade ";
+								//$sql5 = "SELECT DISTINCT aluno.username, aluno.firstname, aluno.lastname, polo.name as turma, disciplina.fullname, count(polo.name) as quantidade ";
+								//$sql5 .= "FROM mdl_course disciplina ";
+								//$sql5 .= "INNER JOIN mdl_groups polo on polo.courseid = disciplina.id ";
+								//$sql5 .= "INNER JOIN mdl_groups_members alunos_polo on alunos_polo.groupid = polo.id ";
+								//$sql5 .= "INNER JOIN mdl_user_enrolments pre_inscr on pre_inscr.userid = alunos_polo.userid ";
+								//$sql5 .= "INNER JOIN mdl_role_assignments inscri on inscri.id = pre_inscr.enrolid ";
+								//$sql5 .= "INNER JOIN mdl_user aluno on aluno.id = alunos_polo.userid ";
+								//$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' AND inscri.roleid = 5 ";
+								//$sql5 .= "group by polo.name ";
+								//$sql5 .= "ORDER BY polo.id ";
+								
+								$sql5 = "SELECT g.name as turma, COUNT(m.id) AS countmembers ";
 								$sql5 .= "FROM mdl_course disciplina ";
-								$sql5 .= "INNER JOIN mdl_groups polo on polo.courseid = disciplina.id ";
-								$sql5 .= "INNER JOIN mdl_groups_members alunos_polo on alunos_polo.groupid = polo.id ";
-								$sql5 .= "INNER JOIN mdl_user_enrolments pre_inscr on pre_inscr.userid = alunos_polo.userid ";
-								$sql5 .= "INNER JOIN mdl_role_assignments inscri on inscri.id = pre_inscr.enrolid ";
-								$sql5 .= "INNER JOIN mdl_user aluno on aluno.id = alunos_polo.userid ";
-								$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' AND inscri.roleid = 5 ";
-								$sql5 .= "group by polo.name ";
-								$sql5 .= "ORDER BY polo.id ";
+								$sql5 .= "FROM mdl_course disciplina ";
+								$sql5 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+								$sql5 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+								$sql5 .= "WHERE disciplina.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
+								$sql5 .= "group by g.name ";
+								
+								
+								
+								
+								
 									
 								$rs5 = (array) $DB->get_records_sql($sql5);
 								//print_r($rs5);
