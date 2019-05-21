@@ -232,7 +232,7 @@
 						<span class="info-box-number">
 							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small>Escolha o curso que deseja e o departamento</small></h3>
 						</span>
-						<form action="atividades_curso_resposta.php" method="post" class="form-horizontal">
+						<form action="detalhes_curso.php" method="post" class="form-horizontal">
 							<div class="input-group input-group-sm">
 								<?php
 
