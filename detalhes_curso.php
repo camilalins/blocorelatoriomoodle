@@ -20,80 +20,76 @@
 
 <section>
 	<div class="rows">
-		
-		
-		
-		
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box-topo">
-					<span class="info-box-icon bg-aqua">
-						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+			<div class="info-box-topo">
+				<span class="info-box-icon bg-aqua">
+					<i class="fas fa-bullhorn" aria-hidden="true"></i>
+				</span>
+				<div class="info-box-content">
+					<span class="info-box-number">
+						<small>Total de alunos</small>
 					</span>
-					<div class="info-box-content">
-						<span class="info-box-number">
-							<small>Total de alunos</small>
-						</span>
-					</div>
 				</div>
+			</div>
 				
 				<!--Gráfico 3 CAPACITAÇÃO | SEMIPRESENCIAL-->
-    <?php
-      require_once("../../config.php");
-      global $DB;
-      $sql3 = "SELECT c.fullname AS curso,count(u.id) AS quantidade ";
-      $sql3 .= "FROM mdl_role_assignments rs ";
-      $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
-      $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-      $sql3 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
-      $sql3 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
-      $sql3 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
-      $sql3 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/4/12%' AND g.idnumber = ' ' ";
-	  $sql3 .= "group by c.fullname ";
+						<?php
+						  require_once("../../config.php");
+						  global $DB;
+						  $sql3 = "SELECT c.fullname AS curso,count(u.id) AS quantidade ";
+						  $sql3 .= "FROM mdl_role_assignments rs ";
+						  $sql3 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+						  $sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+						  $sql3 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+						  $sql3 .= "INNER JOIN mdl_course_categories cate  ON cate.id=c.category ";
+						  $sql3 .= "INNER JOIN mdl_groups g ON g.courseid = c.id ";
+						  $sql3 .= "WHERE e.contextlevel=50 AND rs.roleid=5 AND cate.path like '/4/12%' AND g.idnumber = ' ' ";
+						  $sql3 .= "group by c.fullname ";
 
-      $rs3 = (array) $DB->get_records_sql($sql3);
-      //print_r($rs);
-    ?>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    //carregando modulo visualization
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-    //função de monta e desenha o gráfico
-    function drawChart() 
-    {
-      //variavel com armazenamos os dados, um array de array's 
-      //no qual a primeira posição são os nomes das colunas
-      <?php
-        if (count($rs2)) 
-        {
-          echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
-          foreach ($rs3 as $l3) 
-          {
-          echo "['" . $l3->curso .  "'," . $l3->quantidade .  "],\n\r";
-          } 
-          echo "]);";
-        };
-      ?>
-      //opções para exibição do gráfico
-      var options = 
-      {
-        title: ' ',
-        pieHole: 0.4,
-      };
-      //cria novo objeto PeiChart que recebe 
-      //como parâmetro uma div onde o gráfico será desenhado
-      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-      //desenha passando os dados e as opções
-          chart.draw(data, options);
-    }
-    //metodo chamado após o carregamento
-    google.setOnLoadCallback(drawChart);
-    </script>
-    <!--fim grafico 3-->  
+						  $rs3 = (array) $DB->get_records_sql($sql3);
+						  //print_r($rs);
+						?>
+						<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+						<script type="text/javascript">
+						//carregando modulo visualization
+						  google.charts.load("current", {packages:["corechart"]});
+						  google.charts.setOnLoadCallback(drawChart);
+						//função de monta e desenha o gráfico
+						function drawChart() 
+						{
+						  //variavel com armazenamos os dados, um array de array's 
+						  //no qual a primeira posição são os nomes das colunas
+						  <?php
+							if (count($rs2)) 
+							{
+							  echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+							  foreach ($rs3 as $l3) 
+							  {
+							  echo "['" . $l3->curso .  "'," . $l3->quantidade .  "],\n\r";
+							  } 
+							  echo "]);";
+							};
+						  ?>
+						  //opções para exibição do gráfico
+						  var options = 
+						  {
+							title: ' ',
+							pieHole: 0.4,
+						  };
+						  //cria novo objeto PeiChart que recebe 
+						  //como parâmetro uma div onde o gráfico será desenhado
+						  var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+						  //desenha passando os dados e as opções
+							  chart.draw(data, options);
+						}
+						//metodo chamado após o carregamento
+						google.setOnLoadCallback(drawChart);
+						</script>
+						<!--fim grafico 3-->  
 	
-	<div class="coluna-grafico">							
-								<div class="grafico3">
-									<div class="description-block border-right border-none">
+			<div class="coluna-grafico">							
+				<div class="grafico3">
+						<div class="description-block border-right border-none">
 										  <?php
 											if (!empty($rs3))
 											{
@@ -107,16 +103,16 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Capacitação | Semipresencial</h5>
-									</div>                
-								</div>
-								<div class="grafico4">
-									<div class="description-block border-right border-none">
+							<h5 class="description-header">Capacitação | Semipresencial</h5>
+						</div>                
+				</div>
+				<div class="grafico3">
+					<div class="description-block border-right border-none">
 										  <?php
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart4\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart\" style=\"width: 600px; height: 300px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
@@ -125,72 +121,15 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Capacitação | Presencial</h5>
-									</div>                
-								</div>
-							</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			</div>
-		</div>
-		
-		
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box-topo">
-					<span class="info-box-icon bg-aqua">
-						<i class="fas fa-bullhorn" aria-hidden="true"></i>
-					</span>
-					<div class="info-box-content">
-						<span class="info-box-number">
-							<small>Total de Tutores</small>
-						</span>
-					</div>
+						<h5 class="description-header">Capacitação | Presencial</h5>
+					</div>                
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
-				<div class="info-box-topo">
-					<span class="info-box-icon bg-aqua">
-						<i class="fas fa-bullhorn" aria-hidden="true"></i>
-					</span>
-					<div class="info-box-content">
-						<span class="info-box-number">
-							<small>Separados por turma</small>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		
-		
 	</div>
-	
+		
+		
+		
 </section>
 
 
