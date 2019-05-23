@@ -42,7 +42,78 @@
 																	
 						$aluno = (array) $DB->get_records_sql($sql2);
 						$total_aluno = array_shift($aluno);
-					?>					
+					?>
+					<!--Gráfico 1 Alunos x Turma-->
+					<?php
+						require_once("../../config.php");
+						global $DB;
+						$sql3 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
+						$sql3 .= "FROM mdl_groups_members m ";
+						$sql3 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+						$sql3 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+						$sql3 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
+						$sql3 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+						$sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+						$sql3 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+						$sql3 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+						$sql3 .= "GROUP BY g.id; ";
+					?>
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					<script type="text/javascript">
+						//carregando modulo visualization
+						google.charts.load("current", {packages:["corechart"]});
+						google.charts.setOnLoadCallback(drawChart);
+						//função de monta e desenha o gráfico
+						function drawChart() 
+						{
+						  //variavel com armazenamos os dados, um array de array's 
+						  //no qual a primeira posição são os nomes das colunas
+						  <?php
+								$rs3 = (array) $DB->get_records_sql($sql3);
+								if (count($rs3)) 
+								{
+								echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+								foreach ($rs3 as $l3) 
+								{
+									echo "['" . $l3->curso .  "'," . $l3->quantidade .  "],\n\r";
+								} 
+								echo "]);";
+								};
+							?>
+							//opções para exibição do gráfico
+						  var options = 
+						  {
+							title: ' ',
+							pieHole: 0.4,
+						  };
+						  //cria novo objeto PeiChart que recebe 
+						  //como parâmetro uma div onde o gráfico será desenhado
+						  var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+						  //desenha passando os dados e as opções
+							  chart.draw(data, options);
+						}
+						//metodo chamado após o carregamento
+						google.setOnLoadCallback(drawChart);
+					</script>
+					<!--fim grafico 1-->
+					<div class="grafico1">
+									<div class="description-block border-right">
+										  <?php
+											if (!empty($rs))
+											{
+											  echo "<ul style=\"list-style:none;\">";
+											  echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "</ul>";
+											  echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+										  ?>
+										<h5 class="description-header">Livre | Online</h5>
+									</div>
+					</div>
 					<span class="info-box-number">
 						<?php echo $total_aluno->quantidade; ?> 
 						<small>Total de Alunos</small> 
