@@ -259,6 +259,71 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
+			<div class="info-box">
+				<span class="info-box-icon bg-dodgerblue">
+					<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
+				</span>
+				<div class="info-box-content">
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					<script type="text/javascript">
+						google.charts.load('current', {packages: ['corechart', 'bar']});
+						google.charts.setOnLoadCallback(drawBasic);
+
+						function drawBasic() {
+							<?php
+								$rs6 = (array) $DB->get_records_sql($sql6);
+								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
+								$positioncolor = 0;
+								if (count($rs6)) 
+								{
+
+									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
+									foreach ($rs6 as $l6) 
+									{
+										echo "['" . $l6->turma .  "'," . $l6->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
+										$positioncolor = $positioncolor + 1;
+									} 
+									echo "]);";
+								};
+							?>
+
+							var options = {
+								title: ' ',
+								chartArea: {width: '40%'},
+								hAxis: {
+									title: 'Número de Usuários',
+									minValue: 0
+								},
+								vAxis: {
+									title: ' '
+								}
+							};
+
+							var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+
+							chart.draw(data, options);
+						}
+					</script>
+					<div class="grafico6">
+						<div class="description-block border-right border-none">
+							<?php
+											if (!empty($rs6))
+											{
+											  echo "<ul style=\"list-style:none;margin:0!important;\">";
+											  echo "<li id=\"chart_div6\"></li>";
+											  echo "</ul>";
+											}
+											else
+											{
+											  echo "<p>Nenhum curso encontrado</p>";
+											}
+							?>				 
+						</div>                
+					</div>						
+				</div>
+			</div>
+		</div>
 		
 	</div>
 </section>
