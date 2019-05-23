@@ -102,7 +102,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 400px; height: 300px; margin: 0px -36px;\"></li>";
 											  echo "</ul>";
 											}
 											else
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 	
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 45%;"><!--Quantidade de tutores no curso-->
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 48%;"><!--Quantidade de tutores no curso-->
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores</span>
 				<div class="info-box-content">
