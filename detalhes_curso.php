@@ -44,7 +44,7 @@
 								$total_aluno = array_shift($aluno);
 							?>
 					<span class="info-box-number">
-							<?php echo $total_user->quantidade; ?> 
+							<?php echo $total_aluno->quantidade; ?> 
 							<small>Total de Alunos</small> 
 				
 					</span>
