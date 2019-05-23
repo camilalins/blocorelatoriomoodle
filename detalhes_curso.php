@@ -170,7 +170,7 @@
 						$sql4 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
 						$sql4 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
 						$sql4 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-						$sql4 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+						$sql4 .= "WHERE e.contextlevel=50 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
 																	
 						$tutores = (array) $DB->get_records_sql($sql4);
 						$total_tutores = array_shift($tutores);
@@ -292,7 +292,7 @@
 								title: ' ',
 								chartArea: {width: '40%'},
 								hAxis: {
-									title: 'Número de Aprovados',
+									title: 'Número de Concludentes',
 									minValue: 0
 								},
 								vAxis: {
