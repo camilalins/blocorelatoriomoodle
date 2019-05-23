@@ -229,7 +229,7 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name as turma, COUNT(u.id) AS quantidade ";
+								$sql6 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name AS turma, COUNT(u.id) AS quantidade ";
 								$sql6 .= "FROM mdl_role_assignments rs ";
 								$sql6 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
 								$sql6 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
@@ -239,8 +239,8 @@
 								$sql6 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
 								$sql6 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
 								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' and p.userid=rs.userid  AND p.timecompleted > 0 ";
-								$sql6 .= "group by c.name ";
+								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND p.userid=rs.userid  AND p.timecompleted > 0 ";
+								$sql6 .= "group by g.name ";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
 								if (count($rs6)) 
@@ -259,71 +259,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue">
-					<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
-				</span>
-				<div class="info-box-content">
-					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-					<script type="text/javascript">
-						google.charts.load('current', {packages: ['corechart', 'bar']});
-						google.charts.setOnLoadCallback(drawBasic);
-
-						function drawBasic() {
-							<?php
-								$rs6 = (array) $DB->get_records_sql($sql6);
-								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
-								$positioncolor = 0;
-								if (count($rs6)) 
-								{
-
-									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
-									foreach ($rs6 as $l6) 
-									{
-										echo "['" . $l6->turma .  "'," . $l6->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
-										$positioncolor = $positioncolor + 1;
-									} 
-									echo "]);";
-								};
-							?>
-
-							var options = {
-								title: ' ',
-								chartArea: {width: '40%'},
-								hAxis: {
-									title: 'Número de Usuários',
-									minValue: 0
-								},
-								vAxis: {
-									title: ' '
-								}
-							};
-
-							var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
-
-							chart.draw(data, options);
-						}
-					</script>
-					<div class="grafico6">
-						<div class="description-block border-right border-none">
-							<?php
-											if (!empty($rs6))
-											{
-											  echo "<ul style=\"list-style:none;margin:0!important;\">";
-											  echo "<li id=\"chart_div6\"></li>";
-											  echo "</ul>";
-											}
-											else
-											{
-											  echo "<p>Nenhum curso encontrado</p>";
-											}
-							?>				 
-						</div>                
-					</div>						
-				</div>
-			</div>
-		</div>
+		
 	</div>
 </section>
 
