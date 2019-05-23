@@ -292,7 +292,7 @@
 								title: ' ',
 								chartArea: {width: '40%'},
 								hAxis: {
-									title: 'Número de Usuários',
+									title: 'Número de Aprovados',
 									minValue: 0
 								},
 								vAxis: {
@@ -316,7 +316,7 @@
 											}
 											else
 											{
-											  echo "<p>Nenhum curso encontrado</p>";
+											  echo "<p>Nenhum resultado encontrado</p>";
 											}
 							?>				 
 						</div>                
@@ -401,7 +401,7 @@
 								title: ' ',
 								chartArea: {width: '40%'},
 								hAxis: {
-									title: 'Número de Usuários',
+									title: 'Número de Reprovados',
 									minValue: 0
 								},
 								vAxis: {
@@ -425,7 +425,7 @@
 											}
 											else
 											{
-											  echo "<p>Nenhum curso encontrado</p>";
+											  echo "<p>Nenhum resultado encontrado</p>";
 											}
 							?>				 
 						</div>                
