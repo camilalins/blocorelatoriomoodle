@@ -55,11 +55,11 @@
 						  //variavel com armazenamos os dados, um array de array's 
 						  //no qual a primeira posição são os nomes das colunas
 						  <?php
-						  $aluno = (array) $DB->get_records_sql($sql2);
-							if (count($aluno)) 
+						  $rs1 = (array) $DB->get_records_sql($sql1);
+							if (count($total_aluno)) 
 							{
 							  echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
-							  foreach ($aluno as $l) 
+							  foreach ($rs1 as $l) 
 							  {
 								echo "['" . $l->turma .  "'," . $l->quantidade .  "],\n\r";
 							  } 
@@ -84,23 +84,23 @@
 					<!--fim grafico Aluno-->
 					
 					<div class="grafico1">
-									<div class="description-block border-right">
-										  <?php
-											if (!empty($rs))
-											{
-											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
-											  echo "</ul>";
-											  echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
-											}
-											else
-											{
-											  echo "<p>Nenhum curso encontrado</p>";
-											}
-										  ?>
-										<h5 class="description-header">Livre | Online</h5>
-									</div>
-								</div>
+						<div class="description-block border-right">
+							<?php
+								if (!empty($rs))
+								{
+									echo "<ul style=\"list-style:none;\">";
+									echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
+									echo "</ul>";
+									echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+								}
+								else
+								{
+									echo "<p>Nenhum curso encontrado</p>";
+								}
+							?>
+							<h5 class="description-header">Livre | Online</h5>
+						</div>
+					</div>
 					<span class="info-box-number">
 						<?php echo $total_aluno->quantidade; ?> 
 						<small>Total de Alunos</small> 
@@ -108,77 +108,9 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de tutores no curso-->
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
-				<div class="info-box-content">
-					<?php
-						require_once("../../config.php");
-						global $DB;
-						$sql2 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-						$sql2 .= "FROM mdl_groups_members m ";
-						$sql2 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-						$sql2 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-						$sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-						$sql2 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-						$sql2 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
-																	
-						$aluno = (array) $DB->get_records_sql($sql2);
-						$total_aluno = array_shift($aluno);
-					?>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<span class="info-box-number">
-						<?php echo $total_aluno->quantidade; ?> 
-						<small>Total de Alunos</small> 
-					</span>
-				</div>
-			</div>
-		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos Separados por Turma</span>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
@@ -214,6 +146,65 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de tutores no curso-->
+			<div class="info-box">
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores</span>
+				<div class="info-box-content">
+					<?php
+						require_once("../../config.php");
+						global $DB;
+						$sql2 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
+						$sql2 .= "FROM mdl_groups_members m ";
+						$sql2 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+						$sql2 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+						$sql2 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
+						$sql2 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+						$sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+						$sql2 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+						$sql2 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+																	
+						$aluno = (array) $DB->get_records_sql($sql2);
+						$total_aluno = array_shift($aluno);
+					?>
+					<span class="info-box-number">
+						<?php echo $total_aluno->quantidade; ?> 
+						<small>Total de Alunos</small> 
+					</span>
+				</div>
+			</div>
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
 	</div>
 </section>
 
