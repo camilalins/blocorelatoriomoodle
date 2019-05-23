@@ -31,22 +31,25 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql5 = "SELECT grupos.id, curso.fullname as nomeCurso, grupos.name as nomegrupo, count(usuarios_membros.userid) as quantidade ";
-								$sql5 .= "FROM mdl_groups as grupos ";
-								$sql5 .= "LEFT JOIN mdl_groups_members as usuarios_membros ON usuarios_membros.groupid = grupos.id ";
-								$sql5 .= "INNER JOIN mdl_course as curso ON curso.id = grupos.courseid ";
-								$sql5 .= "LEFT JOIN mdl_role_assignments as papel ON papel.userid = usuarios_membros.userid ";
-								$sql5 .= "WHERE curso.fullname = '" . $_REQUEST["escolha_curso"] . "' AND (papel.roleid = 5 OR papel.roleid IS NULL) ";
-								$sql5 .= "GROUP BY grupos.id; ";
+								$sql1 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
+								$sql1 .= "FROM mdl_groups_members m ";
+								$sql1 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+								$sql1 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+								$sql1 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
+								$sql1 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+								$sql1 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+								$sql1 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid || 5 OR rs.roleid IS NULL) ";
+								$sql1 .= "GROUP BY g.id; ";
 																	
-								$rs5 = (array) $DB->get_records_sql($sql5);
+								$rs1 = (array) $DB->get_records_sql($sql1);
 								//print_r($rs5);
-								if (count($rs5)) 
+								if (count($rs1)) 
 								{
 									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
-									foreach ($rs5 as $l5) {
+									foreach ($rs1 as $l1) {
 										echo "<tr class=\"odd\">";
-										echo "<td>" . $l5->nomegrupo .  "</td><td>" . $l5->quantidade .  "</td>";
+										echo "<td>" . $l1->turma .  "</td><td>" . $l1->quantidade .  "</td>";
 										;
 										echo "</td></tr>";
 									} 
