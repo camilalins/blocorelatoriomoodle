@@ -79,7 +79,7 @@
 								$sql1 .= "WHERE c.fullname = '" . $_REQUEST["escolha_curso"] . "' ";
 								$sql1 .= "GROUP BY g.id; ";
 																	
-								$rs5 = (array) $DB->get_records_sql($sql5);
+								$rs1 = (array) $DB->get_records_sql($sql1);
 								//print_r($rs5);
 								if (count($rs1)) 
 								{
