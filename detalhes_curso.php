@@ -25,7 +25,7 @@
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 44%;"><!--Quantidade de alunos no curso-->
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> <?php echo $total_aluno->quantidade; ?> Para o total de Alunos</span>
 				<div class="info-box-content">
 					<?php
 						require_once("../../config.php");
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 	
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de tutores no curso-->
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 45%;"><!--Quantidade de tutores no curso-->
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores</span>
 				<div class="info-box-content">
@@ -184,131 +184,43 @@
 						<small>Total de Tutores</small> 
 					</span>
 				</div>
-				<table class="table no-margin">
-						<tbody>
-							<?php
-								require_once("../../config.php");
-								global $DB;
-								$sql5 = "SELECT DISTINCT u.id, CONCAT(u.firstname,u.lastname) AS name,u.email,r.name AS profile,r.shortname AS profileshortname,g.name AS turma,u.institution,from_unixtime(u.lastaccess, '%d/%m/%Y %H:%i:%s') AS lastaccess ";
-								$sql5 .= "FROM mdl_role_assignments rs ";
-								$sql5 .= "INNER JOIN mdl_role r ON r.id=rs.roleid ";
-								$sql5 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
-								$sql5 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-								$sql5 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
-								$sql5 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql5 .= "INNER JOIN mdl_groups_members m ON g.id=m.groupid ";
-								$sql5 .= "WHERE e.contextlevel=50 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
-																	
-								$rs5 = (array) $DB->get_records_sql($sql5);
-								//print_r($rs5);
-								if (count($rs5)) 
-								{
-									echo "<thead><tr role=\"row\"><th>Nome</th><th>Email</th><th>Papel</th><th>Grupo</th><th>Último Acesso</th></tr></thead>"; 
-									foreach ($rs5 as $l5) {
-										echo "<tr class=\"odd\">";
-										echo "<td>" . $l5->name .  "</td><td>" . $l5->email .  "</td><td>" . $l5->profeileshortname .  "</td><td>" . $l5->turma .  "</td><td>" . $l5->lastaccess .  "</td>";
-										;
-										echo "</td></tr>";
-									} 
-								};
-							?>
-						</tbody>
-				</table>
-			</div>
-		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-	</div>
-</section>
-
-<section>
-	<h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
-	<div class="rows">
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
-				<div class="info-box-content">
+				<div class="table">
 					<table class="table no-margin">
-						<tbody>
-							<?php
-								require_once("../../config.php");
-								global $DB;
-								$sql1 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-								$sql1 .= "FROM mdl_groups_members m ";
-								$sql1 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-								$sql1 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-								$sql1 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
-								$sql1 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-								$sql1 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-								$sql1 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid = 5 OR rs.roleid IS NULL) ";
-								$sql1 .= "GROUP BY g.id; ";
-																	
-								$rs1 = (array) $DB->get_records_sql($sql1);
-								//print_r($rs5);
-								if (count($rs1)) 
-								{
-									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
-									foreach ($rs1 as $l1) {
-										echo "<tr class=\"odd\">";
-										echo "<td>" . $l1->turma .  "</td><td>" . $l1->quantidade .  "</td>";
-										;
-										echo "</td></tr>";
-									} 
-								};
-							?>
-						</tbody>
+							<tbody>
+								<?php
+									require_once("../../config.php");
+									global $DB;
+									$sql5 = "SELECT DISTINCT u.id, CONCAT(u.firstname,u.lastname) AS name,u.email,r.name AS profile,r.shortname AS profileshortname,g.name AS turma,u.institution,from_unixtime(u.lastaccess, '%d/%m/%Y %H:%i:%s') AS lastaccess ";
+									$sql5 .= "FROM mdl_role_assignments rs ";
+									$sql5 .= "INNER JOIN mdl_role r ON r.id=rs.roleid ";
+									$sql5 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+									$sql5 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+									$sql5 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+									$sql5 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
+									$sql5 .= "INNER JOIN mdl_groups_members m ON g.id=m.groupid ";
+									$sql5 .= "WHERE e.contextlevel=50 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+																		
+									$rs5 = (array) $DB->get_records_sql($sql5);
+									//print_r($rs5);
+									if (count($rs5)) 
+									{
+										echo "<thead><tr role=\"row\"><th>Nome</th><th>Email</th><th>Papel</th><th>Grupo</th><th>Último Acesso</th></tr></thead>"; 
+										foreach ($rs5 as $l5) {
+											echo "<tr class=\"odd\">";
+											echo "<td>" . $l5->name .  "</td><td>" . $l5->email .  "</td><td>" . $l5->profeileshortname .  "</td><td>" . $l5->turma .  "</td><td>" . $l5->lastaccess .  "</td>";
+											;
+											echo "</td></tr>";
+										} 
+									};
+								?>
+							</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+	
 	</div>
 </section>
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
