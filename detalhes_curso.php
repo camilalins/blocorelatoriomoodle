@@ -348,7 +348,7 @@
 								$sql7 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
 								$sql7 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
 								$sql7 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql7 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND p.userid=rs.userid  AND p.timecompleted > 0 ";
+								$sql7 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND p.userid=rs.userid  AND p.timecompleted IS NULL ";
 								$sql7 .= "group by g.name ";
 										  
 								$rs7 = (array) $DB->get_records_sql($sql7);
