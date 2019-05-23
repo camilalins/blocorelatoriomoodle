@@ -24,26 +24,27 @@
 	<div class="rows">
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 44%;"><!--Quantidade de alunos no curso-->
-			<div class="info-box">
+		<?php
+			require_once("../../config.php");
+			global $DB;
+			$sql2 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
+			$sql2 .= "FROM mdl_groups_members m ";
+			$sql2 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+			$sql2 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+			$sql2 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
+			$sql2 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+			$sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+			$sql2 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+			$sql2 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid = 5 OR rs.roleid IS NULL) ";
+																	
+			$aluno = (array) $DB->get_records_sql($sql2);
+			$total_aluno = array_shift($aluno);
+		?>
+			<div class="info-box1">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> <?php echo $total_aluno->quantidade; ?> Para o total de Alunos</span>
 				<div class="info-box-content">
-					<?php
-						require_once("../../config.php");
-						global $DB;
-						$sql2 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-						$sql2 .= "FROM mdl_groups_members m ";
-						$sql2 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-						$sql2 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-						$sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-						$sql2 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-						$sql2 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid = 5 OR rs.roleid IS NULL) ";
-																	
-						$aluno = (array) $DB->get_records_sql($sql2);
-						$total_aluno = array_shift($aluno);
-					?>
-					<!--Gráfico 1 Alunos x Turma-->
+					
+					<!--Gráfico Alunos x Turma-->
 					<?php
 						require_once("../../config.php");
 						global $DB;
@@ -96,7 +97,7 @@
 						google.setOnLoadCallback(drawChart);
 					</script>
 					<!--fim grafico 1-->
-					<div class="grafico4">
+					<div class="grafico8">
 									<div class="description-block border-right">
 										  <?php
 											if (!empty($rs3))
