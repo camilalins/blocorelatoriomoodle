@@ -239,7 +239,7 @@
 								$sql6 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
 								$sql6 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
 								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.id=67 and p.userid=rs.userid  AND p.timecompleted > 0 ";
+								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' and p.userid=rs.userid  AND p.timecompleted > 0 ";
 								$sql6 .= "group by c.name ";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
