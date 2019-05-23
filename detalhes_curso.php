@@ -25,7 +25,7 @@
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de alunos no curso-->
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos no curso</span>
 				<div class="info-box-content">
 					<?php
 						require_once("../../config.php");
@@ -56,7 +56,7 @@
 						  //no qual a primeira posição são os nomes das colunas
 						  <?php
 						  $rs1 = (array) $DB->get_records_sql($sql1);
-							if (count($total_aluno)) 
+							if (count($rs1)) 
 							{
 							  echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
 							  foreach ($rs1 as $l) 
