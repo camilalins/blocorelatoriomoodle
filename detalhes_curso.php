@@ -39,7 +39,7 @@
 								$sql1 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
 								$sql1 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
 								$sql1 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid || 5 OR rs.roleid IS NULL) ";
+								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
 								$sql1 .= "GROUP BY g.id; ";
 																	
 								$rs1 = (array) $DB->get_records_sql($sql1);
