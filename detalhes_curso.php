@@ -23,7 +23,7 @@
 	<h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
 	<div class="rows">
 	
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de alunos no curso-->
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 44%;"><!--Quantidade de alunos no curso-->
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos</span>
 				<div class="info-box-content">
@@ -72,10 +72,10 @@
 								$rs3 = (array) $DB->get_records_sql($sql3);
 								if (count($rs3)) 
 								{
-								echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade'],"; 
+								echo "var data = google.visualization.arrayToDataTable([\n\r['Turma', 'Quantidade'],"; 
 								foreach ($rs3 as $l3) 
 								{
-									echo "['" . $l3->curso .  "'," . $l3->quantidade .  "],\n\r";
+									echo "['" . $l3->turma .  "'," . $l3->quantidade .  "],\n\r";
 								} 
 								echo "]);";
 								};
@@ -96,10 +96,10 @@
 						google.setOnLoadCallback(drawChart);
 					</script>
 					<!--fim grafico 1-->
-					<div class="grafico1">
+					<div class="grafico">
 									<div class="description-block border-right">
 										  <?php
-											if (!empty($rs))
+											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
 											  echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
@@ -111,7 +111,6 @@
 											  echo "<p>Nenhum curso encontrado</p>";
 											}
 										  ?>
-										<h5 class="description-header">Livre | Online</h5>
 									</div>
 					</div>
 					<span class="info-box-number">
@@ -138,7 +137,7 @@
 								$sql1 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
 								$sql1 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
 								$sql1 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+								$sql1 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid = 5 OR rs.roleid IS NULL) ";
 								$sql1 .= "GROUP BY g.id; ";
 																	
 								$rs1 = (array) $DB->get_records_sql($sql1);
