@@ -227,33 +227,32 @@
 					<table class="table no-margin">
 						<tbody>
 							<?php
-									require_once("../../config.php");
-									global $DB;
-									$sql6 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name as turma, COUNT(u.id) AS quantidade ";
-									$sql6 .= "FROM mdl_role_assignments rs ";
-									$sql6 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
-									$sql6 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-									$sql6 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-									$sql6 .= "INNER JOIN mdl_enrol en ON  e.instanceid=en.courseid ";
-									$sql6 .= "INNER JOIN mdl_user_enrolments ue ON en.id=ue.enrolid ";
-									$sql6 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
-									$sql6 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
-									$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-									$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.id=67 and p.userid=rs.userid  AND p.timecompleted > 0 ";
-									$sql6 .= "group by c.name ";
-									$sql6 .= "ORDER BY p.timecompleted DESC ";
+								require_once("../../config.php");
+								global $DB;
+								$sql6 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name as turma, COUNT(u.id) AS quantidade ";
+								$sql6 .= "FROM mdl_role_assignments rs ";
+								$sql6 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
+								$sql6 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+								$sql6 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+								$sql6 .= "INNER JOIN mdl_enrol en ON  e.instanceid=en.courseid ";
+								$sql6 .= "INNER JOIN mdl_user_enrolments ue ON en.id=ue.enrolid ";
+								$sql6 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
+								$sql6 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
+								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
+								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.id=67 and p.userid=rs.userid  AND p.timecompleted > 0 ";
+								$sql6 .= "group by c.name ";
 										  
-									$rs6 = (array) $DB->get_records_sql($sql6);
-									if (count($rs6)) 
-									{
-										echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
-										foreach ($rs6 as $l6) {
-											echo "<tr class=\"odd\">";
-											echo "<td>" . $l6->turma .  "</td><td>" . $l6->quantidade .  "</td>";
-											;
-											echo "</td></tr>";
-										} 
-									};
+								$rs6 = (array) $DB->get_records_sql($sql6);
+								if (count($rs6)) 
+								{
+									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
+									foreach ($rs6 as $l6) {
+										echo "<tr class=\"odd\">";
+										echo "<td>" . $l6->turma .  "</td><td>" . $l6->quantidade .  "</td>";
+										;
+										echo "</td></tr>";
+									} 
+								};
 							?>
 						</tbody>
 					</table>
@@ -276,7 +275,7 @@
 								$rs6 = (array) $DB->get_records_sql($sql6);
 								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
 								$positioncolor = 0;
-								if (count($rs5)) 
+								if (count($rs6)) 
 								{
 
 									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
@@ -309,7 +308,7 @@
 					<div class="grafico6">
 						<div class="description-block border-right border-none">
 							<?php
-											if (!empty($rs5))
+											if (!empty($rs6))
 											{
 											  echo "<ul style=\"list-style:none;margin:0!important;\">";
 											  echo "<li id=\"chart_div6\"></li>";
