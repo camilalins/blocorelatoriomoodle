@@ -25,7 +25,7 @@
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de alunos no curso-->
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos</span>
 				<div class="info-box-content">
 					<?php
 						require_once("../../config.php");
@@ -50,77 +50,9 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de tutores no curso-->
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 20%;">
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
-				<div class="info-box-content">
-					<?php
-						require_once("../../config.php");
-						global $DB;
-						$sql2 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-						$sql2 .= "FROM mdl_groups_members m ";
-						$sql2 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-						$sql2 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
-						$sql2 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-						$sql2 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-						$sql2 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-						$sql2 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
-																	
-						$aluno = (array) $DB->get_records_sql($sql2);
-						$total_aluno = array_shift($aluno);
-					?>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<span class="info-box-number">
-						<?php echo $total_aluno->quantidade; ?> 
-						<small>Total de Alunos</small> 
-					</span>
-				</div>
-			</div>
-		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Separados por Grupo</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Alunos separados por Turma</span>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
@@ -156,6 +88,70 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;"><!--Quantidade de tutores no curso-->
+			<div class="info-box">
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores</span>
+				<div class="info-box-content">
+					<?php
+						require_once("../../config.php");
+						global $DB;
+						$sql3 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
+						$sql3 .= "FROM mdl_groups_members m ";
+						$sql3 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+						$sql3 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+						$sql3 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
+						$sql3 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+						$sql3 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
+						$sql3 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+						$sql3 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+																	
+						$tutores = (array) $DB->get_records_sql($sql3);
+						$total_tutores = array_shift($tutores);
+					?>
+					
+					<span class="info-box-number">
+						<?php echo $total_tutores->quantidade; ?> 
+						<small>Total de Tutores</small> 
+					</span>
+				</div>
+			</div>
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
 	</div>
 </section>
 
