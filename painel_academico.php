@@ -64,7 +64,7 @@
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 				<div class="info-box-topo">
 					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate" style="color:#51666C;"></i></span>
-						<a href="cadastro_geral.php" style="font-weight:800!important;"> <?php echo $total_user->quantidade; ?></a>
+						<a href="cadastro_geral.php" style="font-weight:800!important; font-size: 19px;"> <?php echo $total_user->quantidade; ?></a>
 					<div class="info-box-content">
 						<span class="info-box-number">
 							<a href="cadastro_geral.php">
@@ -76,11 +76,12 @@
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
 				<div class="info-box-topo">
-					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
+					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book" style="color:#51666C;"></i></span>
+						<a href="curso_turma.php" style="font-weight:800!important; font-size: 19px;><?php echo $total_curso_ativo->quantidade; ?><small>Cursos Cadastrados</small></a>
 					<div class="info-box-content">
 						<span class="info-box-number">
-							<a href="curso_turma.php"><?php echo $total_curso_ativo->quantidade; ?> 
-								<small>Cursos Cadastrados</small>
+							<a href="curso_turma.php">
+								<small style="font-weight:100!important;">Cursos Cadastrados</small>
 							</a>
 						</span>
 					</div>
@@ -89,15 +90,8 @@
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
 				<div class="info-box-topo">
 					<span class="info-box-icon bg-aqua">
-						<i class="fas fa-bullhorn" aria-hidden="true"></i>
+						<i class="fas fa-bullhorn" aria-hidden="true"></i> <a href="pesquisa_satisfacao.php"> <small>Pesquisa de Satisfação</small></a>
 					</span>
-					<div class="info-box-content">
-						<span class="info-box-number">
-							<a href="pesquisa_satisfacao.php">
-								<small>Pesquisa de Satisfação</small>
-							</a>
-						</span>
-					</div>
 				</div>
 			</div>
 		</div>  
