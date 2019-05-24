@@ -63,7 +63,9 @@
 		<div class="rows">
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 				<div class="info-box-topo">
-					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
+					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><span class="info-box-number"><a href="cadastro_geral.php"> <?php echo $total_user->quantidade; ?> 
+								<small>Usuários Cadastrados</small> 
+							</a>
 					<div class="info-box-content">
 						<span class="info-box-number">
 							<a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> 
@@ -230,10 +232,10 @@
 					
 					<div class="info-box-content">
 						<span class="info-box-number">
-							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small>Escolha o curso que deseja e o departamento</small></h3>
+							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small>  Detalhes </small></h3>
 						</span>
 						<form action="detalhes_curso.php" method="post" class="form-horizontal">
-							<div class="input-group input-group-sm">
+							<div class="input-group input-group-sm">    
 								<?php
 
 									require_once("../../config.php");
