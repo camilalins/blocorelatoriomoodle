@@ -217,21 +217,12 @@
 	
 <section>
 	<div class="rows">
-		<div class="info-box-topo">
-			<div class="info-box-content">
-				<span class="info-box-number">
-					<a href="consulta_user.php">
-						<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-address-book"></i></span> <small>Cursos do Usuário</small>
-					</a>
-				</span>
-			</div>
-		</div>
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 85%;">
 				<div class="info-box-topo">
 					
 					<div class="info-box-content">
 						<span class="info-box-number">
-							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small>  Detalhes </small></h3>
+							<h3 class="box-title"><span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><small> Detalhes Sobre o Curso </small></h3>
 						</span>
 						<form action="detalhes_curso.php" method="post" class="form-horizontal">
 							<div class="input-group input-group-sm">    
