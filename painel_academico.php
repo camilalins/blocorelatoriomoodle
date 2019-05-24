@@ -76,7 +76,7 @@
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
 				<div class="info-box-topo">
-					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book"></i></span>
+					<span class="info-box-icon bg-cornflowerblue"><i class="fas fa-book" style="color:#51666C;"></i></span>
 					<a href="curso_turma.php" style="font-weight:800!important; font-size:20px; "><?php echo $total_curso_ativo->quantidade; ?></a>
 					<div class="info-box-content">
 						<span class="info-box-number">
