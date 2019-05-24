@@ -63,12 +63,11 @@
 		<div class="rows">
 			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 				<div class="info-box-topo">
-					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span><span class="info-box-number"><a href="cadastro_geral.php"> <?php echo $total_user->quantidade; ?> 
-								<small>Usuários Cadastrados</small> 
-							</a>
+					<span class="info-box-icon bg-dodgerblue"><i class="fas fa-user-graduate"></i></span>
+						<a href="cadastro_geral.php"> <?php echo $total_user->quantidade; ?></a>
 					<div class="info-box-content">
 						<span class="info-box-number">
-							<a href="cadastro_geral.php"><?php echo $total_user->quantidade; ?> 
+							<a href="cadastro_geral.php">
 								<small>Usuários Cadastrados</small> 
 							</a>
 						</span>
