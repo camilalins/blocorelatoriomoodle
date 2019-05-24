@@ -103,7 +103,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 400px; height: 300px; margin: 0px -36px;\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
 											}
 											else
@@ -222,7 +222,7 @@
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários aprovados</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
@@ -262,7 +262,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue">
-					<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
+					<i class="fas fa-chart-bar"></i> Quantidade Separados por Grupo
 				</span>
 				<div class="info-box-content">
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -331,7 +331,7 @@
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Reprovados</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Não Concludentes</span>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
@@ -371,7 +371,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
 			<div class="info-box">
 				<span class="info-box-icon bg-dodgerblue">
-					<i class="fas fa-chart-bar"></i> Usuários Separados por Grupo
+					<i class="fas fa-chart-bar"></i> Quantidade Separados por Grupo
 				</span>
 				<div class="info-box-content">
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -401,7 +401,7 @@
 								title: ' ',
 								chartArea: {width: '40%'},
 								hAxis: {
-									title: 'Número de Reprovados',
+									title: 'Número de Não Concludentes',
 									minValue: 0
 								},
 								vAxis: {
