@@ -87,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
+			<!--<div class="col-md-3 col-sm-6 col-xs-12" style="width: 33%;">
 				<div class="info-box-topo">
 					<span class="info-box-icon bg-aqua">
 						<i class="fas fa-bullhorn" aria-hidden="true"></i>
@@ -100,7 +100,7 @@
 						</span>
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>  
 	</section>
 
@@ -218,7 +218,7 @@
 	
 <section>
 	<div class="rows">
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 85%;">
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 100%;">
 				<div class="info-box-topo">
 					
 					<div class="info-box-content">
