@@ -503,7 +503,7 @@
 											if (!empty($rs))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_online.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
@@ -521,7 +521,7 @@
 											if (!empty($rs2))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart2\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart2\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
@@ -541,7 +541,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
@@ -559,7 +559,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart4\" style=\"width: 600px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart4\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
 											  echo "<a href=\"grafico_presencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
