@@ -20,7 +20,7 @@
 
 
 <section>
-	<h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
+	<small><a class="btn btn-comum" style="    margin: -1px 0px 0px 5px;" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small> <h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
 	<div class="rows">
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 44%;"><!--Quantidade de alunos no curso-->
@@ -157,20 +157,17 @@
 	
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 48%;"><!--Quantidade de tutores no curso-->
 			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Tutores / Moderadores / Professores</span>
 				<div class="info-box-content">
 					<?php
 						require_once("../../config.php");
 						global $DB;
-						$sql4 = "SELECT g.name as turma, COUNT(m.id) AS quantidade ";
-						$sql4 .= "FROM mdl_groups_members m ";
-						$sql4 .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-						$sql4 .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-						$sql4 .= "INNER JOIN mdl_role_assignments rs ON rs.userid=m.userid ";
-						$sql4 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
+						$sql4 = "SELECT COUNT(u.id) AS quantidade ";
+						$sql4 .= "FROM mdl_role_assignments rs ";
+						$sql4 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
 						$sql4 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-						$sql4 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-						$sql4 .= "WHERE e.contextlevel=50 AND g.courseid=e.instanceid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (rs.roleid <> 5 OR rs.roleid IS NULL) ";
+						$sql4 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+						$sql4 .= "WHERE e.contextlevel=50 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND rs.roleid <> 5 ";
 																	
 						$tutores = (array) $DB->get_records_sql($sql4);
 						$total_tutores = array_shift($tutores);
