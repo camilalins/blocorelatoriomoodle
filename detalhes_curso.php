@@ -198,10 +198,10 @@
 									//print_r($rs5);
 									if (count($rs5)) 
 									{
-										echo "<thead><tr role=\"row\"><th>Nome</th><th>Email</th><th>Papel</th><th>Grupo</th><th>Último Acesso</th></tr></thead>"; 
+										echo "<thead><tr role=\"row\"><th>Nome</th><th>Email</th><th>Papel</th><th>Último Acesso</th></tr></thead>"; 
 										foreach ($rs5 as $l5) {
 											echo "<tr class=\"odd\">";
-											echo "<td>" . $l5->name .  "</td><td>" . $l5->email .  "</td><td>" . $l5->profeileshortname .  "</td><td>" . $l5->turma .  "</td><td>" . $l5->lastaccess .  "</td>";
+											echo "<td>" . $l5->name .  "</td><td>" . $l5->email .  "</td><td>" . $l5->profeileshortname .  "</td><td>" . $l5->lastaccess .  "</td>";
 											;
 											echo "</td></tr>";
 										} 
