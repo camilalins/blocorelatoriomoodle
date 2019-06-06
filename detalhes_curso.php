@@ -227,7 +227,7 @@
 					$sql8 .= "INNER JOIN mdl_user u ON cc.userid=u.id ";
 					$sql8 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
 					$sql8 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
-					$sql8 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "'";
+					$sql8 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 																	
 					$total = (array) $DB->get_records_sql($sql8);
 					$total_concludente = array_shift($total);
