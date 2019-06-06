@@ -174,8 +174,8 @@
 					?>
 					
 					<span class="info-box-number">
-						<?php echo $total_tutores->quantidade; ?> 
-						<small>Total de Tutores</small> 
+						<!--<?php echo $total_tutores->quantidade; ?> 
+						<small>Total de Tutores</small> -->
 					</span>
 				</div>
 				<div class="table">
@@ -224,9 +224,8 @@
 					global $DB;
 					$sql8 = "SELECT COUNT(u.id) AS quantidade ";
 					$sql8 .= "FROM mdl_course_completions cc ";
-					$sql8 .= "INNER JOIN mdl_user u ON cc.userid=u.id ";
+					$sql8 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
 					$sql8 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
-					$sql8 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
 					$sql8 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 																	
 					$total = (array) $DB->get_records_sql($sql8);
