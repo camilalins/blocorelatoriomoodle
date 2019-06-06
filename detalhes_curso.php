@@ -219,6 +219,21 @@
 	<div class="rows">
 		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
 			<div class="info-box">
+				<?php
+					require_once("../../config.php");
+					global $DB;
+					$sql8 = "SELECT COUNT(u.id) AS quantidade ";
+					$sql8 .= "FROM mdl_course_completions cc ";
+					$sql8 .= "INNER JOIN mdl_user u ON cc.userid=u.id ";
+					$sql8 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+					$sql8 .= "INNER JOIN mdl_course c ON c.id=e.instanceid ";
+					$sql8 .= "WHERE cc.timecompleted > 0  AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+																	
+					$total = (array) $DB->get_records_sql($sql8);
+					$total_concludente = array_shift($total);
+				?>
+					
+			
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span>
 				<div class="info-box-content">
 					<table class="table no-margin">
