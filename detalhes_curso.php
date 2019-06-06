@@ -239,17 +239,11 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name AS turma, COUNT(u.id) AS quantidade ";
-								$sql6 .= "FROM mdl_role_assignments rs ";
-								$sql6 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
-								$sql6 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-								$sql6 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-								$sql6 .= "INNER JOIN mdl_enrol en ON  e.instanceid=en.courseid ";
-								$sql6 .= "INNER JOIN mdl_user_enrolments ue ON en.id=ue.enrolid ";
-								$sql6 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
-								$sql6 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
-								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql6 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND p.userid=rs.userid  AND p.timecompleted > 0 ";
+								$sql6 = "SELECT g.name, COUNT(cc.userid) ";
+								$sql6 .= "FROM mdl_course_completions cc ";
+								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=cc.course ";
+								$sql6 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+								$sql6 .= "WHERE cc.timecompleted > 0  AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 								$sql6 .= "group by g.name ";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
