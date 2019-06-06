@@ -239,7 +239,7 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT g.name, COUNT(cc.userid) ";
+								$sql6 = "SELECT g.name as turma, COUNT(cc.userid) as quantidade, c.fullname AS curso ";
 								$sql6 .= "FROM mdl_course_completions cc ";
 								$sql6 .= "INNER JOIN mdl_groups g ON g.courseid=cc.course ";
 								$sql6 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
