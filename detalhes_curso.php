@@ -234,7 +234,7 @@
 				?>
 					
 			
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span><b> <?php echo $total_concludente->quantidade; ?></b>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
