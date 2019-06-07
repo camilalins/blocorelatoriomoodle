@@ -248,7 +248,7 @@
 								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' AND (papel.roleid = 5 OR papel.roleid IS NULL) ";
 								$sql6 .= "group by g.id ";
 										  
-								$rs6 = (array) $DB->get_records_sql($sql6, array $params=null, $limitfrom=0, $limitnum=0));
+								$rs6 = (array) $DB->get_records_sql($sql6, array $params=null, $limitfrom=0, $limitnum=0);
 								print_r($rs6);
 								if (count($rs6)) 
 								{
