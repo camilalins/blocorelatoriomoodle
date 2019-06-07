@@ -239,11 +239,11 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT cc.id, g.id, g.name AS Turma, COUNT(g.id) as quantidade ";
+								$sql6 = "SELECT cc.id, g.name AS turma, COUNT(g.id) as quantidade ";
 								$sql6 .= "FROM mdl_course_completions cc ";
 								$sql6 .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
-								$sql6 .= "LEFT JOIN mdl_groups g ON gm.groupid = g.id ";
-								$sql6 .= "LEFT JOIN mdl_course c ON g.courseid = c.id ";
+								$sql6 .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
+								$sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
 								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' AND cc.timecompleted > 0 ";
 								$sql6 .= "group by g.id ";
 										  
