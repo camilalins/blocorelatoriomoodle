@@ -240,6 +240,24 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
+								// Puxar todas as turmas desse curso (id, group)
+								$sql_turmasCurso = "SELECT g.id, g.name ";
+								$sql_turmasCurso .= " FROM mdl_groups g";
+								$sql_turmasCurso .= " FROM mdl_groups g";
+								$sql_turmasCurso .= " INNER JOIN mdl_course c ON g.courseid = c.id"
+								$sql_turmasCurso .= " WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+								
+								$rs_turmasCurso = array) $DB->get_records_sql($sql_turmasCurso);
+								echo "<pre>";
+								print_r($rs_turmasCurso);
+								echo "</pre>";
+								echo "<br>";
+								echo "<br>";
+								echo "<br>";
+								
+								// foreach pegando o id de cada resultado da query acima e gerando uma linha nova para cada grupo / Concludentes
+								//
+								
 								$sql6 = "SELECT g.id, g.name AS turma, COUNT(g.id) as quantidade ";
 								$sql6 .= "FROM mdl_course_completions cc ";
 								$sql6 .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
