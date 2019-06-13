@@ -240,24 +240,11 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								
-								$sql_turmasCurso = "SELECT g.id, g.name ";
-								$sql_turmasCurso .= "FROM mdl_groups g ";
-								$sql_turmasCurso .= "INNER JOIN mdl_course c ON g.courseid = c.id "
-								$sql_turmasCurso .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
-								echo $sql_turmasCurso;
-								
-								echo "<br>";
-								echo "<br>";
-								echo "<br>";
-								
-								$sql6 = "SELECT g.id, g.name AS turma, COUNT(g.id) as quantidade ";
-								$sql6 .= "FROM mdl_course_completions cc ";
-								$sql6 .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
+								$sql6 = "SELECT g.id, g.name AS turma ";
+								$sql6 .= "FROM mdl_groups g ";
 								$sql6 .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
 								$sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' AND cc.timecompleted > 0 ";
-								//$sql6 .= "group by g.id ";
+								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
 								print_r($rs6);
@@ -266,7 +253,7 @@
 									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
 									foreach ($rs6 as $l6) {
 										echo "<tr class=\"odd\">";
-										echo "<td>" . $l6->turma .  "</td><td>" . $l6->quantidade .  "</td>";
+										echo "<td>" . $l6->turma .  "</td><td> 0 </td>";
 										;
 										echo "</td></tr>";
 									} 
