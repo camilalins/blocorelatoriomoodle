@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../config.php");
-require_once("../../inc/global.php");
+
 
 global $DB;
 
@@ -20,7 +20,7 @@ $sql .= "FROM mdl_course_completions cc ";
 $sql .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
 $sql .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
 $sql .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-$sql .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' AND cc.timecompleted > 0 ";
+$sql .= "WHERE c.fullname='Curso Básico em Segurança da Informação' AND cc.timecompleted > 0 ";
 $sql .= "group by g.id ";
 
 $rs = (array) $DB->get_records_sql($sql);
