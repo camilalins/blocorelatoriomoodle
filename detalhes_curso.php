@@ -246,13 +246,13 @@
 								$sql_turmasCurso .= " INNER JOIN mdl_course c ON g.courseid = c.id "
 								$sql_turmasCurso .= " WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 								
-								$rs_turmasCurso = (array) $DB->get_records_sql($sql_turmasCurso);
-								echo "<pre>";
-								print_r($rs_turmasCurso);
-								echo "</pre>";
-								echo "<br>";
-								echo "<br>";
-								echo "<br>";
+								//$rs_turmasCurso = (array) $DB->get_records_sql($sql_turmasCurso);
+								///echo "<pre>";
+								//print_r($rs_turmasCurso);
+								//echo "</pre>";
+								//echo "<br>";
+								//echo "<br>";
+								//echo "<br>";
 								
 								// foreach pegando o id de cada resultado da query acima e gerando uma linha nova para cada grupo / Concludentes
 								//
