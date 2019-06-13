@@ -242,12 +242,11 @@
 								global $DB;
 								// Puxar todas as turmas desse curso (id, group)
 								$sql_turmasCurso = "SELECT g.id, g.name ";
-								$sql_turmasCurso .= " FROM mdl_groups g";
-								$sql_turmasCurso .= " FROM mdl_groups g";
-								$sql_turmasCurso .= " INNER JOIN mdl_course c ON g.courseid = c.id"
+								$sql_turmasCurso .= " FROM mdl_groups g ";
+								$sql_turmasCurso .= " INNER JOIN mdl_course c ON g.courseid = c.id "
 								$sql_turmasCurso .= " WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 								
-								$rs_turmasCurso = array) $DB->get_records_sql($sql_turmasCurso);
+								$rs_turmasCurso = (array) $DB->get_records_sql($sql_turmasCurso);
 								echo "<pre>";
 								print_r($rs_turmasCurso);
 								echo "</pre>";
