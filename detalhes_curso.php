@@ -240,7 +240,7 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT cc.id, g.name AS turma, COUNT(g.id) as quantidade ";
+								$sql6 = "SELECT g.name AS turma, COUNT(g.id) as quantidade ";
 								$sql6 .= "FROM mdl_course_completions cc ";
 								$sql6 .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
 								$sql6 .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
