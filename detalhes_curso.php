@@ -242,7 +242,6 @@
 								global $DB;
 								$sql6 = "SELECT g.id, g.name AS turma ";
 								$sql6 .= "FROM mdl_groups g ";
-								$sql6 .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
 								$sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
 								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 										  
