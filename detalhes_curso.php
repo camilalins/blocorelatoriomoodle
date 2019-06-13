@@ -246,9 +246,9 @@
 								$sql6 .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
 								$sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
 								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' AND cc.timecompleted > 0 ";
-								$sql6 .= "group by g.id ";
+								//$sql6 .= "group by g.id ";
 										  
-								$rs6 = (array) $DB->get_records_sql_menu($sql6);
+								$rs6 = (array) $DB->get_records_sql($sql6);
 								print_r($rs6);
 								if (count($rs6)) 
 								{
