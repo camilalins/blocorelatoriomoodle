@@ -255,9 +255,8 @@
                                         $sql116 .= "FROM mdl_course_completions cc ";
                                         $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
-                                        $sql116 .= "INNER JOIN mdl_groups g ON c.id=g.courseid ";
+                                        $sql116 .= "INNER JOIN gm35_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . ") ";
                                         $sql116 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
-                                        $sql116 .= "AND g.id = " . $turma->id ;
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
 
@@ -267,8 +266,6 @@
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
                                         }
-                                        echo "<br>";
-                                        print_r($sql116);
                                     }
                                 }
                                 else
