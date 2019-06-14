@@ -241,8 +241,8 @@
                                 require_once("../../config.php");
                                 global $DB;
                                 $sql106 = "SELECT g.id, g.name ";
-                                $sql106 .= "FROM gm35_groups g ";
-                                $sql106 .= "INNER JOIN gm35_course c ON c.id = g.courseid ";
+                                $sql106 .= "FROM mdl_groups g ";
+                                $sql106 .= "INNER JOIN mdl_course c ON c.id = g.courseid ";
                                 $sql106 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
                                 //$rs6 = (array) $DB->get_records_sql($sql6);
