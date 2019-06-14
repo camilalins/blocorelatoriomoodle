@@ -267,6 +267,8 @@
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
                                         }
+                                        echo "<br>";
+                                        print_r($sql116);
                                     }
                                 }
                                 else
