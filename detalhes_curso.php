@@ -251,7 +251,7 @@
                                 {
                                     foreach ($turmas as $turma)
                                     {
-                                        $sql116 = "SELECT cc.id ";
+                                        $sql116 = "SELECT COUNT(cc.id) AS quantidade ";
                                         $sql116 .= "FROM mdl_course_completions cc ";
                                         $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
@@ -260,7 +260,13 @@
                                         $sql116 .= "AND g.id = " . $turma->id ;
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
-                                        print_r($alunosCompletos);
+
+                                        foreach ($alunosCompletos as $q)
+                                        {
+                                            echo "<tr class=\"odd\">";
+                                            echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
+                                            echo "</td></tr>";
+                                        }
                                     }
                                 }
                                 else
