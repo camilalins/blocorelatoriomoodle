@@ -233,10 +233,35 @@
 				?>
 								
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span><b> <?php echo $total_concludente->quantidade; ?></b>
+				<a href="exportar.php">baixar</a>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
+<<<<<<< HEAD
 							
+=======
+                            <?php
+                                require_once("../../config.php");
+                                global $DB;
+                                $sql6 = "SELECT g.id, g.name AS turma ";
+                                $sql6 .= "FROM mdl_groups g ";
+                                $sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+                                $sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+
+                                $rs6 = (array) $DB->get_records_sql($sql6);
+                                print_r($rs6);
+                                if (count($rs6))
+                                {
+                                    echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
+                                    foreach ($rs6 as $l6) {
+                                        echo "<tr class=\"odd\">";
+                                        echo "<td>" . $l6->turma .  "</td><td> 0 </td>";
+                                        ;
+                                        echo "</td></tr>";
+                                    }
+                                };
+                            ?>
+>>>>>>> 96eb4d3061db0da58e84cb138280eb6e043c0a2f
 						</tbody>
 					</table>
 				</div>
