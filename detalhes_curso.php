@@ -243,7 +243,7 @@
 								$sql6 = "";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
-								print_r($rs6);
+								//print_r($rs6);
 								/*if (count($rs6))
 								{
 									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
