@@ -271,7 +271,7 @@
                                 }
                                 else
                                 {
-                                    echo "Não há turmas a serem mostradas.";
+                                    echo "Não existem turmas a serem mostradas.";
                                 }
 
                                 /*if (count($rs6))
