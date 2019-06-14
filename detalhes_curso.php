@@ -256,10 +256,10 @@
                                         $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
                                         $sql116 .= "INNER JOIN mdl_groups_members gm ON gm.userid = u.id ";
-                                        $sql116 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $turma->id . "' AND u.deleted = 0 AND u.suspended = 0 ";
-
-                                        $alunosCompletos = (array) $DB->get_records_sql($sql116);
-                                        print_r($alunosCompletos);
+                                        $sql116 .= "WHERE cc.timecompleted > 0 AND c.fullname= " . $turma->id . " AND u.deleted = 0 AND u.suspended = 0 ";
+                                        echo $sql116;
+                                        //$alunosCompletos = (array) $DB->get_records_sql($sql116);
+                                        //print_r($alunosCompletos);
                                     }
                                 }
                                 else
