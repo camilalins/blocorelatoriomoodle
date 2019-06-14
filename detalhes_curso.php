@@ -240,7 +240,7 @@
                             <?php
                                 require_once("../../config.php");
                                 global $DB;
-                                $sql106 = "SELECT cc.id ";
+                                $sql106 = "SELECT cc.id, g.name ";
                                 $sql106 .= "FROM mdl_course_completions cc ";
                                 $sql106 .= "INNER JOIN mdl_course c ON c.id = cc.course ";
                                 $sql106 .= "INNER JOIN mdl_groups_members gm ON gm.userid = cc.userid ";
@@ -248,7 +248,9 @@
                                 $sql106 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
                                 //$rs6 = (array) $DB->get_records_sql($sql6);
+                                echo "<pre>";
                                 $resultado = (array) $DB->get_records_sql($sql106);
+                                echo "</pre>";
                                 print_r($resultado);
                                 /*if (count($rs6))
                                 {
