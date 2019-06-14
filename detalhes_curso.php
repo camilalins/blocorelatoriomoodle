@@ -249,6 +249,7 @@
 
                                 if (count($turmas))
                                 {
+                                    echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
                                     foreach ($turmas as $turma)
                                     {
                                         $sql116 = "SELECT COUNT(cc.id) AS quantidade ";
