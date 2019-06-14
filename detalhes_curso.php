@@ -256,7 +256,8 @@
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id = cc.course ";
                                         $sql116 .= "INNER JOIN mdl_groups_members gm ON gm.userid = cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_groups g ON g.id = gm.groupid ";
-                                        $sql116 .= "WHERE g.id = " . $turma->id . " AND cc.timecompleted > 0 ";
+                                        $sql116 .= "INNER JOIN gm35_user u ON u.id = cc.userid ";
+                                        $sql116 .= "WHERE g.id = " . $turma->id . " AND cc.timecompleted > 0 AND u.deleted = 0 AND u.suspended = 0 ";
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
                                         print_r($alunosCompletos);
