@@ -259,7 +259,7 @@
                                         $sql116 .= "WHERE g.id =" . $turma->id . " AND cc.timecompleted > 0 ";
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
-                                        print_r($turmas);
+                                        print_r($alunosCompletos);
                                         echo "<br>";
 
                                     }
