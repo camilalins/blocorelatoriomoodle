@@ -240,14 +240,11 @@
 							<?php
 								require_once("../../config.php");
 								global $DB;
-								$sql6 = "SELECT g.id, g.name AS turma ";
-								$sql6 .= "FROM mdl_groups g ";
-								$sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-								$sql6 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+								$sql6 = "";
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
 								print_r($rs6);
-								if (count($rs6)) 
+								/*if (count($rs6))
 								{
 									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
 									foreach ($rs6 as $l6) {
@@ -257,6 +254,7 @@
 										echo "</td></tr>";
 									} 
 								};
+								*/
 							?>
 						</tbody>
 					</table>
