@@ -240,13 +240,12 @@
                             <?php
                                 require_once("../../config.php");
                                 global $DB;
-                                $sql106 = "SELECT c.fullname as curso, g.name as turma, COUNT(g.name) as quantidade ";
-                                $sql106 .= "FROM mdl_groups g ";
-                                $sql106 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-                                $sql106 .= "LEFT JOIN mdl_groups_members gm ON gm.groupid = g.id ";
-                                $sql106 .= "LEFT JOIN mdl_course_completions cc ON gm.userid = cc.userid ";
+                                $sql106 = "SELECT cc.id ";
+                                $sql106 .= "FROM mdl_course_completions cc ";
+                                $sql106 .= "INNER JOIN mdl_course c ON c.id = cc.course ";
+                                $sql106 .= "INNER JOIN mdl_groups_members gm ON gm.userid = cc.userid ";
+                                $sql106 .= "INNER JOIN mdl_groups g ON g.id = gm.groupid ";
                                 $sql106 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
-                                $sql106 .= "group by g.name ";
 
                                 //$rs6 = (array) $DB->get_records_sql($sql6);
                                 $resultado = (array) $DB->get_records_sql($sql106);
