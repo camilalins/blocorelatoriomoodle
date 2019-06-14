@@ -251,7 +251,7 @@
                                 {
                                     foreach ($turmas as $turma)
                                     {
-                                        $sql116 = "SELECT * ";
+                                        $sql116 = "SELECT cc.id ";
                                         $sql116 .= "FROM mdl_course_completions cc ";
                                         $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
