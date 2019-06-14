@@ -250,18 +250,17 @@
 
                                 if (count($turmas))
                                 {
-                                    foreach ($turmas as $turma) {
+                                    foreach ($turmas as $turma)
+                                    {
                                         $sql116 = "SELECT cc.id, gm.groupid, g.id, g.name AS turma ";
                                         $sql116 .= "FROM mdl_course_completions cc ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id = cc.course ";
                                         $sql116 .= "INNER JOIN mdl_groups_members gm ON gm.userid = cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_groups g ON g.id = gm.groupid ";
                                         $sql116 .= "WHERE g.id =" . $turma->id . " AND cc.timecompleted > 0 ";
-
+                                        echo $sql116;
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
-                                        print_r($alunosCompletos);
-                                        echo "<br>";
-
+                                        //print_r($alunosCompletos);
                                     }
                                 }
                                 else
