@@ -247,7 +247,28 @@
 
                                 //$rs6 = (array) $DB->get_records_sql($sql6);
                                 $turmas = (array) $DB->get_records_sql($sql106);
-                                print_r($turmas);
+
+                                if (count($turmas))
+                                {
+                                    foreach ($turmas as $turma) {
+                                        $sql116 = "SELECT cc.id, gm.groupid, g.id, g.name AS turma ";
+                                        $sql116 .= "FROM gm35_course_completions cc ";
+                                        $sql116 .= "INNER JOIN gm35_course c ON c.id = cc.course ";
+                                        $sql116 .= "INNER JOIN gm35_groups_members gm ON gm.userid = cc.userid ";
+                                        $sql116 .= "INNER JOIN gm35_groups g ON g.id = gm.groupid ";
+                                        $sql116 .= "WHERE g.id =" . $turma->id . " AND cc.timecompleted > 0 ";
+
+                                        $alunosCompletos = (array) $DB->get_records_sql($sql116);
+                                        print_r($turmas);
+                                        echo "<br>";
+
+                                    }
+                                }
+                                else
+                                {
+                                    echo "Não há turmas a serem mostradas.";
+                                }
+
                                 /*if (count($rs6))
                                 {
                                     echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
