@@ -251,12 +251,11 @@
                                 {
                                     foreach ($turmas as $turma)
                                     {
-                                        $sql116 = "SELECT cc.id, gm.groupid AS idTurma ";
+                                        $sql116 = "SELECT * ";
                                         $sql116 .= "FROM mdl_course_completions cc ";
                                         $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
-                                        $sql116 .= "INNER JOIN mdl_groups_members gm ON gm.userid = u.id ";
-                                        $sql116 .= "WHERE cc.timecompleted > 0 AND gm.groupid = " . $turma->id . " AND u.deleted = 0 AND u.suspended = 0 ";
+                                        $sql116 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
                                         print_r($alunosCompletos);
