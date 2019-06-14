@@ -240,16 +240,18 @@
                             <?php
                                 require_once("../../config.php");
                                 global $DB;
-                                $sql6 = "SELECT c.fullname as curso, g.name as turma, COUNT(g.name) as quantidade ";
-                                $sql6 .= "FROM mdl_groups g ";
-                                $sql6 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-                                $sql6 .= "LEFT JOIN mdl_groups_members gm ON gm.groupid = g.id ";
-                                $sql6 .= "LEFT JOIN mdl_course_completions cc ON gm.userid = cc.userid ";
-                                $sql6 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
-                                $sql6 .= "group by g.name ";
+                                $sql106 = "SELECT c.fullname as curso, g.name as turma, COUNT(g.name) as quantidade ";
+                                $sql106 .= "FROM mdl_groups g ";
+                                $sql106 .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
+                                $sql106 .= "LEFT JOIN mdl_groups_members gm ON gm.groupid = g.id ";
+                                $sql106 .= "LEFT JOIN mdl_course_completions cc ON gm.userid = cc.userid ";
+                                $sql106 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+                                $sql106 .= "group by g.name ";
 
-                                $rs6 = (array) $DB->get_records_sql($sql6);
-                                if (count($rs6))
+                                //$rs6 = (array) $DB->get_records_sql($sql6);
+                                $resultado = (array) $DB->get_records_sql($sql106);
+                                print_r($resultado);
+                                /*if (count($rs6))
                                 {
                                     echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
                                     foreach ($rs6 as $l6) {
@@ -259,6 +261,7 @@
                                         echo "</td></tr>";
                                     }
                                 };
+                                */
                             ?>
 						</tbody>
 					</table>
