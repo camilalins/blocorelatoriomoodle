@@ -245,7 +245,7 @@
 								$sql6 .= "LEFT JOIN mdl_groups_members gm ON gm.groupid = g.id ";
 								$sql6 .= "LEFT JOIN mdl_course_completions cc ON gm.userid = cc.userid ";
 								$sql6 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
-								$sql6 .= "group by g.name ";
+								$sql6 .= "group by g.name "; 
 										  
 								$rs6 = (array) $DB->get_records_sql($sql6);
 								if (count($rs6)) 
