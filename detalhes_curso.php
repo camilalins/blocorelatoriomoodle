@@ -307,7 +307,7 @@
 								$alunosCompletos = (array) $DB->get_records_sql($sql116);
 								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
 								$positioncolor = 0;
-								if (count($rs6)) 
+								if (count($turmas)) 
 								{
 
 									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
