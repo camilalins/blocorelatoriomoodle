@@ -340,7 +340,7 @@
 					<div class="grafico6">
 						<div class="description-block border-right border-none">
 							<?php
-											if (!empty($rs6))
+											if (!empty($alunosCompletos))
 											{
 											  echo "<ul style=\"list-style:none;margin:0!important;\">";
 											  echo "<li id=\"chart_div6\"></li>";
