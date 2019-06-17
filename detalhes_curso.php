@@ -311,7 +311,7 @@
 								{
 
 									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
-									foreach ($rs6 as $l6) 
+									foreach ($alunosCompletos as $q) 
 									{
 										echo "['" . $turma->name .  "'," . $q->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
 										$positioncolor = $positioncolor + 1;
