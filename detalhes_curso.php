@@ -231,7 +231,8 @@
 					$total = (array) $DB->get_records_sql($sql8);
 					$total_concludente = array_shift($total);
 				?>
-								
+				<br>
+				<br>				
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Análise do Curso</span>
 				<span class="input-group-btn">
 					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 8px 15px; text-shadow: none; background-image: none!important;">Baixar</a>
