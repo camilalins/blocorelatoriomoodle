@@ -249,7 +249,13 @@
 
                                 $turmas = (array) $DB->get_records_sql($sql106);
 
-                                if (count($turmas))
+                                // Inicializa linha do Graf
+                                $linhaGraf = "";
+
+                                $quantidadeTurmas = count($turmas);
+                                $iTurmas = 0;
+
+                                if ($quantidadeTurmas)
                                 {
                                     echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
                                     foreach ($turmas as $turma)
@@ -263,11 +269,37 @@
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
 
+                                        $sql117 = "SELECT COUNT(cc.id) AS quantidade ";
+                                        $sql117 .= "FROM mdl_course_completions cc ";
+                                        $sql117 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
+                                        $sql117 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+                                        $sql117 .= "INNER JOIN mdl_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . " ) ";
+                                        $sql117 .= "WHERE cc.timecompleted IS NULL AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+
+                                        $alunosIncompletos = (array) $DB->get_records_sql($sql117);
+
+                                        $iTurmas = $iTurmas + 1;
+
                                         foreach ($alunosCompletos as $q)
                                         {
                                             echo "<tr class=\"odd\">";
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
+
+                                            // Monta script do chart
+                                            $linhaGraf .= "['" . $turma->name . "', " . $q->quantidade . ", ";
+                                        }
+
+                                        foreach ($alunosIncompletos as $qi)
+                                        {
+                                            if ($iTurmas == $quantidadeTurmas)
+                                            {
+                                                $linhaGraf .= $qi->quantidade . "]";
+                                            }
+                                            else
+                                            {
+                                                $linhaGraf .= $qi->quantidade . "],";
+                                            }
                                         }
                                     }
                                 }
@@ -275,18 +307,6 @@
                                 {
                                     echo "Não há turmas a serem mostradas.";
                                 }
-
-                                /*if (count($rs6))
-                                {
-                                    echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
-                                    foreach ($rs6 as $l6) {
-                                        echo "<tr class=\"odd\">";
-                                        echo "<td>" . $l6->turma .  "</td><td>" . $l6->quantidade .  "</td>";
-                                        ;
-                                        echo "</td></tr>";
-                                    }
-                                };
-                                */
                             ?>
 						</tbody>
 					</table>
@@ -301,40 +321,26 @@
 				<div class="info-box-content">
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					<script type="text/javascript">
-						google.charts.load('current', {packages: ['corechart', 'bar']});
-						google.charts.setOnLoadCallback(drawBasic);
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Turma', 'Conludentes', 'Não Concludentes'],
 
-						function drawBasic() {
-							<?php
-								$alunosCompletos = (array) $DB->get_records_sql($sql116);
-								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
-								$positioncolor = 0;
-								if (count($turmas)) 
-								{
+                                <?php
 
-									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
-									foreach ($alunosCompletos as $q) 
-									{
-										echo "['" . $turma->name .  "'," . $q->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
-										$positioncolor = $positioncolor + 1;
-									} 
-									echo "]);";
-								};
-							?>
+                                    echo $linhaGraf;
+                                ?>
 
-							var options = {
-								title: ' ',
-								chartArea: {width: '40%'},
-								hAxis: {
-									title: 'Número de Concludentes',
-									minValue: 0
-								},
-								vAxis: {
-									title: ' '
-								}
-							};
+                            ]);
 
-							var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+                            var options = {
+                                title: 'Curso / Turmas',
+                                hAxis: {title: 'Turma',  titleTextStyle: {color: '#333'}},
+                                vAxis: {minValue: 0}
+                            };
+
+                            var chart = new google.visualization.AreaChart(document.getElementById('chart_div6'));
 
 							chart.draw(data, options);
 						}
@@ -342,17 +348,17 @@
 					<div class="grafico6">
 						<div class="description-block border-right border-none">
 							<?php
-											if (!empty($alunosCompletos))
-											{
-											  echo "<ul style=\"list-style:none;margin:0!important;\">";
-											  echo "<li id=\"chart_div6\"></li>";
-											  echo "</ul>";
-											}
-											else
-											{
-											  echo "<p>Nenhum resultado encontrado</p>";
-											}
-							?>				 
+                                if (!empty($alunosCompletos))
+                                {
+                                  echo "<ul style=\"list-style:none;margin:0!important;\">";
+                                  echo "<li id=\"chart_div6\"></li>";
+                                  echo "</ul>";
+                                }
+                                else
+                                {
+                                  echo "<p>Nenhum resultado encontrado</p>";
+                                }
+							?>
 						</div>                
 					</div>						
 				</div>
