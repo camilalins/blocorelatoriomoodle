@@ -266,6 +266,9 @@
                                             echo "<tr class=\"odd\">";
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
+
+                                            // Monta script do chart
+                                            $linhaGraf =  "['" . $turma->name . "', " . $q->quantidade . ", 10]";
                                         }
                                     }
                                 }
@@ -273,18 +276,6 @@
                                 {
                                     echo "Não há turmas a serem mostradas.";
                                 }
-
-                                /*if (count($rs6))
-                                {
-                                    echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
-                                    foreach ($rs6 as $l6) {
-                                        echo "<tr class=\"odd\">";
-                                        echo "<td>" . $l6->turma .  "</td><td>" . $l6->quantidade .  "</td>";
-                                        ;
-                                        echo "</td></tr>";
-                                    }
-                                };
-                                */
                             ?>
 						</tbody>
 					</table>
@@ -303,13 +294,13 @@
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-							<?php
-								echo "['Turma', 'Conludentes', 'Não Concludentes'],";
-								echo "['T01',  20,      5],";
-                                echo "['T02',  25,      1],";
-                                echo "['T03',  15,       2],";
-                                echo "['T04',  10,      30]";
-							?>
+                                ['Turma', 'Conludentes', 'Não Concludentes'],
+
+                                <?php
+
+                                    echo $linhaGraf;
+                                ?>
+
                             ]);
 
                             var options = {
