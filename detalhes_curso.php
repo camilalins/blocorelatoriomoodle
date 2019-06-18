@@ -232,9 +232,9 @@
 					$total_concludente = array_shift($total);
 				?>
 								
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Análise do Curso</span> <b> <?php echo $total_concludente->quantidade; ?></b></span>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Análise do Curso</span>
 				<span class="input-group-btn">
-					<button type="submit" class="btn btn-info btn-flat"><a href="exportar.php">Baixar</a></button>
+					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 8px 15px; text-shadow: none; background-image: none!important;">Baixar</a>
 				</span>		
 				<div class="info-box-content">
 					<table class="table no-margin">
