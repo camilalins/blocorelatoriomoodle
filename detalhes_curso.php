@@ -247,7 +247,13 @@
 
                                 $turmas = (array) $DB->get_records_sql($sql106);
 
-                                if (count($turmas))
+                                // Inicializa linha do Graf
+                                $linhaGraf = "";
+
+                                $quantidadeTurmas = count($turmas);
+                                $iTurmas = 0;
+
+                                if ($quantidadeTurmas)
                                 {
                                     echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
                                     foreach ($turmas as $turma)
@@ -267,8 +273,18 @@
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
 
+                                            $iTurmas = $iTurmas + 1;
                                             // Monta script do chart
-                                            $linhaGraf =  "['" . $turma->name . "', " . $q->quantidade . ", 10]";
+                                            $linhaGraf .= "['" . $turma->name . "', " . $q->quantidade . ", ";
+
+                                            if ($iTurmas == $quantidadeTurmas)
+                                            {
+                                                $linhaGraf .= "1]";
+                                            }
+                                            else
+                                            {
+                                                $linhaGraf .= "2],";
+                                            }
                                         }
                                     }
                                 }
