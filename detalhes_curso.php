@@ -299,40 +299,26 @@
 				<div class="info-box-content">
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					<script type="text/javascript">
-						google.charts.load('current', {packages: ['corechart', 'bar']});
-						google.charts.setOnLoadCallback(drawBasic);
-
-						function drawBasic() {
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
 							<?php
-								$alunosCompletos = (array) $DB->get_records_sql($sql116);
-								$color = ['#ff9900','#dc3912','#3366cc','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#83c6ff'];
-								$positioncolor = 0;
-								if (count($turmas)) 
-								{
-
-									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
-									foreach ($alunosCompletos as $q) 
-									{
-										echo "['" . $turma->name .  "'," . $q->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
-										$positioncolor = $positioncolor + 1;
-									} 
-									echo "]);";
-								};
+								echo "['Year', 'Sales', 'Expenses'],";
+								echo "['2013',  1000,      400],";
+                                echo "['2014',  1170,      460],";
+                                echo "['2015',  660,       1120],";
+                                echo "['2016',  1030,      540]";
 							?>
+                            ]);
 
-							var options = {
-								title: ' ',
-								chartArea: {width: '40%'},
-								hAxis: {
-									title: 'Número de Concludentes',
-									minValue: 0
-								},
-								vAxis: {
-									title: ' '
-								}
-							};
+                            var options = {
+                                title: 'Company Performance',
+                                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                                vAxis: {minValue: 0}
+                            };
 
-							var chart = new google.visualization.BarChart(document.getElementById('chart_div6'));
+                            var chart = new google.visualization.AreaChart(document.getElementById('chart_div6'));
 
 							chart.draw(data, options);
 						}
@@ -340,17 +326,17 @@
 					<div class="grafico6">
 						<div class="description-block border-right border-none">
 							<?php
-											if (!empty($alunosCompletos))
-											{
-											  echo "<ul style=\"list-style:none;margin:0!important;\">";
-											  echo "<li id=\"chart_div6\"></li>";
-											  echo "</ul>";
-											}
-											else
-											{
-											  echo "<p>Nenhum resultado encontrado</p>";
-											}
-							?>				 
+                                if (!empty($alunosCompletos))
+                                {
+                                  echo "<ul style=\"list-style:none;margin:0!important;\">";
+                                  echo "<li id=\"chart_div6\"></li>";
+                                  echo "</ul>";
+                                }
+                                else
+                                {
+                                  echo "<p>Nenhum resultado encontrado</p>";
+                                }
+							?>
 						</div>                
 					</div>						
 				</div>
