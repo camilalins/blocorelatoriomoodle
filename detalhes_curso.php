@@ -257,7 +257,7 @@
 
                                 if ($quantidadeTurmas)
                                 {
-                                    echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>";
+                                    echo "<thead><tr role=\"row\"><th>Turma</th><th>Concludente</th><th>Não Concludente</th></tr></thead>";
                                     foreach ($turmas as $turma)
                                     {
                                         $sql116 = "SELECT COUNT(cc.id) AS quantidade ";
@@ -284,7 +284,7 @@
                                         {
                                             echo "<tr class=\"odd\">";
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
-                                            echo "</td></tr>";
+                                            
 
                                             // Monta script do chart
                                             $linhaGraf .= "['" . $turma->name . "', " . $q->quantidade . ", ";
@@ -300,6 +300,8 @@
                                             {
                                                 $linhaGraf .= $qi->quantidade . "],";
                                             }
+										 echo "<td>" . $qi->quantidade .  "</td>";
+										 echo "</tr>";
                                         }
                                     }
                                 }
