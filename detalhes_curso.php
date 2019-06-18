@@ -272,9 +272,11 @@
                                         $sql117 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
                                         $sql117 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
                                         $sql117 .= "INNER JOIN mdl_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . " ) ";
-                                        $sql117 .= "WHERE cc.timecompleted != 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+                                        $sql117 .= "WHERE cc.timecompleted IS NULL AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
                                         $alunosIncompletos = (array) $DB->get_records_sql($sql117);
+
+                                        $iTurmas = $iTurmas + 1;
 
                                         foreach ($alunosCompletos as $q)
                                         {
@@ -282,7 +284,6 @@
                                             echo "<td>" . $turma->name .  "</td><td>" . $q->quantidade .  "</td>";
                                             echo "</td></tr>";
 
-                                            $iTurmas = $iTurmas + 1;
                                             // Monta script do chart
                                             $linhaGraf .= "['" . $turma->name . "', " . $q->quantidade . ", ";
                                         }
@@ -291,11 +292,11 @@
                                         {
                                             if ($iTurmas == $quantidadeTurmas)
                                             {
-                                                $linhaGraf .= $qi . "]";
+                                                $linhaGraf .= $qi->quantidade . "]";
                                             }
                                             else
                                             {
-                                                $linhaGraf .= $qi . "],";
+                                                $linhaGraf .= $qi->quantidade . "],";
                                             }
                                         }
                                     }
