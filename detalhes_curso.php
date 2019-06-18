@@ -312,6 +312,7 @@
                             ?>
 						</tbody>
 					</table>
+				Total de Concludentes:  <b> <?php echo $total_concludente->quantidade; ?></b>
 				</div>
 			</div>
 		</div>
@@ -369,117 +370,6 @@
 		
 	</div>
 </section>
-<section>
-	<div class="rows">
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 34%;">
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Não Concludentes</span>
-				<div class="info-box-content">
-					<table class="table no-margin">
-						<tbody>
-							<?php
-								require_once("../../config.php");
-								global $DB;
-								$sql7 = "SELECT DISTINCT ue.id,en.courseid AS courseid,u.firstname,u.lastname,u.email,r.name AS rolename,r.shortname AS roleshortname,en.status AS methodstatus,en.enrol AS methodplugin,ue.status AS enrolstatus,ue.timestart,ue.timeend,from_unixtime(p.timecompleted, '%d/%m/%Y %H:%i:%s') as FIM,c.fullname AS course, c.id AS courseid, g.name AS turma, COUNT(u.id) AS quantidade ";
-								$sql7 .= "FROM mdl_role_assignments rs ";
-								$sql7 .= "INNER JOIN mdl_user u ON u.id=rs.userid ";
-								$sql7 .= "INNER JOIN mdl_role r ON rs.roleid=r.id ";
-								$sql7 .= "INNER JOIN mdl_context e ON rs.contextid=e.id ";
-								$sql7 .= "INNER JOIN mdl_enrol en ON  e.instanceid=en.courseid ";
-								$sql7 .= "INNER JOIN mdl_user_enrolments ue ON en.id=ue.enrolid ";
-								$sql7 .= "INNER JOIN mdl_course_completions p ON p.course=en.courseid ";
-								$sql7 .= "INNER JOIN mdl_course c ON c.id=en.courseid ";
-								$sql7 .= "INNER JOIN mdl_groups g ON g.courseid=c.id ";
-								$sql7 .= "WHERE e.contextlevel=50 AND rs.userid=ue.userid AND c.fullname='" . $_REQUEST["escolha_curso"] . "' AND p.userid=rs.userid  AND p.timecompleted IS NULL ";
-								$sql7 .= "group by g.name ";
-										  
-								$rs7 = (array) $DB->get_records_sql($sql7);
-								if (count($rs7)) 
-								{
-									echo "<thead><tr role=\"row\"><th>Grupo</th><th>Quantidade</th></tr></thead>"; 
-									foreach ($rs7 as $l7) {
-										echo "<tr class=\"odd\">";
-										echo "<td>" . $l7->turma .  "</td><td>" . $l7->quantidade .  "</td>";
-										;
-										echo "</td></tr>";
-									} 
-								};
-							?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 66%;">
-			<div class="info-box">
-				<span class="info-box-icon bg-dodgerblue">
-					<i class="fas fa-chart-bar"></i> Quantidade Separados por Grupo
-				</span>
-				<div class="info-box-content">
-					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-					<script type="text/javascript">
-						google.charts.load('current', {packages: ['corechart', 'bar']});
-						google.charts.setOnLoadCallback(drawBasic);
-
-						function drawBasic() {
-							<?php
-								$rs7 = (array) $DB->get_records_sql($sql7);
-								$color = ['#dc3912','#3366cc','#83c6ff','#65b20c','#153268','#c01fe0','#f9140c','#61829d','#8ebbe2','#ff9900'];
-								$positioncolor = 0;
-								if (count($rs7)) 
-								{
-
-									echo "var data = google.visualization.arrayToDataTable([\n\r['Curso', 'Quantidade', { role: 'style' }],";
-									foreach ($rs7 as $l7) 
-									{
-										echo "['" . $l7->turma .  "'," . $l7->quantidade . ",'" . $color[$positioncolor] . "'],\n\r";
-										$positioncolor = $positioncolor + 1;
-									} 
-									echo "]);";
-								};
-							?>
-
-							var options = {
-								title: ' ',
-								chartArea: {width: '40%'},
-								hAxis: {
-									title: 'Número de Não Concludentes',
-									minValue: 0
-								},
-								vAxis: {
-									title: ' '
-								}
-							};
-
-							var chart = new google.visualization.BarChart(document.getElementById('chart_div7'));
-
-							chart.draw(data, options);
-						}
-					</script>
-					<div class="grafico6">
-						<div class="description-block border-right border-none">
-							<?php
-											if (!empty($rs7))
-											{
-											  echo "<ul style=\"list-style:none;margin:0!important;\">";
-											  echo "<li id=\"chart_div7\"></li>";
-											  echo "</ul>";
-											}
-											else
-											{
-											  echo "<p>Nenhum resultado encontrado</p>";
-											}
-							?>				 
-						</div>                
-					</div>						
-				</div>
-			</div>
-		</div>
-		
-	</div>
-</section>
-
-
 
 <?php
 	$PAGE->set_context($context);
