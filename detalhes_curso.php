@@ -304,17 +304,17 @@
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
 							<?php
-								echo "['Year', 'Sales', 'Expenses'],";
-								echo "['2013',  1000,      400],";
-                                echo "['2014',  1170,      460],";
-                                echo "['2015',  660,       1120],";
-                                echo "['2016',  1030,      540]";
+								echo "['Turma', 'Conludentes', 'Não Concludentes'],";
+								echo "['T01',  20,      5],";
+                                echo "['T02',  25,      1],";
+                                echo "['T03',  15,       2],";
+                                echo "['T04',  10,      30]";
 							?>
                             ]);
 
                             var options = {
-                                title: 'Company Performance',
-                                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                                title: 'Curso / Turmas',
+                                hAxis: {title: 'Turma',  titleTextStyle: {color: '#333'}},
                                 vAxis: {minValue: 0}
                             };
 
