@@ -236,6 +236,8 @@
 				<span class="input-group-btn">
 					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 8px 15px; text-shadow: none; background-image: none!important;">Baixar</a>
 				</span>		
+				<br>
+				<br>
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
