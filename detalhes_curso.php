@@ -267,6 +267,15 @@
 
                                         $alunosCompletos = (array) $DB->get_records_sql($sql116);
 
+                                        $sql117 = "SELECT COUNT(cc.id) AS quantidade ";
+                                        $sql117 .= "FROM mdl_course_completions cc ";
+                                        $sql117 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
+                                        $sql117 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+                                        $sql117 .= "INNER JOIN mdl_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . " ) ";
+                                        $sql117 .= "WHERE cc.timecompleted != 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
+
+                                        $alunosIncompletos = (array) $DB->get_records_sql($sql117);
+
                                         foreach ($alunosCompletos as $q)
                                         {
                                             echo "<tr class=\"odd\">";
@@ -276,14 +285,17 @@
                                             $iTurmas = $iTurmas + 1;
                                             // Monta script do chart
                                             $linhaGraf .= "['" . $turma->name . "', " . $q->quantidade . ", ";
+                                        }
 
+                                        foreach ($alunosIncompletos as $qi)
+                                        {
                                             if ($iTurmas == $quantidadeTurmas)
                                             {
-                                                $linhaGraf .= "1]";
+                                                $linhaGraf .= $qi . "]";
                                             }
                                             else
                                             {
-                                                $linhaGraf .= "2],";
+                                                $linhaGraf .= $qi . "],";
                                             }
                                         }
                                     }
