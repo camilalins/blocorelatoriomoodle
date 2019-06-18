@@ -232,8 +232,10 @@
 					$total_concludente = array_shift($total);
 				?>
 								
-				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span><b> <?php echo $total_concludente->quantidade; ?></b>
-				<a href="exportar.php">baixar</a>
+				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Usuários Concludentes</span><b> <?php echo $total_concludente->quantidade; ?></b></span>
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-info btn-flat"><a href="exportar.php">Baixar</a></button>
+				</span>		
 				<div class="info-box-content">
 					<table class="table no-margin">
 						<tbody>
