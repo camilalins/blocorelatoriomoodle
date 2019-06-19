@@ -1,14 +1,13 @@
 <?php
 
 require_once("../../config.php");
-require_once("detalhes_curso.php");
 
 
 global $DB;
 
-header('Content-Type: text/csv; charset=UTF-8');
-header('Content-Disposition: attachment; filename=Cadastro_Geral(' . date("d-m-y-H-i") . ').csv');
-
+//header('Content-Type: text/csv; charset=UTF-8');
+//header('Content-Disposition: attachment; filename=Cadastro_Geral(' . date("d-m-y-H-i") . ').csv');
+print_r($_POST);
 $output = fopen('php://output', 'w');
 fputcsv($output, array_map("cvt", array(
     'turma',
