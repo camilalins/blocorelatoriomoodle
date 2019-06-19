@@ -235,19 +235,17 @@
 				<br>				
 				<span class="info-box-icon bg-dodgerblue"><i class="fas fa-ellipsis-v"></i> Análise do Curso</span>
 				<span class="input-group-btn">
-					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 5px 15px; text-shadow: none; background-image: none!important;margin: 0px 0px 0px 15px;">Baixar</a>
+					<form METHOD="post" ACTION="exportar.php">
+					<?php
+						$input = "";
+						$input .= '<input type="text" style="display:none;" name="curso" value="';
+						$input .= $_REQUEST["escolha_curso"];
+						$input .= '">';
+						echo $input;
+					?>
 					
-				<form METHOD="post" ACTION="exportar.php">
-				<?php
-					$input = "";
-					$input .= '<input type="text" style="display:none;" name="curso" value="';
-					$input .= $_REQUEST["escolha_curso"];
-					$input .= '">';
-					echo $input;
-				?>
-				
-					<INPUT TYPE="submit" VALUE="Baixar">
-				</form>
+						<INPUT TYPE="submit" VALUE="Baixar">
+					</form>
 				</span>		
 				<br>
 				<div class="info-box-content">
