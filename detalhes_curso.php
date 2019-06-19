@@ -237,9 +237,8 @@
 				<span class="input-group-btn">
 					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 5px 15px; text-shadow: none; background-image: none!important;margin: 0px 0px 0px 15px;">Baixar</a>
 					
-				<form NAME="form1" METHOD="post" ACTION="exportar.php">
-					<input type="text" style="display:none;" value="Curso Básico em Segurança da Informação">
-				
+				<form METHOD="post" ACTION="exportar.php">
+					<input type="text" name="curso">
 					<INPUT TYPE="submit" VALUE="Baixar">
 				</form>
 				</span>		
