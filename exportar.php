@@ -1,6 +1,7 @@
 <?php
 
 require_once("../../config.php");
+require_once("detalhes_curso.php");
 
 
 global $DB;
