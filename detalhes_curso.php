@@ -238,7 +238,8 @@
 					<a href="exportar.php" style="background-color: #0F71B7; color: #ffffff!important; padding: 5px 15px; text-shadow: none; background-image: none!important;margin: 0px 0px 0px 15px;">Baixar</a>
 					
 				<form METHOD="post" ACTION="exportar.php">
-					<input type="text" name="curso">
+					<input type="text" style="display:none;" name="curso" value="Curso Básico em Segurança da Informação">
+				
 					<INPUT TYPE="submit" VALUE="Baixar">
 				</form>
 				</span>		
