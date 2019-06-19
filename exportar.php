@@ -14,24 +14,45 @@ fputcsv($output, array_map("cvt", array(
     'quantidade'
         )), ';');
 
+	$sql106 = "SELECT g.id, g.name ";
+    $sql106 .= "FROM mdl_groups g ";
+    $sql106 .= "INNER JOIN mdl_course c ON c.id = g.courseid ";
+    $sql106 .= "WHERE c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
-$sql = "SELECT cc.id, g.name AS turma, COUNT(g.id) as quantidade ";
-$sql .= "FROM mdl_course_completions cc ";
-$sql .= "INNER JOIN mdl_groups_members gm ON cc.userid = gm.userid ";
-$sql .= "INNER JOIN mdl_groups g ON gm.groupid = g.id ";
-$sql .= "INNER JOIN mdl_course c ON g.courseid = c.id ";
-$sql .= "WHERE c.fullname='Curso Básico em Segurança da Informação' AND cc.timecompleted > 0 ";
-$sql .= "group by g.id ";
+    $turmas = (array) $DB->get_records_sql($sql106);
+	$quantidadeTurmas = count($turmas);
+        if ($quantidadeTurmas)
+        {
+            foreach ($turmas as $turma)
+            {
+                $sql116 = "SELECT COUNT(cc.id) AS quantidade ";
+                $sql116 .= "FROM mdl_course_completions cc ";
+                $sql116 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
+                $sql116 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+                $sql116 .= "INNER JOIN mdl_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . " ) ";
+                $sql116 .= "WHERE cc.timecompleted > 0 AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
-$rs = (array) $DB->get_records_sql($sql);
+                $alunosCompletos = (array) $DB->get_records_sql($sql116);
 
-foreach ($rs as $l) {
-    fputcsv($output, array_map("cvt", array(
-        $l->turma,
-        $l->quantidade
-            )), ';');
-}
+                $sql117 = "SELECT COUNT(cc.id) AS quantidade ";
+                $sql117 .= "FROM mdl_course_completions cc ";
+                $sql117 .= "INNER JOIN mdl_user u ON u.id=cc.userid ";
+                $sql117 .= "INNER JOIN mdl_course c ON c.id=cc.course ";
+                $sql117 .= "INNER JOIN mdl_groups_members gm ON ( gm.userid = u.id AND gm.groupid = " . $turma-> id . " ) ";
+                $sql117 .= "WHERE cc.timecompleted IS NULL AND c.fullname='" . $_REQUEST["escolha_curso"] . "' ";
 
+                $alunosIncompletos = (array) $DB->get_records_sql($sql117);
+
+                                       
+                foreach ($alunosCompletos as $q)
+                    {
+					fputcsv($output, array_map("cvt", array(
+						$turma->name,
+						$q->quantidade
+					)), ';');
+				}
+			}
+		}
 function cvt($texto) {
     return iconv("UTF-8", "ISO-8859-1", $texto);
 }
