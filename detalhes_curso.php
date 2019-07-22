@@ -244,7 +244,7 @@
 						echo $input;
 					?>
 					
-						<INPUT TYPE="submit" VALUE="Baixar">
+						<input TYPE="submit" VALUE="Baixar">
 					</form>
 				</span>		
 				<br>
@@ -324,7 +324,7 @@
                             ?>
 						</tbody>
 					</table>
-				Total de Concludentes:  <b> <?php echo $total_concludente->quantidade; ?></b>
+			
 				</div>
 			</div>
 		</div>
