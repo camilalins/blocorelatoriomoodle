@@ -103,7 +103,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 200px; height: 100px;\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 300px; height: 200px;\"></li>";
 											  echo "</ul>";
 											}
 											else
