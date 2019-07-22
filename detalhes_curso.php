@@ -23,7 +23,7 @@
 	<small><a class="btn btn-comum" style="    margin: -1px 0px 0px 5px;" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small> <h3 class="box-title"><?php echo $_REQUEST["escolha_curso"] ?></h3>
 	<div class="rows">
 	
-		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 44%;"><!--Quantidade de alunos no curso-->
+		<div class="col-md-3 col-sm-6 col-xs-12" style="width: 37%;"><!--Quantidade de alunos no curso-->
 		<?php
 			require_once("../../config.php");
 			global $DB;
@@ -103,7 +103,7 @@
 											if (!empty($rs3))
 											{
 											  echo "<ul style=\"list-style:none;\">";
-											  echo "<li id=\"donutchart1\" style=\"width: 400px; height: 300px;\"></li>";
+											  echo "<li id=\"donutchart1\" style=\"width: 200px; height: 100px;\"></li>";
 											  echo "</ul>";
 											}
 											else
