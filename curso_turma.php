@@ -36,10 +36,11 @@
 								  global $DB;
 								  $sql = "SELECT fullname";
 								  $sql .= " FROM mdl_course";
+								  $sql .= " ORDER BY nome DESC";
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
-									echo "<thead><tr role=\"row\"><th>Nome do Curso</th><th>Quantidade de Turmas</th><th>Quantidade de Inscritos</th><th></tr></thead>"; 
+									echo "<thead><tr role=\"row\"><th>Nome do Curso</th></tr></thead>"; 
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
