@@ -27,7 +27,7 @@
 					<small><a class="btn btn-comum" href="exportar_curso_turma.php"><i class="fas fa-download"></i> Exportar</a></small>
 				</div>
 				<div class="box-body">
-					<div class="row">
+					<div class="rows">
 						<div class="table-responsive">
 							<table class="table no-margin">
 								<tbody>
@@ -36,7 +36,7 @@
 								  global $DB;
 								  $sql = "SELECT fullname";
 								  $sql .= " FROM mdl_course";
-								  $sql .= " ORDER BY nome DESC";
+								  $sql .= " ORDER BY fullname DESC";
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
