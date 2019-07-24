@@ -32,7 +32,7 @@
 							<table class="table no-margin">
 								<tbody>
 								  <?php
-								  require_once("../../../config.php");
+								  require_once("../../config.php");
 								  global $DB;
 								  $sql = "SELECT c.id, c.fullname, COUNT(distinct g.name) AS turmas, COUNT(distinct m.id) AS usuarios ";
 								  $sql .= "FROM mdl_groups_members m ";
@@ -40,7 +40,7 @@
 								  $sql .= "INNER JOIN mdl_user u ON u.id=m.userid ";
 								  $sql .= "INNER JOIN mdl_course c ON c.id=g.courseid ";
 								  $sql .= "INNER JOIN mdl_groupings cgr ON c.id=cgr.courseid ";
-								  $sql .= "group by c.fullname ";
+								  $sql .= "group by c.fullnames ";
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
