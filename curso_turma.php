@@ -2,7 +2,7 @@
 
 	require_once('../../config.php');
 	global $CFG, $DB;
-	$titulo = 'Cursos';
+	$titulo = 'Relação de Cursos';
 
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <!-- Total de usuários --> 
 <h3 class="box-title"><?php echo $titulo; ?></h3>
-<section class="hold-transition skin-blue sidebar-mini">
-	<div class="row">
+<section>
+	<div class="rows">
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
@@ -43,7 +43,7 @@
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
-									  echo "<td>" . $l->fullname .  "</td><td>" . $l->fullname .  "</td><td>" . $l->fullname .  "</td>";
+									  echo "<td>" . $l->fullname .  "</td>";
 									  ;
 									  echo "</tr>";
 									} 
