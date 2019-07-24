@@ -19,49 +19,49 @@
 <!-- Total de usuários --> 
 <h3 class="box-title"><?php echo $titulo; ?></h3>
 <section class="hold-transition skin-blue sidebar-mini">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
-          <small><a class="btn btn-comum" href="exportar_curso_turma.php"><i class="fas fa-download"></i> Exportar</a></small>
-        </div>
-        <div class="box-body">
-          <div class="row">
-            <div class="table-responsive">
-              <table class="table no-margin">
-                <tbody>
-                  <?php
-                  require_once("../../../config.php");
-                  global $DB;
-                  $sql = "SELECT c.id, c.fullname, COUNT(distinct g.name) AS turmas, COUNT(distinct m.id) AS usuarios ";
-                  $sql .= " FROM mdl_groups_members m ";
-                  $sql .= " INNER JOIN mdl_groups g ON g.id=m.groupid ";
-                  $sql .= " INNER JOIN mdl_user u ON u.id=m.userid ";
-                  $sql .= " INNER JOIN mdl_course c ON c.id=g.courseid ";
-                  $sql .= " INNER JOIN mdl_groupings cgr ON c.id=cgr.courseid ";
-                  $sql .= " group by c.fullname;";
-                  $c = (array) $DB->get_records_sql($sql);
-                  if (count($c)) 
-                  {
-                    echo "<thead><tr role=\"row\"><th>Nome do Curso</th><th>Quantidade de Turmas</th><th>Quantidade de Inscritos</th><th></tr></thead>"; 
-                    foreach ($c as $l) 
-                    {
-                      echo "<tr class=\"odd\">";
-                      echo "<td>" . $l->fullname .  "</td><td>" . $l->turmas .  "</td><td>" . $l->usuarios .  "</td>";
-                      ;
-                      echo "</tr>";
-                    } 
-                  };
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>    
-    </div>    
-  </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header with-border">
+					<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
+					<small><a class="btn btn-comum" href="exportar_curso_turma.php"><i class="fas fa-download"></i> Exportar</a></small>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<div class="table-responsive">
+							<table class="table no-margin">
+								<tbody>
+								  <?php
+								  require_once("../../../config.php");
+								  global $DB;
+								  $sql = "SELECT c.id, c.fullname, COUNT(distinct g.name) AS turmas, COUNT(distinct m.id) AS usuarios ";
+								  $sql .= "FROM mdl_groups_members m ";
+								  $sql .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
+								  $sql .= "INNER JOIN mdl_user u ON u.id=m.userid ";
+								  $sql .= "INNER JOIN mdl_course c ON c.id=g.courseid ";
+								  $sql .= "INNER JOIN mdl_groupings cgr ON c.id=cgr.courseid ";
+								  $sql .= "group by c.fullname ";
+								  $c = (array) $DB->get_records_sql($sql);
+								  if (count($c)) 
+								  {
+									echo "<thead><tr role=\"row\"><th>Nome do Curso</th><th>Quantidade de Turmas</th><th>Quantidade de Inscritos</th><th></tr></thead>"; 
+									foreach ($c as $l) 
+									{
+									  echo "<tr class=\"odd\">";
+									  echo "<td>" . $l->fullname .  "</td><td>" . $l->turmas .  "</td><td>" . $l->usuarios .  "</td>";
+									  ;
+									  echo "</tr>";
+									} 
+								  };
+								  ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>    
+		</div>    
+	</div>
 </section>
 <?php
 	$PAGE->set_context($context);
