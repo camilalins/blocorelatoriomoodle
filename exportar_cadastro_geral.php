@@ -14,12 +14,13 @@ fputcsv($output, array_map("cvt", array(
     'Área de Atuação',
     'Quantidade'
         )), ';');
-$sql = " SELECT id, institution, departmexnt, quantidade";
-$sql .= " FROM mdl_role_assignments ass";
-$sql .= " INNER JOIN mdl_user u ON  u.id = ass.userid";
-$sql .= " WHERE roleid=5 AND deleted <> 1 AND suspended <> 1 AND username <> 'guest'";
-
-$rs = (array) $DB->get_records_sql($sql);
+	$sql = "select id, institution, department, quantidade ";
+	$sql .= " from (SELECT id, institution, department, COUNT(institution) AS quantidade";
+	$sql .= " FROM mdl_user rs";
+	$sql .= " WHERE deleted <> 1 and suspended <> 1 and username <> 'guest' and format(username, 0)";
+	$sql .= " GROUP BY department, institution)x";
+	$sql .= " ORDER BY quantidade DESC";
+	$rs = (array) $DB->get_records_sql($sql);
 
 foreach ($rs as $l) {
     fputcsv($output, array_map("cvt", array(
@@ -32,5 +33,4 @@ foreach ($rs as $l) {
 function cvt($texto) {
     return iconv("UTF-8", "ISO-8859-1", $texto);
 }
-
 ?>
