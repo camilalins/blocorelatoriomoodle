@@ -208,7 +208,7 @@
 									}
 									else
 									{
-										echo "Não há Tutores / Moderadores / Professores nesse curso.";
+										echo "<br> <b>Não há Tutores / Moderadores / Professores nesse curso.</b>";
 									}
 								?>
 							</tbody>
