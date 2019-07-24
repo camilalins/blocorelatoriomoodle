@@ -523,7 +523,7 @@
 											  echo "<ul style=\"list-style:none;\">";
 											  echo "<li id=\"donutchart2\" style=\"width: 400px; height: 300px;\"></li>";
 											  echo "</ul>";
-											  echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
+											  //echo "<a href=\"grafico_semipresencial.php\"><span class=\"description-percentage text-green\"><i class=\"fa fa-caret-up\"></i> Veja Mais</span></a>";
 											}
 											else
 											{
