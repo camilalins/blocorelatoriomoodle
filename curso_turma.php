@@ -2,7 +2,7 @@
 
 	require_once('../../config.php');
 	global $CFG, $DB;
-	$titulo = 'Painel Academico';
+	$titulo = 'Cursos';
 
 	$PAGE->set_url($_SERVER['PHP_SELF']);
 	$PAGE->set_pagelayout('admin');
@@ -35,11 +35,11 @@
                   require_once("../../../config.php");
                   global $DB;
                   $sql = "SELECT c.id, c.fullname, COUNT(distinct g.name) AS turmas, COUNT(distinct m.id) AS usuarios ";
-                  $sql .= " FROM m31_groups_members m ";
-                  $sql .= " INNER JOIN m31_groups g ON g.id=m.groupid ";
-                  $sql .= " INNER JOIN m31_user u ON u.id=m.userid ";
-                  $sql .= " INNER JOIN m31_course c ON c.id=g.courseid ";
-                  $sql .= " INNER JOIN m31_groupings cgr ON c.id=cgr.courseid ";
+                  $sql .= " FROM mdl_groups_members m ";
+                  $sql .= " INNER JOIN mdl_groups g ON g.id=m.groupid ";
+                  $sql .= " INNER JOIN mdl_user u ON u.id=m.userid ";
+                  $sql .= " INNER JOIN mdl_course c ON c.id=g.courseid ";
+                  $sql .= " INNER JOIN mdl_groupings cgr ON c.id=cgr.courseid ";
                   $sql .= " group by c.fullname;";
                   $c = (array) $DB->get_records_sql($sql);
                   if (count($c)) 
@@ -64,10 +64,10 @@
   </div>
 </section>
 <?php
-  $PAGE->set_context($context);
-  $PAGE->set_pagelayout('incourse');
-  $PAGE->set_url('/blocks/moodleversion/pages/painel_academico.php');
-  $PAGE->requires->jquery();
-  // Never reached if download = true.
-  echo $OUTPUT->footer();
+	$PAGE->set_context($context);
+	$PAGE->set_pagelayout('incourse');
+	$PAGE->set_url('/blocks/moodleversion/curso_turma.php');
+	$PAGE->requires->jquery();
+	// Never reached if download = true.
+	echo $OUTPUT->footer();
 ?>
