@@ -14,7 +14,7 @@ fputcsv($output, array_map("cvt", array(
     'Área de Atuação',
     'Quantidade'
         )), ';');
-$sql = " SELECT id, institution, department, quantidade";
+$sql = " SELECT id, institution, departmexnt, quantidade";
 $sql .= " FROM mdl_role_assignments ass";
 $sql .= " INNER JOIN mdl_user u ON  u.id = ass.userid";
 $sql .= " WHERE roleid=5 AND deleted <> 1 AND suspended <> 1 AND username <> 'guest'";
