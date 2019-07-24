@@ -34,13 +34,8 @@
 								  <?php
 								  require_once("../../config.php");
 								  global $DB;
-								  $sql = "SELECT c.id, c.fullname, COUNT(distinct g.name) AS turmas, COUNT(distinct m.id) AS usuarios ";
-								  $sql .= "FROM mdl_groups_members m ";
-								  $sql .= "INNER JOIN mdl_groups g ON g.id=m.groupid ";
-								  $sql .= "INNER JOIN mdl_user u ON u.id=m.userid ";
-								  $sql .= "INNER JOIN mdl_course c ON c.id=g.courseid ";
-								  $sql .= "INNER JOIN mdl_groupings cgr ON c.id=cgr.courseid ";
-								  $sql .= "group by c.fullnames ";
+								  $sql = "SELECT fullname";
+								  $sql .= " FROM mdl_course";
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
@@ -48,7 +43,7 @@
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
-									  echo "<td>" . $l->fullname .  "</td><td>" . $l->turmas .  "</td><td>" . $l->usuarios .  "</td>";
+									  echo "<td>" . $l->fullname .  "</td><td>" . $l->fullname .  "</td><td>" . $l->fullname .  "</td>";
 									  ;
 									  echo "</tr>";
 									} 
