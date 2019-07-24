@@ -205,7 +205,11 @@
 											;
 											echo "</td></tr>";
 										} 
-									};
+									}
+									else
+									{
+										echo "Não há Tutores / Moderadores / Professores nesse curso.";
+									}
 								?>
 							</tbody>
 					</table>
