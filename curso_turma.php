@@ -22,10 +22,6 @@
 	<div class="rows">
 		<div class="col-md-12">
 			<div class="box">
-				<div class="box-header with-border">
-					<small><a class="btn btn-comum" href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i> Voltar</a></small>
-					<small><a class="btn btn-comum" href="exportar_curso_turma.php"><i class="fas fa-download"></i> Exportar</a></small>
-				</div>
 				<div class="box-body">
 					<div class="rows">
 						<div class="table-responsive">
