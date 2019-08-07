@@ -30,17 +30,20 @@
 								  <?php
 								  require_once("../../config.php");
 								  global $DB;
-								  $sql = "SELECT fullname";
-								  $sql .= " FROM mdl_course";
-								  $sql .= " ORDER BY fullname DESC";
+								  $sql = "SELECT c.id, c.fullname, cct.name AS tipo, cc.name AS modalidade, ct.name As Categoria";
+								  $sql .= " FROM mdl_course c";
+								  $sql .= " INNER JOIN mdl_course_categories ct ON ct.id=c.category";
+								  $sql .= " INNER JOIN mdl_course_categories cc ON cc.id=ct.parent";
+								  $sql .= " INNER JOIN mdl_course_categories cct ON cct.id=cc.parent";
+								  $sql .= " ORDER BY cct.name DESC";
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
-									echo "<thead><tr role=\"row\"><th>Nome do Curso</th></tr></thead>"; 
+									echo "<thead><tr role=\"row\"><th>Nome do Curso</th><th>Tipo</th><th>Modalidade</th><th>Categoria</th></tr></thead>"; 
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
-									  echo "<td>" . $l->fullname .  "</td>";
+									  echo "<td>" . $l->c.fullname .  "</td><td>" . $l->tipo .  "</td><td>" . $l->modalidae .  "</td><td>" . $l->categoria .  "</td>";
 									  ;
 									  echo "</tr>";
 									} 
