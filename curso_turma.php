@@ -39,7 +39,7 @@
 								  $c = (array) $DB->get_records_sql($sql);
 								  if (count($c)) 
 								  {
-									echo "<thead><tr role=\"row\"><th>Nome do Curso</th><th>Tipo</th><th>Modalidade</th><th>Categoria</th></tr></thead>"; 
+									echo "<thead><tr role=\"row\"><th style=\"width: 48%;\">Nome do Curso</th><th>Tipo</th><th>Modalidade</th><th>Categoria</th></tr></thead>"; 
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
