@@ -30,7 +30,7 @@
 								  <?php
 								  require_once("../../config.php");
 								  global $DB;
-								  $sql = "SELECT c.id, c.fullname, cct.name AS tipo, cc.name AS modalidade, ct.name As Categoria";
+								  $sql = "SELECT c.id, c.fullname As nome, cct.name AS tipo, cc.name AS modalidade, ct.name As Categoria";
 								  $sql .= " FROM mdl_course c";
 								  $sql .= " INNER JOIN mdl_course_categories ct ON ct.id=c.category";
 								  $sql .= " INNER JOIN mdl_course_categories cc ON cc.id=ct.parent";
@@ -43,7 +43,7 @@
 									foreach ($c as $l) 
 									{
 									  echo "<tr class=\"odd\">";
-									  echo "<td>" . $l->c.fullname .  "</td><td>" . $l->tipo .  "</td><td>" . $l->modalidae .  "</td><td>" . $l->categoria .  "</td>";
+									  echo "<td>" . $l->nome .  "</td><td>" . $l->tipo .  "</td><td>" . $l->modalidade .  "</td><td>" . $l->categoria .  "</td>";
 									  ;
 									  echo "</tr>";
 									} 
