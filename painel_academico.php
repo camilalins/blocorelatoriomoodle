@@ -18,8 +18,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <!-- Total de usuários -->    
  <?php
-   require_once("../../config.php");
-   global $DB;
    $sql = "SELECT COUNT(institution) AS quantidade";
    $sql .= " FROM mdl_user";
    $sql .= " WHERE deleted <> 1 and suspended <> 1 and username <> 'guest' and format(username, 0)";
@@ -29,8 +27,6 @@
  ?>
   <!-- Alunos habilitados -->         
  <?php
-   require_once("../../config.php");
-   global $DB;
    $sql = "SELECT count(*) as quantidade";
    $sql .= " FROM mdl_role_assignments ass";
    $sql .= " INNER JOIN mdl_user u ON  u.id = ass.userid";
@@ -41,8 +37,6 @@
  ?>
   <!-- Total de curso -->         
   <?php
-    require_once("../../config.php");
-    global $DB;
     $sql = "SELECT count(*) as quantidade";
     $sql .= " FROM mdl_course";
     $curso = (array) $DB->get_records_sql($sql);
@@ -50,8 +44,7 @@
   ?>
   <!-- Curso Ativo -->          
   <?php
-    require_once("../../config.php");
-    global $DB;
+
     $sql = "SELECT count(*) as quantidade";
     $sql .= " FROM mdl_course";
     $curso_ativo = (array) $DB->get_records_sql($sql);
@@ -102,8 +95,6 @@
 								<div class="input-group input-group-sm">    
 									<?php
 
-										require_once("../../config.php");
-										global $DB;
 										$sql7 = "SELECT disciplina.id, disciplina.fullname AS curso ";
 										$sql7 .= "FROM mdl_course AS disciplina ";
 										$disciplina = (array) $DB->get_records_sql($sql7);
@@ -134,7 +125,6 @@
 <?php
 	$PAGE->set_context($context);
 	$PAGE->set_pagelayout('incourse');
-	$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
 	$PAGE->requires->jquery();
 	// Never reached if download = true.
 	echo $OUTPUT->footer();
