@@ -104,16 +104,8 @@
 
 										require_once("../../config.php");
 										global $DB;
-										$sql7 = "SELECT disciplina.id, aluno.username as cpf, aluno.firstname as nome, aluno.lastname as Sobrenome, aluno.institution as instituicao, aluno.department as departamento, aluno.email as email,polo.name as turma, disciplina.id as ID, disciplina.fullname as curso ";
-										$sql7 .= "FROM mdl_course disciplina ";
-										$sql7 .= "inner join mdl_groups polo on polo.courseid = disciplina.id ";
-										$sql7 .= "inner join mdl_groups_members alunos_polo on alunos_polo.groupid = polo.id ";
-										$sql7 .= "inner join mdl_user_enrolments pre_inscr on pre_inscr.userid = alunos_polo.userid ";
-										$sql7 .= "inner join mdl_role_assignments inscri on inscri.id = pre_inscr.enrolid ";
-										$sql7 .= "inner join mdl_user aluno on aluno.id = alunos_polo.userid ";
-										$sql7 .= "inner join mdl_context e on inscri.contextid = e.id ";
-										$sql7 .= "WHERE format <> 'site' AND e.contextlevel=50 AND inscri.roleid=5 ";
-										$sql7 .= "group by curso ";
+										$sql7 = "SELECT disciplina.id, disciplina.fullname AS curso ";
+										$sql7 .= "FROM mdl_course AS disciplina ";
 										$disciplina = (array) $DB->get_records_sql($sql7);
 
 										if (count($disciplina)) {
