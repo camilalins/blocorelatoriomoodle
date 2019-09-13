@@ -102,12 +102,3 @@ $disciplina = (array) $DB->get_records_sql($sqlGetCursos);
 	</div>
 </section>
 
-
-<?php
-$PAGE->set_context($context);
-$PAGE->set_pagelayout('incourse');
-$PAGE->set_url('/blocks/moodleversion/painel_academico.php');
-$PAGE->requires->jquery();
-// Never reached if download = true.
-echo $OUTPUT->footer();
-?>
