@@ -25,16 +25,8 @@ $curso_ativo = (array) $DB->get_records_sql($sqlTotalCursos);
 $total_curso_ativo = array_shift($curso_ativo);
 
 // Traz os Cursos em "Detalhes Sobre o Curso" (select/option)
-$sqlGetCursos = "SELECT disciplina.id, aluno.username as cpf, aluno.firstname as nome, aluno.lastname as Sobrenome, aluno.institution as instituicao, aluno.department as departamento, aluno.email as email,polo.name as turma, disciplina.id as ID, disciplina.fullname as curso ";
-$sqlGetCursos .= "FROM mdl_course disciplina ";
-$sqlGetCursos .= "inner join mdl_groups polo on polo.courseid = disciplina.id ";
-$sqlGetCursos .= "inner join mdl_groups_members alunos_polo on alunos_polo.groupid = polo.id ";
-$sqlGetCursos .= "inner join mdl_user_enrolments pre_inscr on pre_inscr.userid = alunos_polo.userid ";
-$sqlGetCursos .= "inner join mdl_role_assignments inscri on inscri.id = pre_inscr.enrolid ";
-$sqlGetCursos .= "inner join mdl_user aluno on aluno.id = alunos_polo.userid ";
-$sqlGetCursos .= "inner join mdl_context e on inscri.contextid = e.id ";
-$sqlGetCursos .= "WHERE format <> 'site' AND e.contextlevel=50 AND inscri.roleid=5 ";
-$sqlGetCursos .= "group by curso ";
+$sqlGetCursos = "SELECT disciplina.id AS ID, disciplina.fullname AS curso ";
+$sqlGetCursos .= "FROM mdl_course AS disciplina ";
 $disciplina = (array) $DB->get_records_sql($sqlGetCursos);
 
 ?>
